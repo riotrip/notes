@@ -1,1 +1,27 @@
 # notes
+
+Static Markdown publisher for `prayogo.is-a.dev/notes/`.
+
+## Add or update a note
+
+Create a Markdown file under `content/` and add frontmatter such as:
+
+```yaml
+---
+title: Example note
+category: Example
+tags:
+  - placeholder
+draft: false
+---
+```
+
+`title`, `date`, `category`, `tags`, and `draft` are optional. A missing title comes from the first `#` heading; a missing category comes from the first content subfolder. `draft: true` keeps a note out of the site and its generated sidebar.
+
+Run `pnpm install`, then `pnpm test` and `pnpm build`. The build creates HTML pages, category/tag lists, a site index, a note sidebar, a table of contents, and highlighted code in `dist/`. `dist/index.html` is the landing page; for a GitHub Pages project site from this repository, publish it at `/notes/`.
+
+On desktop, use the top-left hamburger to hide or reopen the sidebar. On mobile, the sidebar starts closed and opens as a full-screen panel below the topbar; the same hamburger closes it. Collapse each category's note list independently. The index lists category filters with note counts, and note tags link to their tag pages. Page and asset links are relative to keep working under `/notes/`.
+
+Avoid `index.md` and `category/<slug>.md` or `tag/<slug>.md` when those category/tag pages are generated; those paths are reserved and the build stops rather than overwriting a note.
+
+For a local preview, run `pnpm dlx http-server dist -p 4173`, then open `http://localhost:4173`.
