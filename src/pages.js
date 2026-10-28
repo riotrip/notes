@@ -61,6 +61,7 @@ function renderCategoryNav(notes, outputPath) {
 
 function renderShell({ title, outputPath, notes, content }) {
   const stylesheet = relativeHref(outputPath, 'assets/style.css');
+  const favicon = relativeHref(outputPath, 'assets/favicon.svg');
   const sidebarScript = relativeHref(outputPath, 'assets/sidebar.js');
   const indexHref = relativeHref(outputPath, 'index.html');
   return `<!doctype html>
@@ -70,7 +71,8 @@ function renderShell({ title, outputPath, notes, content }) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#edf1f3">
-  <title>${escapeHtml(title)} · notes</title>
+  <title>${escapeHtml(outputPath === 'index.html' ? 'Notes' : `${title} | Notes`)}</title>
+  <link rel="icon" type="image/svg+xml" href="${escapeHtml(favicon)}">
   <link rel="stylesheet" href="${escapeHtml(stylesheet)}">
 </head>
 <body>

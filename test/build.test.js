@@ -16,6 +16,7 @@ test('buildSite renders a note with noindex and copies site assets', async (t) =
   await mkdir(assetsDir, { recursive: true });
   await writeFile(path.join(contentDir, 'literature', 'example.md'), '# Example note\n\nA readable paragraph.\n');
   await writeFile(path.join(assetsDir, 'style.css'), 'body { color: #172431; }\n');
+  await writeFile(path.join(assetsDir, 'favicon.svg'), '<svg xmlns="http://www.w3.org/2000/svg"></svg>\n');
 
   await buildSite({ contentDir, assetsDir, outputDir });
 
@@ -25,4 +26,7 @@ test('buildSite renders a note with noindex and copies site assets', async (t) =
   assert.match(html, /<p[^>]*>A readable paragraph\.<\/p>/);
   assert.match(html, /href="\.\.\/assets\/style\.css"/);
   assert.equal(await readFile(path.join(outputDir, 'assets', 'style.css'), 'utf8'), 'body { color: #172431; }\n');
+  assert.match(html, /<title>Example note \| Notes<\/title>/);
+  assert.match(html, /href="\.\.\/assets\/favicon\.svg"/);
+  assert.equal(await readFile(path.join(outputDir, 'assets', 'favicon.svg'), 'utf8'), '<svg xmlns="http://www.w3.org/2000/svg"></svg>\n');
 });

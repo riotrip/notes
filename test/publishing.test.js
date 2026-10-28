@@ -15,6 +15,7 @@ async function createSiteFixture(t) {
   await mkdir(path.join(contentDir, 'backend'), { recursive: true });
   await mkdir(assetsDir, { recursive: true });
   await writeFile(path.join(assetsDir, 'style.css'), 'body { color: #172431; }\n');
+  await writeFile(path.join(assetsDir, 'favicon.svg'), '<svg xmlns="http://www.w3.org/2000/svg"></svg>\n');
   return { contentDir, assetsDir, outputDir };
 }
 
@@ -71,9 +72,15 @@ const score = 1;
   assert.match(tagPage, /data-sidebar-toggle/);
   assert.match(index, /Folder-derived category/);
   assert.doesNotMatch(index, /Hidden draft/);
-  assert.match(index, /href="assets\/style\.css"/);
+  assert.match(index, /href="assets\/favicon\.svg"/);
+  assert.match(index, /<title>Notes<\/title>/);
   assert.match(index, /href="literature\/calibration\.html"/);
-  assert.match(note, /<title>Calibration transfer · notes<\/title>/);
+  assert.match(note, /<title>Calibration transfer \| Notes<\/title>/);
+  assert.match(note, /href="\.\.\/assets\/favicon\.svg"/);
+  assert.match(categoryPage, /<title>Research \| Notes<\/title>/);
+  assert.match(categoryPage, /href="\.\.\/assets\/favicon\.svg"/);
+  assert.match(tagPage, /<title>calibration \| Notes<\/title>/);
+  assert.match(tagPage, /href="\.\.\/assets\/favicon\.svg"/);
   assert.match(note, /href="fallback\.html"/);
   assert.match(note, /Folder-derived category/);
   assert.doesNotMatch(note, /Hidden draft/);
