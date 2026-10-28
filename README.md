@@ -26,3 +26,7 @@ On desktop, use the top-left hamburger to hide or reopen the sidebar. On mobile,
 Avoid `index.md` and `category/<slug>.md` or `tag/<slug>.md` when those category/tag pages are generated; those paths are reserved and the build stops rather than overwriting a note.
 
 For a local preview, run `pnpm dlx http-server dist -p 4173`, then open `http://localhost:4173`.
+
+## Supabase comments
+
+Run `supabase/migrations/20261028_create_comments.sql` in Supabase Dashboard → SQL Editor → New query. Anonymous visitors can read and submit comments; the public API cannot update or delete them. Manage or remove comments in the Supabase Dashboard. `noindex` asks search engines not to index the site; it does not make the public Pages URL private.
