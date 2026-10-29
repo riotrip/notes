@@ -83,6 +83,13 @@ a { color: inherit; text-underline-offset: 3px; }
 .prose table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; font-size: 12px; line-height: 1.55; }
 .prose th, .prose td { padding: 8px 10px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
 .prose th { background: var(--paper); font-weight: 600; }
+.list-search { display: grid; gap: 6px; max-width: 360px; margin: 20px 0 8px; }
+.list-search label { color: var(--muted); font-size: 12px; font-weight: 600; }
+.list-search input { width: 100%; padding: 9px 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); font: inherit; line-height: 1.4; }
+.list-search input::placeholder { color: var(--muted); opacity: 1; }
+.list-search input:hover { border-color: var(--accent); }
+.list-search input:focus-visible { border-color: var(--accent); outline-offset: 2px; }
+.note-list__item[hidden], [data-search-empty][hidden] { display: none; }
 .note-list { margin: 18px 0 0; padding: 0; list-style: none; }
 .note-list__item { padding: 12px 0; border-bottom: 1px solid var(--line); }
 .note-list__title { font-size: 15px; font-weight: 600; text-decoration: none; }

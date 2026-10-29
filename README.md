@@ -23,6 +23,8 @@ The published research draft lives at `content/literature/riset-deteksi-teks-ai-
 Run `pnpm install`, then `pnpm test` and `pnpm build`. The build creates HTML pages, category/tag lists, a site index, a note sidebar, a table of contents, and highlighted code in `dist/`. `dist/index.html` is the landing page; for a GitHub Pages project site from this repository, publish it at `/notes/`.
 The workflow in `.github/workflows/deploy.yml` runs tests and builds on pushes to `main`, then deploys `dist/`. Set repository Settings → Pages → Build and deployment → Source to **GitHub Actions** once.
 
+On the index, category, and tag pages, **Search notes** filters the notes in the current list by the displayed title, category, date, or tags. Filtering happens in the browser; it does not search note bodies or other categories from a category page.
+
 On desktop, use the top-left hamburger to hide or reopen the sidebar. On mobile, the sidebar starts closed and opens as a full-screen panel below the topbar; the same hamburger closes it. Collapse each category's note list independently. The index lists category filters with note counts, and note tags link to their tag pages. Page and asset links are relative to keep working under `/notes/`.
 
 Avoid `index.md` and `category/<slug>.md` or `tag/<slug>.md` when those category/tag pages are generated; those paths are reserved and the build stops rather than overwriting a note.
