@@ -137,13 +137,24 @@ function renderListingItem(note, outputPath) {
 }
 
 export function renderListingPage({ title, notes, allNotes, outputPath }) {
+  const search = notes.length ? `<form class="listing-search" role="search" hidden>
+      <input id="note-search" type="search" placeholder="Search notes" aria-label="Search notes in this list" aria-controls="note-list" enterkeyhint="search" autocomplete="off">
+      <button type="submit">Search</button>
+    </form>` : '';
   const list = notes.length
-    ? `<ul class="note-list">${notes.map((note) => renderListingItem(note, outputPath)).join('')}</ul>`
+    ? `<ul id="note-list" class="note-list">${notes.map((note) => renderListingItem(note, outputPath)).join('')}</ul>`
     : '<p class="empty-state">No notes in this list yet.</p>';
+  const emptyResult = notes.length ? '<p class="search-empty" data-search-empty hidden></p>' : '';
+  const script = notes.length ? `<script src="${relativeHref(outputPath, 'assets/search.js')}" defer></script>` : '';
   const content = `<section class="listing">
-    <h1>${escapeHtml(title)}</h1>
+    <div class="listing-heading">
+      <h1>${escapeHtml(title)}</h1>
+      ${search}
+    </div>
     ${renderCategoryNav(allNotes, outputPath)}
     ${list}
+    ${emptyResult}
+    ${script}
   </section>`;
   return renderShell({ title, outputPath, notes: allNotes, content });
 }
