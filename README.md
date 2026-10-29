@@ -18,6 +18,8 @@ draft: false
 
 `title`, `date`, `category`, `tags`, and `draft` are optional. A missing title comes from the first `#` heading; a missing category comes from the first content subfolder. `draft: true` keeps a note out of the site and its generated sidebar.
 
+The published research draft lives at `content/literature/riset-deteksi-teks-ai-indonesia.md` and is available at `https://prayogo.is-a.dev/notes/literature/riset-deteksi-teks-ai-indonesia.html` after deployment. Its source is `../thesis-research/literature/notes/riset-deteksi-teks-ai-indonesia.md`; update the published copy when the research draft changes.
+
 Run `pnpm install`, then `pnpm test` and `pnpm build`. The build creates HTML pages, category/tag lists, a site index, a note sidebar, a table of contents, and highlighted code in `dist/`. `dist/index.html` is the landing page; for a GitHub Pages project site from this repository, publish it at `/notes/`.
 The workflow in `.github/workflows/deploy.yml` runs tests and builds on pushes to `main`, then deploys `dist/`. Set repository Settings → Pages → Build and deployment → Source to **GitHub Actions** once.
 
