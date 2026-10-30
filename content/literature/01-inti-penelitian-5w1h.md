@@ -46,4 +46,4 @@ Abstrak terbit sebelum 30 November 2022 dapat menjadi **manusia-proksi**, yaitu 
 
 **Yang masih perlu diputuskan:** jurnal, jumlah data, model pembuat abstrak AI, serta cakupan akhir pembandingan dan kalibrasi. Ringkasan ini menjelaskan arah penelitian, bukan menyatakan sistemnya sudah dibangun.
 
-Rincian: [rancangan metode](rancangan-metode-data-dan-evaluasi.md) dan [fungsi sistem](fungsi-sistem-landasan-teoretis-deteksi-ai.md).
+Rincian: [rancangan metode](05-rancangan-metode-data-dan-evaluasi.md) dan [fungsi sistem](04-fungsi-sistem-landasan-teoretis-deteksi-ai.md).

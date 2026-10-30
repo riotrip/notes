@@ -73,9 +73,32 @@ async function highlight(token) {
   });
 }
 
+function rewriteNoteLinks(tokens) {
+  for (const token of tokens) {
+    if (token.type !== 'inline' || !token.children) continue;
+
+    for (const child of token.children) {
+      if (child.type !== 'link_open') continue;
+      const href = child.attrGet('href');
+      if (
+        !href
+        || href.startsWith('/')
+        || /^[a-z][a-z\d+.-]*:/i.test(href)
+      ) continue;
+
+      const suffixIndex = href.search(/[?#]/);
+      const pathname = suffixIndex === -1 ? href : href.slice(0, suffixIndex);
+      if (!/\.md$/i.test(pathname)) continue;
+      const suffix = suffixIndex === -1 ? '' : href.slice(suffixIndex);
+      child.attrSet('href', `${pathname.slice(0, -3)}.html${suffix}`);
+    }
+  }
+}
+
 export async function renderMarkdown(source) {
   const env = {};
   const tokens = markdown.parse(source, env);
+  rewriteNoteLinks(tokens);
   const headings = [];
   const slugCounts = new Map();
   let titleBlockId = null;

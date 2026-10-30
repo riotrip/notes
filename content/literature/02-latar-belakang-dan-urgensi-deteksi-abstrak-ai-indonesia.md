@@ -59,4 +59,4 @@ Evaluasi deteksi teks AI pada abstrak ilmiah berbahasa Indonesia penting karena 
 4. Rashidi, H. H., Fennell, B. D., Albahra, S., Hu, B., & Gorbett, T. (2023). The ChatGPT conundrum: Human-generated scientific manuscripts misidentified as AI creations by AI text detection tool. *Journal of Pathology Informatics, 14*, 100342. https://doi.org/10.1016/j.jpi.2023.100342. Teks penuh: https://pmc.ncbi.nlm.nih.gov/articles/PMC10727991/.
 5. Pratama, A. R. (2025). The accuracy-bias trade-offs in AI text detection tools and their impact on fairness in scholarly publication. *PeerJ Computer Science, 11*, e2953. https://doi.org/10.7717/peerj-cs.2953. Teks penuh: https://pmc.ncbi.nlm.nih.gov/articles/PMC12453642/.
 
-Lihat [matriks komparasi jurnal](matriks-komparasi-jurnal-landasan-deteksi-ai.md) untuk inventaris artikel yang digunakan di seluruh catatan topik dan ringkasan komparatifnya.
+Lihat [matriks komparasi jurnal](03-matriks-komparasi-jurnal-landasan-deteksi-ai.md) untuk inventaris artikel yang digunakan di seluruh catatan topik dan ringkasan komparatifnya.

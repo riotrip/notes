@@ -82,4 +82,4 @@ Catat pula DOI/URL, penulis, status akses/lisensi, dasar label dan klasifikasi m
 - Syahputra dkk. (2026): dataset abstrak ilmiah Indonesia dengan keluaran parafrasa IndoT5; bukan generasi abstrak dari isi artikel.
 - Zhang & Zhou (2026): abstrak sintetis dari judul, evaluasi lintas bidang, serta stratifikasi berdasarkan document ID dan deduplikasi. Pemisahan semua pasangan sumber–turunan ke split yang sama tetap perlu dinyatakan eksplisit dalam protokol penelitian ini.
 
-Rincian bibliografi dan komparasi sumber tersedia di [matriks jurnal](matriks-komparasi-jurnal-landasan-deteksi-ai.md). Rancangan ini belum merupakan protokol final dan tidak menyatakan bahwa data atau eksperimen sudah dijalankan.
+Rincian bibliografi dan komparasi sumber tersedia di [matriks jurnal](03-matriks-komparasi-jurnal-landasan-deteksi-ai.md). Rancangan ini belum merupakan protokol final dan tidak menyatakan bahwa data atau eksperimen sudah dijalankan.

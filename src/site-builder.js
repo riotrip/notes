@@ -21,6 +21,14 @@ async function findMarkdownFiles(directory) {
 }
 
 function compareNotes(a, b) {
+  const aSequence = path.posix.basename(a.sourcePath).match(/^(\d+)-/)?.[1];
+  const bSequence = path.posix.basename(b.sourcePath).match(/^(\d+)-/)?.[1];
+  if (aSequence !== undefined || bSequence !== undefined) {
+    if (aSequence === undefined) return 1;
+    if (bSequence === undefined) return -1;
+    const sequenceOrder = Number(aSequence) - Number(bSequence);
+    if (sequenceOrder !== 0) return sequenceOrder;
+  }
   if (a.date && b.date && a.date !== b.date) return b.date.localeCompare(a.date);
   if (a.date && !b.date) return -1;
   if (!a.date && b.date) return 1;
