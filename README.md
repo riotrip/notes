@@ -18,7 +18,7 @@ draft: false
 
 `title`, `date`, `category`, `tags`, and `draft` are optional. A missing title comes from the first `#` heading; a missing category comes from the first content subfolder. `draft: true` keeps a note out of the site and its generated sidebar.
 
-Research notes copied from `../thesis-research/literature/notes/` are numbered `01`–`05` in reading order under `content/literature/`; update published copies when source files change. Relative Markdown links to `.md` files are rendered as `.html`, keeping them usable from the `/notes/` project-site subpath.
+Research notes copied from `../thesis-research/literature/notes/` are numbered `01`–`06` in reading order under `content/literature/`; update published copies when source files change. The detector-product landscape in `06-sistem-deteksi-ai-yang-sudah-ada.md` summarizes `../thesis-research/literature/notes/ai-text-detectors-2026-11-01/laporan.md`. Relative Markdown links to `.md` files are rendered as `.html`, keeping them usable from the `/notes/` project-site subpath.
 
 Run `pnpm install`, then `pnpm test` and `pnpm build`. The build creates HTML pages, category/tag lists, a site index, a note sidebar, a table of contents, and highlighted code in `dist/`. `dist/index.html` is the landing page; for a GitHub Pages project site from this repository, publish it at `/notes/`.
 The workflow in `.github/workflows/deploy.yml` runs tests and builds on pushes to `main`, then deploys `dist/`. Set repository Settings → Pages → Build and deployment → Source to **GitHub Actions** once.
