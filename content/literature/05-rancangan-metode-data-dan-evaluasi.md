@@ -1,4 +1,12 @@
+---
+title: "Arsip: Data, Pengembangan, dan Pengujian Deteksi AI"
+category: Arsip deteksi AI
+draft: true
+---
+
 # Data, Pengembangan, dan Pengujian
+
+> **Status:** Arsip penelitian deteksi teks AI; bukan arah skripsi aktif. Lihat [inti penelitian kemiripan abstrak berbasis aspek dan risiko kebaruan](../kemiripan-abstrak-dan-risiko-kebaruan/01-inti-penelitian-5w1h.md). Isi berikut dipertahankan sebagai rekaman arah sebelumnya.
 
 Ini garis besar pengembangan, bukan protokol final atau laporan eksperimen yang sudah dijalankan. [Tujuan aplikasi](01-inti-penelitian-5w1h.md) menjadi acuan; spesifikasi implementasi masih perlu ditetapkan.
 

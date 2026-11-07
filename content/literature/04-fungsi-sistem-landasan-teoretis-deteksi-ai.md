@@ -1,4 +1,12 @@
+---
+title: "Arsip: Cara Kerja Sistem Deteksi AI dan Peran Model"
+category: Arsip deteksi AI
+draft: true
+---
+
 # Cara Kerja Sistem dan Peran Model
+
+> **Status:** Arsip penelitian deteksi teks AI; bukan arah skripsi aktif. Lihat [inti penelitian kemiripan abstrak berbasis aspek dan risiko kebaruan](../kemiripan-abstrak-dan-risiko-kebaruan/01-inti-penelitian-5w1h.md). Isi berikut dipertahankan sebagai rekaman arah sebelumnya.
 
 ## Alur penggunaan
 

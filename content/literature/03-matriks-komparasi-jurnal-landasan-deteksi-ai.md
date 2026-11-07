@@ -1,8 +1,12 @@
 ---
-title: Metode Tiap Jurnal dan Penelitian Terdahulu
+title: "Arsip: Metode Tiap Jurnal dan Penelitian Terdahulu Deteksi AI"
+category: Arsip deteksi AI
+draft: true
 ---
 
 # Penelitian Terdahulu dan Posisi Pengembangan
+
+> **Status:** Arsip penelitian deteksi teks AI; bukan arah skripsi aktif. Lihat [inti penelitian kemiripan abstrak berbasis aspek dan risiko kebaruan](../kemiripan-abstrak-dan-risiko-kebaruan/01-inti-penelitian-5w1h.md). Isi berikut dipertahankan sebagai rekaman arah sebelumnya.
 
 Literatur berikut mendasari pengembangan aplikasi pemeriksaan bagian artikel Indonesia. Hasil studi lain bukan target kinerja yang sudah pasti tercapai.
 

@@ -1,4 +1,12 @@
+---
+title: "Arsip: Mengapa Sistem Deteksi AI Perlu Dikembangkan?"
+category: Arsip deteksi AI
+draft: true
+---
+
 # Mengapa Sistem Ini Perlu Dikembangkan?
+
+> **Status:** Arsip penelitian deteksi teks AI; bukan arah skripsi aktif. Lihat [inti penelitian kemiripan abstrak berbasis aspek dan risiko kebaruan](../kemiripan-abstrak-dan-risiko-kebaruan/01-inti-penelitian-5w1h.md). Isi berikut dipertahankan sebagai rekaman arah sebelumnya.
 
 ## Masalah yang mendasari
 

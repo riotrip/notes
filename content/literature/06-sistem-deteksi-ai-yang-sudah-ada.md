@@ -1,4 +1,12 @@
+---
+title: "Arsip: Sistem Deteksi AI yang Sudah Ada dan Pembeda yang Dituju"
+category: Arsip deteksi AI
+draft: true
+---
+
 # Sistem yang Sudah Ada dan Pembeda yang Dituju
+
+> **Status:** Arsip penelitian deteksi teks AI; bukan arah skripsi aktif. Lihat [inti penelitian kemiripan abstrak berbasis aspek dan risiko kebaruan](../kemiripan-abstrak-dan-risiko-kebaruan/01-inti-penelitian-5w1h.md). Isi berikut dipertahankan sebagai rekaman arah sebelumnya.
 
 **Tanggal peninjauan dokumentasi: 2026-11-01.** Ini ringkasan historis, bukan pengujian produk terkini. Fitur dan dukungan bahasa dapat berubah.
 
