@@ -59,11 +59,13 @@ function renderCategoryNav(notes, outputPath) {
   return `<nav class="category-nav" aria-label="Categories">${links.join('')}</nav>`;
 }
 
-function renderShell({ title, outputPath, notes, content }) {
-  const stylesheet = relativeHref(outputPath, 'assets/style.css');
+function renderShell({ title, outputPath, notes, content, stylesheetVersion }) {
+  const stylesheet = `${relativeHref(outputPath, 'assets/style.css')}?v=${stylesheetVersion}`;
   const favicon = relativeHref(outputPath, 'assets/favicon.svg');
   const sidebarScript = relativeHref(outputPath, 'assets/sidebar.js');
   const indexHref = relativeHref(outputPath, 'index.html');
+  const reportHref = relativeHref(outputPath, 'laporan-skripsi.html');
+  const reportActive = outputPath === 'laporan-skripsi.html';
   return `<!doctype html>
 <html lang="id">
 <head>
@@ -71,7 +73,7 @@ function renderShell({ title, outputPath, notes, content }) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#edf1f3">
-  <title>${escapeHtml(outputPath === 'index.html' ? 'Notes' : `${title} | Notes`)}</title>
+  <title>${escapeHtml(outputPath === 'index.html' ? 'Notes' : outputPath === 'laporan-skripsi.html' ? title : `${title} | Notes`)}</title>
   <link rel="icon" type="image/svg+xml" href="${escapeHtml(favicon)}">
   <link rel="stylesheet" href="${escapeHtml(stylesheet)}">
 </head>
@@ -82,6 +84,9 @@ function renderShell({ title, outputPath, notes, content }) {
         <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
       </button>
       <a class="topbar__brand" href="${escapeHtml(indexHref)}">Notes</a>
+      <nav class="topbar__nav" aria-label="Navigasi utama">
+        <a class="topbar__nav-link" href="${escapeHtml(reportHref)}"${reportActive ? ' aria-current="page"' : ''}>Laporan Skripsi</a>
+      </nav>
     </header>
     <div class="site-layout">
       ${renderSidebar(notes, outputPath)}
@@ -94,6 +99,41 @@ function renderShell({ title, outputPath, notes, content }) {
 </body>
 </html>
 `;
+}
+
+export function renderReportPage({ outputPath, url, notes, stylesheetVersion }) {
+  let links = null;
+  try {
+    const documentUrl = new URL(url);
+    const match = documentUrl.protocol === 'https:' && documentUrl.hostname === 'docs.google.com'
+      && documentUrl.username === '' && documentUrl.password === '' && documentUrl.port === ''
+      ? documentUrl.pathname.match(/^\/document\/d\/([A-Za-z0-9_-]+)(?:\/|$)/)
+      : null;
+    if (match) {
+      links = {
+        original: documentUrl.href,
+        preview: `https://docs.google.com/document/d/${match[1]}/preview`,
+      };
+    }
+  } catch {
+    // Missing or malformed configuration is rendered as an explicit setup state.
+  }
+
+  const content = links
+    ? `<section class="report">
+    <h1>Laporan Skripsi</h1>
+    <div class="report__toolbar">
+      <p class="report__actions"><a class="report__open" href="${escapeHtml(links.original)}" target="_blank" rel="noopener noreferrer">Buka di Google Docs</a></p>
+      <p class="report__hint">Untuk memberi komentar, klik tombol “Buka di Google Docs”.</p>
+    </div>
+    <div class="report__preview"><iframe src="${escapeHtml(links.preview)}" title="Pratinjau Google Docs" loading="eager"></iframe></div>
+  </section>`
+    : `<section class="report">
+    <h1>Laporan Skripsi</h1>
+    <p class="report__status">Tautan laporan belum dikonfigurasi atau bukan URL Google Docs yang valid.</p>
+  </section>`;
+
+  return renderShell({ title: 'Laporan Skripsi', outputPath, notes, content, stylesheetVersion });
 }
 
 function renderMetadata(note, outputPath) {
@@ -115,7 +155,7 @@ function renderToc(headings) {
   </details>`;
 }
 
-export function renderNotePage(note, notes, outputPath, rendered) {
+export function renderNotePage(note, notes, outputPath, rendered, stylesheetVersion) {
   const headingId = rendered.titleBlockId ? ` data-block-id="${rendered.titleBlockId}"` : '';
   const content = `<article class="note">
     <h1${headingId}>${escapeHtml(note.title)}</h1>
@@ -123,7 +163,7 @@ export function renderNotePage(note, notes, outputPath, rendered) {
     ${renderToc(rendered.headings)}
     <div class="prose">${rendered.html}</div>
   </article>`;
-  return renderShell({ title: note.title, outputPath, notes, content });
+  return renderShell({ title: note.title, outputPath, notes, content, stylesheetVersion });
 }
 
 function renderListingItem(note, outputPath) {
@@ -136,7 +176,7 @@ function renderListingItem(note, outputPath) {
   </li>`;
 }
 
-export function renderListingPage({ title, notes, allNotes, outputPath }) {
+export function renderListingPage({ title, notes, allNotes, outputPath, stylesheetVersion }) {
   const search = notes.length ? `<form class="listing-search" role="search" hidden>
       <input id="note-search" type="search" placeholder="Search notes" aria-label="Search notes in this list" aria-controls="note-list" enterkeyhint="search" autocomplete="off">
       <button type="submit">Search</button>
@@ -156,5 +196,5 @@ export function renderListingPage({ title, notes, allNotes, outputPath }) {
     ${emptyResult}
     ${script}
   </section>`;
-  return renderShell({ title, outputPath, notes: allNotes, content });
+  return renderShell({ title, outputPath, notes: allNotes, content, stylesheetVersion });
 }

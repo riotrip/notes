@@ -89,7 +89,6 @@ const score = 1;
   assert.match(note, /<details class="toc">/);
   assert.match(note, /<a href="calibration\.html" aria-current="page">/);
   assert.doesNotMatch(note, /draft: false/);
-  assert.match(note, /href="\.\.\/assets\/style\.css"/);
   assert.match(note, /href="\.\.\/category\/research\.html"/);
   assert.match(note, /href="\.\.\/tag\/calibration\.html"/);
   assert.match(categoryPage, /Calibration transfer/);

@@ -2,6 +2,10 @@
 
 Static Markdown publisher for `prayogo.is-a.dev/notes/`.
 
+## Thesis report
+
+The fixed Google Docs report has its own top-level **Laporan Skripsi** page, separate from Notes. Set `THESIS_REPORT_URL` in `src/config.js` to the report's original Google Docs URL. The page embeds its `/preview` URL and links to the original document for Google Docs comments. Leave the value empty until the document link is available.
+
 ## Add or update a note
 
 Create a Markdown file under `content/` and add frontmatter such as:

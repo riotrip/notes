@@ -1,8 +1,10 @@
+import { createHash } from 'node:crypto';
 import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parseNote } from './note.js';
 import { renderMarkdown } from './markdown.js';
-import { renderListingPage, renderNotePage } from './pages.js';
+import { renderListingPage, renderNotePage, renderReportPage } from './pages.js';
+import { THESIS_REPORT_URL } from './config.js';
 
 async function findMarkdownFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -36,7 +38,7 @@ function compareNotes(a, b) {
 }
 
 function validateOutputPaths(notes) {
-  const reserved = new Set(['index.html']);
+  const reserved = new Set(['index.html', 'laporan-skripsi.html']);
   for (const note of notes) {
     reserved.add(`category/${note.categorySlug}.html`);
     for (const tag of note.tags) reserved.add(`tag/${tag.slug}.html`);
@@ -55,7 +57,7 @@ async function writePage(outputDir, relativeOutputPath, html) {
   await writeFile(destination, html, 'utf8');
 }
 
-export async function buildSite({ contentDir, assetsDir, outputDir }) {
+export async function buildSite({ contentDir, assetsDir, outputDir, thesisReportUrl = THESIS_REPORT_URL }) {
   const markdownFiles = await findMarkdownFiles(contentDir);
   const notes = [];
 
@@ -67,13 +69,15 @@ export async function buildSite({ contentDir, assetsDir, outputDir }) {
 
   notes.sort(compareNotes);
   validateOutputPaths(notes);
+  const stylesheet = await readFile(path.join(assetsDir, 'style.css'));
+  const stylesheetVersion = createHash('sha256').update(stylesheet).digest('hex').slice(0, 12);
   await rm(outputDir, { recursive: true, force: true });
   await mkdir(outputDir, { recursive: true });
   await cp(assetsDir, path.join(outputDir, 'assets'), { recursive: true });
 
   for (const note of notes) {
     const rendered = await renderMarkdown(note.markdown);
-    await writePage(outputDir, note.outputPath, renderNotePage(note, notes, note.outputPath, rendered));
+    await writePage(outputDir, note.outputPath, renderNotePage(note, notes, note.outputPath, rendered, stylesheetVersion));
   }
 
   const categories = new Map();
@@ -94,6 +98,13 @@ export async function buildSite({ contentDir, assetsDir, outputDir }) {
     notes,
     allNotes: notes,
     outputPath: 'index.html',
+    stylesheetVersion,
+  }));
+  await writePage(outputDir, 'laporan-skripsi.html', renderReportPage({
+    outputPath: 'laporan-skripsi.html',
+    url: thesisReportUrl,
+    notes,
+    stylesheetVersion,
   }));
 
   for (const [slug, category] of categories) {
@@ -103,6 +114,7 @@ export async function buildSite({ contentDir, assetsDir, outputDir }) {
       notes: category.notes,
       allNotes: notes,
       outputPath,
+      stylesheetVersion,
     }));
   }
 
@@ -113,6 +125,7 @@ export async function buildSite({ contentDir, assetsDir, outputDir }) {
       notes: tag.notes,
       allNotes: notes,
       outputPath,
+      stylesheetVersion,
     }));
   }
 
