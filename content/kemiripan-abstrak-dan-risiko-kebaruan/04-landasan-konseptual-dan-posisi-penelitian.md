@@ -26,10 +26,10 @@ Penyelarasan 9 November 2026: masukan utama **copas judul + abstrak**, korpus **
 1. Dosen menempelkan judul dan abstrak.
 2. Sistem membentuk representasi kueri yang kompatibel dengan indeks korpus. Penggunaan judul dalam embedding harus konsisten antara kueri dan korpus; detailnya belum dipilih.
 3. Cari sekitar **10–20 kandidat** terdekat dari gabungan korpus. Ini rentang awal untuk diuji, bukan K final.
-4. Labeli kalimat pada input dan kandidat sebagai **masalah / objek / metode**. Definisi, kalimat multi-aspek, serta kalimat di luar ketiga aspek memerlukan pedoman anotasi.
+4. Labeli kalimat input dan kandidat dengan **classifier multi-label masalah / objek / metode**. Satu kalimat dapat memiliki beberapa label. Pilihan ini bersyarat ketersediaan anotasi pelatihan dan evaluasi; cadangannya LLM few-shot dengan gold set manusia kecil, bukan evaluasi tanpa penilai.
 5. Bandingkan masalah dengan masalah dan objek dengan objek. Metode ditampilkan sebagai konteks saja. Retrieval abstrak utuh masih dapat terpengaruh kesamaan metode; pengecualian metode berlaku pada penilaian akhir.
 6. Tentukan **merah / oranye / hijau** untuk kemiripan substansi tinggi / sedang / rendah, menggunakan ambang yang dikalibrasi dengan penilaian manusia. Jika masalah atau objek tidak cukup jelas untuk dinilai, tampilkan **bukti tidak cukup**, bukan memaksakan warna.
-7. Susun penjelasan dan kesimpulan hanya berdasarkan kalimat berlabel yang dapat ditelusuri ke teks asli. Aspek yang tidak disebut tidak boleh dikarang.
+7. Susun penjelasan dan kesimpulan menggunakan **template dan kutipan kalimat berlabel**, bukan generasi bebas LLM. Aspek yang tidak disebut tidak boleh dikarang.
 8. Urutkan hasil berpenilaian dari kemiripan masalah dan objek tertinggi; tampilkan warna, label sumber, highlight, penjelasan, dan kesimpulan. Hasil dengan bukti tidak cukup harus dibedakan dari hasil berkemiripan rendah; posisi tampilannya belum ditetapkan.
 9. Dosen membaca bukti dan mengambil keputusan.
 
@@ -46,7 +46,7 @@ Ini rancangan yang dituju, bukan fungsi yang sudah berjalan. Model, agregasi sko
 
 **Pelabelan aspek** menentukan kalimat yang membahas masalah, objek, atau metode. **Embedding** mengubah teks menjadi representasi numerik agar kedekatannya dapat dihitung. **Cosine similarity** membandingkan representasi tersebut; nilainya bukan persentase kebaruan. **Penjelasan** menghubungkan hasil perbandingan dengan kutipan yang dapat diperiksa.
 
-Sentence-BERT menjadi kandidat pendekatan representasi semantik, bukan model final yang sudah dipilih. Pemakaian LLM, fine-tuning, dan pembobotan aspek belum menjadi keputusan wajib. Dasar dan batas masing-masing konsep dijelaskan berikut.
+Sentence-BERT menjadi kandidat representasi semantik, bukan checkpoint final. Pelabelan dipilih menggunakan classifier multi-label; LLM few-shot hanya cadangan jika anotasi pelatihan tidak mencukupi tetapi penilaian manusia untuk evaluasi tetap tersedia. Konfigurasi pelatihan dan agregasi skor belum final. [Rencana pilot, anotasi, dan cadangan](05-rancangan-metode-data-dan-evaluasi.md) merinci prasyaratnya.
 
 ## Konsep yang dibedakan
 
@@ -76,34 +76,38 @@ Retrieval dan LLM comparison dari paper Liu dkk. (ID sumber S2, bukan layanan Se
 
 ## Pertanyaan penelitian sementara
 
-Ketiga pertanyaan berikut dipertahankan dari riset manual pengguna. **RQ2 direkomendasikan sebagai fokus utama**, bukan keputusan metodologi final. RQ1 mendukung keandalan komponen ekstraksi; RQ3 menilai penjelasan dan manfaat pengguna yang tidak terjawab hanya oleh hasil retrieval.
+**RQ2 dikunci sebagai fokus utama: reranking masalah–objek pada kandidat hasil retrieval abstrak utuh.** RQ1 tetap diukur sebagai evaluasi komponen pelabelan, bukan kontribusi utama. Ketepatan penjelasan template diperiksa; uji manfaat pengguna pada RQ3 tetap bersyarat akses dosen, bukan klaim manfaat yang sudah dibuktikan.
 
 | RQ | Pertanyaan penelitian | Kebutuhan bukti, belum tersedia sebagai hasil |
 |---|---|---|
-| **RQ1** | Seberapa akurat sistem melabeli aspek masalah, objek, dan metode penelitian dari abstrak? | Pembandingan dengan anotasi ahli. Ketersediaan annotator dan protokol belum dipastikan; tidak menganggap keluaran LLM sebagai gold ahli. |
-| **RQ2** | Apakah aspect-aware similarity lebih baik daripada similarity abstrak keseluruhan dalam menemukan penelitian yang substansinya tumpang tindih? | Pembandingan pada data dan penilaian relevansi yang sepadan. S5 mendukung pentingnya pertanyaan, tetapi tidak menjamin jawabannya positif untuk skema dan bahasa ini. |
-| **RQ3** | Apakah penjelasan kemiripan per aspek dapat membantu dosen menilai kesamaan penelitian? | Pisahkan ketepatan kutipan/isi penjelasan dari persepsi kegunaan atau kepuasan. Salah satu tidak membuktikan yang lain; akses dosen belum dipastikan. |
+| **RQ1** | Seberapa akurat classifier multi-label melabeli masalah, objek, dan metode pada kalimat abstrak? | Anotasi manusia terpisah dari pelatihan; precision, recall, dan F1 per label serta agregat dengan protokol yang ditetapkan lewat pilot |
+| **RQ2 — utama** | Apakah reranking berdasarkan representasi masalah dan objek secara terpisah menghasilkan urutan yang lebih relevan daripada abstrak utuh dan gabungan teks masalah+objek? | Kandidat dan encoder sama; gold set relevansi bertingkat untuk nDCG@K; target 60 kueri uji setelah pilot |
+| **RQ3 — bersyarat** | Apakah penjelasan template berbukti membantu dosen memahami kemiripan penelitian? | Pisahkan ketepatan kutipan dari manfaat pengguna; akses dosen belum dipastikan |
 
 ## Kandidat pembanding
 
-M1–M4 berikut adalah **rancangan manual pengguna yang masih sementara**, bukan eksperimen atau hasil yang dilaporkan S4/S5.
+Rancangan pembanding berikut disepakati pada **9 November 2026**. Ini protokol yang direncanakan, bukan hasil eksperimen S4/S5.
 
-| Kandidat | Metode usulan | Pertanyaan yang ingin diisolasi |
+| Kandidat | Metode | Tujuan |
 |---|---|---|
-| **M1** | TF-IDF + cosine similarity | Baseline leksikal untuk kesamaan kata/fitur permukaan. |
-| **M2** | Sentence-BERT + cosine similarity pada abstrak utuh | Baseline semantik tanpa pemisahan aspek. |
-| **M3** | Sentence-BERT pada masalah dan objek + rata-rata skor | Hipotesis efek pemisahan aspek dibandingkan representasi abstrak utuh; metode tidak masuk agregasi. |
-| **M4** | Sentence-BERT pada masalah dan objek + pembobotan kedua aspek | Hipotesis efek agregasi berbobot dibandingkan rata-rata; metode tidak masuk agregasi. |
+| **M1** | TF-IDF + cosine similarity | Baseline leksikal murah; juga retriever tambahan untuk memperluas pool penilaian |
+| **M2** | Embedding abstrak utuh + cosine similarity | Acuan semantik tanpa pemilihan aspek |
+| **M3** | Gabungkan teks berlabel masalah atau objek menjadi satu representasi embedding | Dibanding M2: menguji pemilihan teks aspek |
+| **M4** | Embedding masalah dan objek secara terpisah, lalu agregasi skor | Dibanding M3: menguji pemisahan representasi aspek |
 
-Pembandingan M2/M3 perlu encoder dan kondisi pembanding yang sepadan agar perubahan tidak sekaligus berasal dari model atau kandidat yang berbeda. Ekstraktor/peringkas yang mengubah kandungan atau panjang teks dapat menjadi confound: efeknya bukan hanya label aspek. M3/M4 hanya mengisolasi pembobotan bila komponen lain tetap.
+**M2–M4 memakai kandidat dan encoder yang sama.** M3/M4 memakai label dan teks sumber yang sama, tanpa peringkasan atau penulisan ulang. Pada M3, kalimat multi-label dimasukkan sekali sesuai urutan asli. Pada M4, kalimat yang berlabel masalah sekaligus objek dapat masuk kedua representasi. Definisi aspek dan aturan pemilihan teks harus dicatat agar perbedaan tidak berasal dari ekstraktor berbeda.
 
-Bobot tidak boleh dipilih berdasarkan data uji; M4 tidak diasumsikan unggul. Rentang awal K adalah 10–20; nilai final, checkpoint, bobot, ambang, split, jumlah data, dan protokol anotasi belum ditetapkan. Angka dalam literatur bukan keputusan untuk skripsi ini.
+Metode hanya informasi dalam penilaian akhir. Ini keputusan lingkup pengguna, bukan klaim bahwa metode tidak penting secara ilmiah. Retrieval abstrak utuh dan kalimat multi-label tetap dapat membawa informasi metode; jangan mengklaim M3/M4 bebas seluruh informasi metode.
 
-S5 memakai ruang aspek yang **dilatih dari input utuh**, bukan SBERT biasa atas potongan hasil ekstraksi. Karena itu, S5 merupakan pembanding ilmiah yang harus dijelaskan perbedaannya, bukan bukti bahwa M3 atau M4 telah tervalidasi ([S5, §§3–5, footnote 5, §7](https://arxiv.org/pdf/2203.14541)). Pemilihan pembanding final masih membutuhkan penyelarasan ruang lingkup.
+Untuk membandingkan urutan, M1 juga dinilai pada kandidat tetap; peran TF-IDF sebagai retriever pembentuk pool dilaporkan terpisah. **Pool penilaian yang lebih luas tidak sama dengan kandidat reranking.**
+
+Rentang kandidat awal adalah 10–20; target evaluasi akhir **60 kueri setelah pilot**. Encoder, konfigurasi classifier, agregasi skor M4, K final, dan ambang belum ditetapkan. Parameter tidak dipilih berdasarkan data uji; M4 tidak diasumsikan unggul.
+
+S5 melatih ruang aspek dari input utuh, bukan embedding biasa atas kalimat hasil pelabelan. S5 tetap pembanding literatur, bukan eksperimen wajib tambahan atau bukti bahwa M3/M4 telah tervalidasi ([S5, §§3–5, footnote 5, §7](https://arxiv.org/pdf/2203.14541)).
 
 ## Calon kontribusi dan batas klaim
 
-[INFERENCE] Calon kontribusi adalah **bukti empiris tentang manfaat dan keterbatasan representasi per aspek pada abstrak berbahasa Indonesia**, disertai penjelasan yang dapat ditelusuri dan penilaian apakah informasi tersebut membantu dosen memahami overlap substansi.
+Calon kontribusi utama adalah **bukti empiris tentang pengaruh pemilihan teks masalah–objek dan pemisahan representasinya terhadap kualitas reranking abstrak berbahasa Indonesia**. Ketepatan classifier multi-label dan penjelasan template dievaluasi sebagai komponen pendukung, bukan klaim penciptaan model atau pembuktian kebaruan penelitian.
 
 Kontribusi itu bukan penciptaan IndoBERT, SBERT, atau aspect-aware similarity. Tidak diklaim sebagai sistem pertama; kombinasi fitur dan dataset lokal saja tidak cukup membuktikan kebaruan. [Matriks literatur](03-matriks-literatur-landasan.md) membatasi celah bukti pada sumber yang ditelaah, bukan seluruh literatur dunia.
 

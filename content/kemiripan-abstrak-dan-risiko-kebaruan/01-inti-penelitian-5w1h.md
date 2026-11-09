@@ -7,6 +7,8 @@ date: 2026-11-06
 
 > **Status:** Catatan fondasi penelitian; bukan metodologi final atau laporan hasil eksperimen. Arah ini menggantikan penelitian deteksi teks AI.
 
+**Revisi keputusan: 9 November 2026.** Fokus disepakati pada reranking masalah–objek. Judul tanpa “risiko kebaruan” masih usulan untuk dibahas dengan pembimbing; heading dan judul proposal belum diganti sebelum status persetujuannya jelas.
+
 **Tujuan skripsi ini adalah mengembangkan dan menguji sistem yang membantu dosen JTI Polinema membandingkan abstrak usulan dengan penelitian terdahulu berdasarkan masalah dan objeknya.** Metode dilabeli sebagai informasi, bukan penentu skor akhir. Sistem menunjukkan bagian yang serupa, bagian yang berbeda, dan kutipan pendukung agar dosen dapat mempertimbangkan risiko kebaruan. Sistem belum dibangun; kemiripan bukan vonis bahwa penelitian tidak baru.
 
 Urutan baca: **1. Inti penelitian** · [2. Mengapa perlu dikembangkan](02-latar-belakang-dan-urgensi.md) · [3. Penelitian terdahulu dan metodenya](03-matriks-literatur-landasan.md) · [4. Cara kerja sistem](04-landasan-konseptual-dan-posisi-penelitian.md) · [5. Data dan pengujian](05-rancangan-metode-data-dan-evaluasi.md) · [6. Sistem pembanding](06-sistem-pembanding-dan-pembeda.md). [Jejak penelusuran](07-jejak-penelusuran.md) memuat rincian sumber.
@@ -15,7 +17,7 @@ Urutan baca: **1. Inti penelitian** · [2. Mengapa perlu dikembangkan](02-latar-
 
 Kemiripan semantik berbasis aspek penelitian dan bantuan untuk menafsirkan overlap substansi. Skema aktif adalah masalah, objek, dan metode; metode hanya informasi. Kontribusi bukan label inti. Definisi operasional aspek belum menjadi protokol final.
 
-Aplikasi menghubungkan pengambilan abstrak, pencarian penelitian terkait, perbandingan per aspek, dan tampilan bukti. Pekerjaan model mendukung alur itu; bukan membuat model bahasa dari nol. Pertanyaan utamanya: **apakah membandingkan per aspek lebih tepat dalam menemukan tumpang tindih substansi daripada membandingkan abstrak secara utuh?**
+Aplikasi mengambil kandidat dengan embedding abstrak utuh, lalu **mengurutkan ulang kandidat berdasarkan masalah dan objek**. Pertanyaan utama: apakah representasi kedua aspek secara terpisah memperbaiki urutan relevansi dibandingkan abstrak utuh dan gabungan teks masalah+objek, dengan kandidat dan encoder yang sama? Fokusnya reranking, bukan retrieval langsung per aspek atau pembuatan model bahasa dari nol.
 
 Penelitian ini **bukan klasifikasi tulisan AI versus manusia**, bukan pembuktian plagiarisme, dan bukan pemberian vonis kebaruan otomatis. Menemukan penelitian serupa dapat membantu pemeriksaan, tetapi tidak membuktikan usulan tidak memiliki kontribusi. Tidak menemukan padanan juga tidak membuktikan kebaruan di seluruh literatur.
 
@@ -51,4 +53,6 @@ Semantic Scholar dipakai untuk pencarian dan pemeriksaan metadata literatur. Pen
 
 Tahap saat ini adalah penetapan fondasi, latar belakang, urgensi, dan calon kontribusi. Belum ada scraping dataset, implementasi aplikasi, eksperimen model, atau metodologi final.
 
-[RQ1–RQ3 dan kandidat M1–M4](04-landasan-konseptual-dan-posisi-penelitian.md) dipertahankan dari riset manual sebagai usulan sementara. RQ2 direkomendasikan sebagai fokus utama; RQ1 mendukung keandalan ekstraksi dan RQ3 memisahkan ketepatan penjelasan dari manfaat pengguna. Rekomendasi tersebut belum menetapkan angka, arsitektur final, atau protokol eksperimen.
+[RQ1–RQ3 dan pembanding M1–M4](04-landasan-konseptual-dan-posisi-penelitian.md) diselaraskan: **RQ2 reranking menjadi fokus utama**, RQ1 mengukur classifier **multi-label**, dan RQ3 tentang manfaat pengguna tetap bersyarat akses dosen. Penjelasan dan kesimpulan memakai **template serta kutipan**, bukan LLM generatif.
+
+Target evaluasi adalah **60 kueri uji setelah pilot**, terpisah dari korpus dan anotasi pelatihan classifier. Tiga pembanding semantik memakai abstrak utuh, gabungan masalah+objek, serta representasi masalah dan objek terpisah; TF-IDF tetap baseline tambahan. Classifier memerlukan anotasi pelatihan dan evaluasi. Cadangannya LLM few-shot jika anotasi pelatihan tidak mencukupi, tetapi gold set manusia tetap wajib. [Rencana data dan pilot](05-rancangan-metode-data-dan-evaluasi.md) memuat beban penilaian, pooling, dan asal kueri yang belum diputuskan.

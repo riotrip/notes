@@ -27,12 +27,12 @@ Metode, jenis publikasi, dan batas transfer lebih lengkap ada pada [matriks lite
 
 Skripsi diarahkan pada **sistem bantuan pemeriksaan abstrak Indonesia yang dikembangkan dan diuji**: dosen menempelkan judul dan abstrak, melihat kandidat dari korpus skripsi dan jurnal, lalu memeriksa kemiripan masalah dan objek beserta kutipan pendukungnya. Metode dilabeli sebagai informasi saja. Warna menunjukkan kemiripan substansi; bukti yang tidak memadai ditandai **bukti tidak cukup**, bukan dianggap berbeda atau diciptakan oleh model.
 
-Calon kontribusi ilmiahnya adalah bukti apakah pemisahan aspek membantu menemukan tumpang tindih substansi dibandingkan perbandingan abstrak utuh, serta apakah penjelasannya tepat dan membantu pengguna. Ini **sasaran yang belum terbukti**, bukan klaim fitur pertama atau algoritme baru. JIP sebagai calon korpus dan JTI sebagai konteks pengguna memperjelas lingkup evaluasi; keduanya saja tidak membuktikan kebaruan ilmiah.
+Revisi keputusan **9 November 2026**: kontribusi utama yang diuji adalah kualitas **reranking masalah–objek**. Pembanding terkontrol memisahkan efek memilih teks aspek dan memisahkan representasinya: abstrak utuh, gabungan masalah+objek, lalu masalah dan objek terpisah. TF-IDF tetap baseline murah. Classifier multi-label dievaluasi melalui RQ1, sedangkan penjelasan memakai template dan kutipan. Ini sasaran yang belum terbukti, bukan klaim fitur pertama atau algoritme baru. Sumber lokal dan konteks JTI saja tidak membuktikan kebaruan ilmiah.
 
 ## Apa yang tidak boleh diklaim?
 
 - Belum ada sistem serupa di dunia: penelusuran yang tersedia tidak mendukung klaim global itu.
-- Metode per aspek atau berbobot pasti lebih unggul: [M1–M4](04-landasan-konseptual-dan-posisi-penelitian.md#kandidat-pembanding) masih kandidat yang perlu dibandingkan.
+- Representasi per aspek pasti lebih unggul: [M1–M4](04-landasan-konseptual-dan-posisi-penelitian.md#kandidat-pembanding) adalah rancangan pembanding yang belum menghasilkan bukti keunggulan.
 - Cosine tinggi berarti penelitian tidak baru: overlap metode atau objek tidak otomatis meniadakan kontribusi.
 - Tidak menemukan padanan berarti pasti baru: hasil terbatas pada korpus dan informasi dalam abstrak.
 - Sistem sudah terbukti menghemat waktu atau memperbaiki keputusan dosen: [pengujian pengguna](05-rancangan-metode-data-dan-evaluasi.md) belum dijalankan.
