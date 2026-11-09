@@ -9,7 +9,7 @@ date: 2026-11-06
 
 Navigasi: [inti penelitian](01-inti-penelitian-5w1h.md) · [penelitian terdahulu](03-matriks-literatur-landasan.md) · [jejak penelusuran](07-jejak-penelusuran.md).
 
-**Masalah yang dituju bukan sekadar mencari abstrak dengan kata-kata serupa, tetapi membantu dosen memahami apakah usulan mengulang substansi penelitian sebelumnya.** Perbandingan tujuan, metode, dan objek beserta bukti teks diusulkan untuk memperjelas letak kesamaan. Manfaatnya masih perlu diuji; tidak diasumsikan bahwa skor per aspek selalu lebih baik.
+**Masalah yang dituju bukan sekadar mencari abstrak dengan kata-kata serupa, tetapi membantu dosen memahami apakah usulan mengulang substansi penelitian sebelumnya.** Perbandingan masalah dan objek beserta bukti teks diusulkan untuk memperjelas letak kesamaan; metode ditampilkan sebagai informasi, bukan penentu skor akhir. Manfaatnya masih perlu diuji; tidak diasumsikan bahwa skor per aspek selalu lebih baik.
 
 ## Masalah ilmiah
 
@@ -43,7 +43,7 @@ Sitorus & Madyatmadja memberi konteks penggunaan TF-IDF, LSA, dan IndoBERT untuk
 
 Dosen JTI Polinema adalah pengguna yang dituju. Belum ada bukti lokal mengenai jumlah proposal yang harus diperiksa, lama pemeriksaan, prevalensi duplikasi, atau frekuensi keputusan yang keliru. Klaim kebutuhan operasional tersebut tidak digunakan sebagai fakta latar belakang sebelum tersedia sumber yang sah.
 
-JIP hanya calon sumber dataset artikel pada tahap berikutnya. Abstraknya tidak otomatis mewakili seluruh skripsi JTI atau seluruh penelitian terdahulu. Literatur landasan tetap berasal dari berbagai penerbit melalui penelusuran S2; S2 bukan otomatis sumber retrieval runtime.
+Korpus direncanakan mencakup abstrak skripsi dan jurnal dengan label sumber terpisah. JIP tetap calon sumber jurnal; sumber skripsi serta izin akses belum dipastikan. Korpus tidak otomatis mewakili seluruh skripsi JTI atau seluruh penelitian terdahulu. Literatur landasan tetap berasal dari berbagai penerbit melalui penelusuran S2; S2 bukan otomatis sumber retrieval runtime.
 
 ## Manfaat yang dituju dan belum terbukti
 

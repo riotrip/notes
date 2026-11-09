@@ -9,19 +9,42 @@ date: 2026-11-06
 
 Navigasi: [inti penelitian](01-inti-penelitian-5w1h.md) · [data dan pengujian](05-rancangan-metode-data-dan-evaluasi.md) · [matriks literatur](03-matriks-literatur-landasan.md) · [jejak penelusuran](07-jejak-penelusuran.md).
 
-## Alur penggunaan
+## Alur sistem yang diselaraskan
 
-1. Dosen memasukkan PDF atau teks abstrak usulan. Sistem mengambil abstrak yang dapat dibaca; PDF yang gagal diekstrak tidak boleh dianggap berhasil dianalisis.
-2. Sistem membandingkan abstrak dengan korpus penelitian terdahulu. JIP masih menjadi calon sumber korpus, bukan seluruh literatur dunia.
-3. Sistem mengambil informasi tujuan, metode, dan data/objek yang tertulis, kemudian membandingkan aspek yang tersedia. Kontribusi dapat disertakan bila tersedia.
-4. Hasil menampilkan penelitian terkait, kemiripan per aspek, persamaan dan perbedaan, serta kutipan dari kedua abstrak.
-5. Dosen memeriksa bukti tersebut untuk mempertimbangkan risiko kebaruan. Sistem tidak menetapkan kelayakan usulan secara otomatis.
+Penyelarasan 9 November 2026: masukan utama **copas judul + abstrak**, korpus **skripsi + jurnal**, dan aspek **masalah, objek, metode**. Metode hanya informasi; tidak memengaruhi skor akhir, warna, atau urutan akhir. Warna menyatakan kemiripan substansi, bukan vonis kebaruan.
 
-Ini alur yang dituju, bukan fungsi yang sudah berjalan. Urutan retrieval dan ekstraksi, cara membaca PDF, model, serta bentuk laporan belum ditetapkan.
+![Diagram persiapan korpus, pencarian kandidat, perbandingan aspek, dan keputusan dosen](../assets/alur-kemiripan.svg)
+
+### Persiapan korpus
+
+1. Kumpulkan abstrak skripsi dan jurnal beserta judul, identitas, tautan asal, dan label sumber.
+2. Bersihkan teks dan buang duplikat; pertahankan teks asli untuk kutipan.
+3. Buat embedding abstrak dan simpan dalam indeks pencarian. Ulangi persiapan ketika korpus diperbarui.
+
+### Saat dosen memakai
+
+1. Dosen menempelkan judul dan abstrak.
+2. Sistem membentuk representasi kueri yang kompatibel dengan indeks korpus. Penggunaan judul dalam embedding harus konsisten antara kueri dan korpus; detailnya belum dipilih.
+3. Cari sekitar **10–20 kandidat** terdekat dari gabungan korpus. Ini rentang awal untuk diuji, bukan K final.
+4. Labeli kalimat pada input dan kandidat sebagai **masalah / objek / metode**. Definisi, kalimat multi-aspek, serta kalimat di luar ketiga aspek memerlukan pedoman anotasi.
+5. Bandingkan masalah dengan masalah dan objek dengan objek. Metode ditampilkan sebagai konteks saja. Retrieval abstrak utuh masih dapat terpengaruh kesamaan metode; pengecualian metode berlaku pada penilaian akhir.
+6. Tentukan **merah / oranye / hijau** untuk kemiripan substansi tinggi / sedang / rendah, menggunakan ambang yang dikalibrasi dengan penilaian manusia. Jika masalah atau objek tidak cukup jelas untuk dinilai, tampilkan **bukti tidak cukup**, bukan memaksakan warna.
+7. Susun penjelasan dan kesimpulan hanya berdasarkan kalimat berlabel yang dapat ditelusuri ke teks asli. Aspek yang tidak disebut tidak boleh dikarang.
+8. Urutkan hasil berpenilaian dari kemiripan masalah dan objek tertinggi; tampilkan warna, label sumber, highlight, penjelasan, dan kesimpulan. Hasil dengan bukti tidak cukup harus dibedakan dari hasil berkemiripan rendah; posisi tampilannya belum ditetapkan.
+9. Dosen membaca bukti dan mengambil keputusan.
+
+Ini rancangan yang dituju, bukan fungsi yang sudah berjalan. Model, agregasi skor masalah–objek, nilai K, ambang, dan layout belum final. PDF bukan input utama dalam lingkup ini.
+
+### Titik rawan dan penilaian manusia
+
+- **Retrieval:** kandidat relevan yang terlewat tidak dapat dipulihkan oleh tahap perbandingan. Ukur Recall@K dengan memperhatikan cakupan penilaian relevansi.
+- **Pelabelan:** kesalahan label memengaruhi highlight dan perbandingan; bandingkan dengan anotasi manusia.
+- **Tingkat kemiripan:** kalibrasi ambang menggunakan gold set kalibrasi, bukan data evaluasi akhir.
+- **Penjelasan:** nilai apakah kutipan benar dan mendukung setiap klaim; penjelasan yang lancar belum tentu setia pada teks.
 
 ## Peran pekerjaan model
 
-**Ekstraksi aspek** menentukan bagian teks yang membahas tujuan, metode, atau objek. **Embedding** mengubah teks menjadi representasi numerik agar kedekatannya dapat dihitung. **Cosine similarity** membandingkan representasi tersebut; nilainya bukan persentase kebaruan. **Penjelasan** menghubungkan hasil perbandingan dengan kutipan yang dapat diperiksa.
+**Pelabelan aspek** menentukan kalimat yang membahas masalah, objek, atau metode. **Embedding** mengubah teks menjadi representasi numerik agar kedekatannya dapat dihitung. **Cosine similarity** membandingkan representasi tersebut; nilainya bukan persentase kebaruan. **Penjelasan** menghubungkan hasil perbandingan dengan kutipan yang dapat diperiksa.
 
 Sentence-BERT menjadi kandidat pendekatan representasi semantik, bukan model final yang sudah dipilih. Pemakaian LLM, fine-tuning, dan pembobotan aspek belum menjadi keputusan wajib. Dasar dan batas masing-masing konsep dijelaskan berikut.
 
@@ -41,17 +64,13 @@ Sentence-BERT menjadi kandidat pendekatan representasi semantik, bukan model fin
 
 ## Gagasan dari riset manual
 
-Alur berikut mengadopsi gagasan pengguna sebagai **konsep sementara**, bukan arsitektur implementasi yang sudah ditetapkan.
+Rancangan terbaru memakai **retrieval dahulu**, lalu pelabelan input dan kandidat, perbandingan masalah–objek, serta penjelasan berbukti. Ini memperjelas gagasan manual sebelumnya yang belum menetapkan urutan retrieval dan ekstraksi.
 
-1. Abstrak usulan dan korpus pembanding menjadi masukan ekstraksi aspek penelitian.
-2. Aspek yang diekstrak dibandingkan untuk memperoleh kemiripan per aspek.
-3. Hasil perbandingan disertai kutipan bukti untuk menjadi bahan pertimbangan dosen.
+Skema aktif adalah **masalah, objek, dan metode**. Tujuan tidak otomatis disamakan dengan masalah; dataset dapat menjadi bagian objek. Kontribusi bukan label inti dalam rancangan ini. Batas operasional setiap label harus ditulis dalam pedoman anotasi.
 
-Skema usulan adalah **masalah/tujuan, metode, data/objek, dan kontribusi bila tersedia**. Masalah tidak selalu sama dengan tujuan; dataset lebih sempit daripada objek penelitian; kontribusi tidak selalu tertulis eksplisit. Definisi aspek perlu diperjelas sebelum dijadikan kategori anotasi atau keluaran sistem.
+**Informasi yang tidak ada ditandai tidak tersedia**, bukan diberi skor nol atau dibuat oleh LLM. Tidak tertulis di abstrak juga tidak berarti tidak ada dalam penelitian. Bukti masalah atau objek yang tidak memadai menghasilkan status **bukti tidak cukup**.
 
-**Informasi yang tidak ada ditandai tidak tersedia**, bukan diberi skor nol atau dibuat oleh LLM. Tidak tertulis di abstrak juga tidak berarti tidak ada dalam penelitian. Kebijakan penggabungan skor ketika aspek hilang belum diputuskan.
-
-Gambar manual menggunakan istilah “korpus abstrak skripsi”. Klarifikasi sumber data saat ini adalah JIP, yang menyediakan artikel jurnal; keduanya tidak disamakan. S2 digunakan untuk landasan literatur, bukan otomatis korpus pembanding runtime. SPECTER menunjukkan graph sitasi dapat memberi sinyal pelatihan dengan inference title+abstract saja ([S8, §§2.2–2.5](https://aclanthology.org/2020.acl-main.207.pdf)); itu alternatif konseptual, bukan kewajiban integrasi graph aplikasi.
+Korpus direncanakan mencakup abstrak skripsi dan jurnal dengan label sumber terpisah. JIP tetap calon sumber jurnal; sumber skripsi dan izin akses belum dipastikan. S2 digunakan sebagai landasan literatur, bukan otomatis korpus runtime. SPECTER menunjukkan graph sitasi dapat memberi sinyal pelatihan dengan inference title+abstract saja ([S8, §§2.2–2.5](https://aclanthology.org/2020.acl-main.207.pdf)); itu alternatif konseptual, bukan kewajiban integrasi graph aplikasi.
 
 Retrieval dan LLM comparison dari paper Liu dkk. (ID sumber S2, bukan layanan Semantic Scholar) dapat menjadi rujukan pengembangan analisis ide. Namun, distillation, RAG, dan LLM novelty scoring belum diputuskan sebagai komponen wajib. Tidak perlu memasukkan semua teknik dari seluruh paper agar landasan penelitian kuat.
 
@@ -61,7 +80,7 @@ Ketiga pertanyaan berikut dipertahankan dari riset manual pengguna. **RQ2 direko
 
 | RQ | Pertanyaan penelitian | Kebutuhan bukti, belum tersedia sebagai hasil |
 |---|---|---|
-| **RQ1** | Seberapa akurat sistem mengekstrak aspek tujuan, metode, dan objek penelitian dari abstrak? | Pembandingan dengan anotasi ahli. Ketersediaan annotator dan protokol belum dipastikan; tidak menganggap keluaran LLM sebagai gold ahli. |
+| **RQ1** | Seberapa akurat sistem melabeli aspek masalah, objek, dan metode penelitian dari abstrak? | Pembandingan dengan anotasi ahli. Ketersediaan annotator dan protokol belum dipastikan; tidak menganggap keluaran LLM sebagai gold ahli. |
 | **RQ2** | Apakah aspect-aware similarity lebih baik daripada similarity abstrak keseluruhan dalam menemukan penelitian yang substansinya tumpang tindih? | Pembandingan pada data dan penilaian relevansi yang sepadan. S5 mendukung pentingnya pertanyaan, tetapi tidak menjamin jawabannya positif untuk skema dan bahasa ini. |
 | **RQ3** | Apakah penjelasan kemiripan per aspek dapat membantu dosen menilai kesamaan penelitian? | Pisahkan ketepatan kutipan/isi penjelasan dari persepsi kegunaan atau kepuasan. Salah satu tidak membuktikan yang lain; akses dosen belum dipastikan. |
 
@@ -73,12 +92,12 @@ M1–M4 berikut adalah **rancangan manual pengguna yang masih sementara**, bukan
 |---|---|---|
 | **M1** | TF-IDF + cosine similarity | Baseline leksikal untuk kesamaan kata/fitur permukaan. |
 | **M2** | Sentence-BERT + cosine similarity pada abstrak utuh | Baseline semantik tanpa pemisahan aspek. |
-| **M3** | Sentence-BERT per aspek + rata-rata skor | Hipotesis efek pemisahan aspek dibandingkan representasi abstrak utuh. |
-| **M4** | Sentence-BERT per aspek + pembobotan aspek | Hipotesis efek agregasi berbobot dibandingkan rata-rata. |
+| **M3** | Sentence-BERT pada masalah dan objek + rata-rata skor | Hipotesis efek pemisahan aspek dibandingkan representasi abstrak utuh; metode tidak masuk agregasi. |
+| **M4** | Sentence-BERT pada masalah dan objek + pembobotan kedua aspek | Hipotesis efek agregasi berbobot dibandingkan rata-rata; metode tidak masuk agregasi. |
 
 Pembandingan M2/M3 perlu encoder dan kondisi pembanding yang sepadan agar perubahan tidak sekaligus berasal dari model atau kandidat yang berbeda. Ekstraktor/peringkas yang mengubah kandungan atau panjang teks dapat menjadi confound: efeknya bukan hanya label aspek. M3/M4 hanya mengisolasi pembobotan bila komponen lain tetap.
 
-Bobot tidak boleh dipilih berdasarkan data uji; M4 tidak diasumsikan unggul. Notes ini tidak menetapkan checkpoint, bobot, K, ambang, split, jumlah data, atau protokol anotasi. Angka dalam literatur adalah laporan studi asal, bukan keputusan untuk skripsi ini.
+Bobot tidak boleh dipilih berdasarkan data uji; M4 tidak diasumsikan unggul. Rentang awal K adalah 10–20; nilai final, checkpoint, bobot, ambang, split, jumlah data, dan protokol anotasi belum ditetapkan. Angka dalam literatur bukan keputusan untuk skripsi ini.
 
 S5 memakai ruang aspek yang **dilatih dari input utuh**, bukan SBERT biasa atas potongan hasil ekstraksi. Karena itu, S5 merupakan pembanding ilmiah yang harus dijelaskan perbedaannya, bukan bukti bahwa M3 atau M4 telah tervalidasi ([S5, §§3–5, footnote 5, §7](https://arxiv.org/pdf/2203.14541)). Pemilihan pembanding final masih membutuhkan penyelarasan ruang lingkup.
 
@@ -88,7 +107,7 @@ S5 memakai ruang aspek yang **dilatih dari input utuh**, bukan SBERT biasa atas 
 
 Kontribusi itu bukan penciptaan IndoBERT, SBERT, atau aspect-aware similarity. Tidak diklaim sebagai sistem pertama; kombinasi fitur dan dataset lokal saja tidak cukup membuktikan kebaruan. [Matriks literatur](03-matriks-literatur-landasan.md) membatasi celah bukti pada sumber yang ditelaah, bukan seluruh literatur dunia.
 
-**Risiko kebaruan tetap merupakan tujuan interpretatif**, bukan dihapus dari arah penelitian. Indikasinya relatif terhadap korpus yang tersedia dan perlu interpretasi ahli. Belum ada label risiko, ambang, atau probabilitas yang tervalidasi. Bukti overlap tinggi tidak otomatis meniadakan kontribusi; tidak ditemukannya padanan tidak membuktikan novelty global.
+**Risiko kebaruan tetap merupakan tujuan interpretatif**, bukan dihapus dari arah penelitian. Warna menunjukkan tingkat kemiripan substansi relatif terhadap korpus, bukan label risiko kebaruan atau probabilitas yang tervalidasi. Bukti overlap tinggi tidak otomatis meniadakan kontribusi; tidak ditemukannya padanan tidak membuktikan novelty global.
 
 Ketepatan ekstraksi, ketepatan perbandingan, keterlacakan penjelasan, dan manfaat pengguna perlu dibedakan. Kemudahan membaca laporan tidak otomatis membuktikan keputusan akademik lebih tepat. Sumber bahasa Inggris dan benchmark sintetis juga tidak menggantikan validasi lokal.
 

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 945" role="img" aria-labelledby="title desc" color="black">
+<title id="title">Alur sistem kemiripan abstrak</title><desc id="desc">Persiapan korpus dan input dosen bertemu pada retrieval, dilanjutkan pelabelan, perbandingan masalah dan objek, tingkat kemiripan, penjelasan, serta keputusan dosen. Penilaian manusia mengevaluasi retrieval, label, ambang, dan penjelasan.</desc>
+<rect width="860" height="945" fill="white"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10" fill="currentColor"/></marker></defs>
+<g fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)">
+<path d="M215 120 V150"/>
+<path d="M215 220 V250"/>
+<path d="M410 285 H450"/>
+<path d="M645 120 V250"/>
+<path d="M645 320 V350"/>
+<path d="M645 420 V450"/>
+<path d="M645 520 V550"/>
+<path d="M645 630 V660"/>
+<path d="M645 730 V760"/>
+<path d="M645 830 V860"/>
+</g><g fill="none" stroke="currentColor" stroke-width="1.2">
+<rect x="20" y="50" width="390" height="70" rx="9"/>
+<rect x="20" y="150" width="390" height="70" rx="9"/>
+<rect x="20" y="250" width="390" height="70" rx="9"/>
+<rect x="450" y="50" width="390" height="70" rx="9"/>
+<rect x="450" y="250" width="390" height="70" rx="9"/>
+<rect x="450" y="350" width="390" height="70" rx="9"/>
+<rect x="450" y="450" width="390" height="70" rx="9"/>
+<rect x="450" y="550" width="390" height="80" rx="9"/>
+<rect x="450" y="660" width="390" height="70" rx="9"/>
+<rect x="450" y="760" width="390" height="70" rx="9"/>
+<rect x="450" y="860" width="390" height="60" rx="9"/>
+<rect x="20" y="400" width="390" height="150" rx="9"/>
+<rect x="20" y="610" width="390" height="90" rx="9"/>
+</g><g fill="currentColor" font-family="sans-serif" font-size="16" text-anchor="middle">
+<text x="215.0" y="79.0">Persiapan: abstrak skripsi + jurnal</text>
+<text x="215.0" y="101.0">Metadata dan label sumber</text>
+<text x="215.0" y="179.0">Bersihkan teks dan deduplikasi</text>
+<text x="215.0" y="201.0">Pertahankan teks asli</text>
+<text x="215.0" y="279.0">Embedding korpus</text>
+<text x="215.0" y="301.0">Simpan indeks pencarian</text>
+<text x="645.0" y="79.0">Dosen copas judul + abstrak</text>
+<text x="645.0" y="101.0">Embedding kueri</text>
+<text x="645.0" y="279.0">Retrieval kandidat terdekat</text>
+<text x="645.0" y="301.0">K awal 10–20; perlu diuji</text>
+<text x="645.0" y="379.0">Labeli input dan kandidat</text>
+<text x="645.0" y="401.0">Masalah / objek / metode</text>
+<text x="645.0" y="479.0">Bandingkan masalah dan objek</text>
+<text x="645.0" y="501.0">Metode hanya informasi</text>
+<text x="645.0" y="573.0">Bukti cukup: tingkat kemiripan</text>
+<text x="645.0" y="595.0">Merah / oranye / hijau</text>
+<text x="645.0" y="617.0">Jika tidak: bukti tidak cukup</text>
+<text x="645.0" y="689.0">Penjelasan + kesimpulan</text>
+<text x="645.0" y="711.0">Hanya dari kalimat berlabel</text>
+<text x="645.0" y="789.0">Urutkan berdasarkan masalah–objek</text>
+<text x="645.0" y="811.0">Warna, sumber, highlight, penjelasan</text>
+<text x="645.0" y="895.0">Dosen memeriksa dan memutuskan</text>
+<text x="215.0" y="436.0">Penilaian manusia</text>
+<text x="215.0" y="458.0">• Recall@K retrieval</text>
+<text x="215.0" y="480.0">• Ketepatan label aspek</text>
+<text x="215.0" y="502.0">• Kalibrasi ambang tingkat</text>
+<text x="215.0" y="524.0">• Dukungan bukti penjelasan</text>
+<text x="215.0" y="638.0">Kalibrasi ≠ evaluasi akhir</text>
+<text x="215.0" y="660.0">Warna bukan vonis kebaruan</text>
+<text x="215.0" y="682.0">Hasil relatif terhadap korpus</text>
+</g></svg>

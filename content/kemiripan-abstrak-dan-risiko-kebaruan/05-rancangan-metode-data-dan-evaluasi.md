@@ -11,9 +11,9 @@ date: 2026-11-06
 
 ## Data yang diperlukan
 
-- **Korpus pembanding:** abstrak penelitian terdahulu beserta judul, identitas artikel, dan sumbernya. Jurnal Informatika Polinema (JIP) adalah calon sumber, bukan dataset yang sudah dikumpulkan dan bukan kumpulan seluruh skripsi JTI.
-- **Abstrak kueri:** abstrak usulan yang akan dicari padanannya. Asal, izin penggunaan, jumlah, serta keterwakilannya belum ditetapkan.
-- **Anotasi aspek:** penandaan bagian tujuan, metode, dan data/objek oleh penilai yang memahami pedoman. Kontribusi dapat dicatat bila tersedia; aspek yang tidak tertulis ditandai tidak tersedia.
+- **Korpus pembanding:** abstrak skripsi dan jurnal beserta judul, identitas karya, tautan asal, dan label sumber. JIP adalah calon sumber jurnal; sumber skripsi dan izin akses belum dipastikan. Data belum dinyatakan sudah terkumpul.
+- **Kueri:** judul dan abstrak usulan yang ditempel sebagai teks. Asal, izin penggunaan, jumlah, serta keterwakilannya belum ditetapkan.
+- **Anotasi aspek:** penandaan kalimat masalah, objek, dan metode oleh manusia berdasarkan pedoman. Metode hanya informasi; bukan komponen skor akhir. Aturan kalimat multi-aspek dan tanpa label inti belum ditetapkan.
 - **Penilaian relevansi:** penilaian apakah pasangan abstrak memang memiliki tumpang tindih substansi, termasuk pada aspek mana. Ini berbeda dari label bahwa usulan pasti tidak baru.
 
 Keluaran LLM tidak otomatis menjadi label ahli. Akses dosen atau anotator, pedoman penilaian, dan penanganan perbedaan pendapat belum dipastikan. Penelitian berbahasa Inggris dan benchmark sintetis pada [literatur landasan](03-matriks-literatur-landasan.md) tidak menggantikan validasi lokal.
@@ -22,15 +22,15 @@ Keluaran LLM tidak otomatis menjadi label ahli. Akses dosen atau anotator, pedom
 
 Usulannya: ambil abstrak dan metadata dari sumber yang diizinkan, simpan tautan asal, rapikan artefak teks, lalu periksa duplikasi. Pertahankan teks asli agar kutipan hasil analisis dapat diperiksa. Jangan menghapus bagian yang membawa makna tujuan atau metode hanya untuk membuat teks lebih seragam.
 
-Untuk masukan PDF, sistem perlu memastikan abstrak berhasil diambil sebelum melakukan perbandingan. PDF hasil pindai, OCR, pemisahan abstrak dari isi artikel, dan penanganan ekstraksi yang tidak layak belum ditetapkan. Teks yang gagal dibaca tidak boleh menghasilkan laporan seolah-olah analisis berhasil.
+Input utama adalah copas judul dan abstrak, bukan PDF. Prapemrosesan korpus harus mempertahankan keterlacakan kalimat ke teks asli; tidak menyatakan teks yang gagal diperoleh sebagai abstrak yang telah dianalisis.
 
 Duplikat atau versi karya yang sama perlu ditangani sebelum membentuk pembagian evaluasi. Penelitian juga perlu menetapkan batas waktu korpus agar karya yang terbit setelah usulan tidak diperlakukan sebagai penelitian terdahulu. Ini usulan pengendalian kebocoran, bukan pembagian data yang sudah dijalankan.
 
 ## Pengembangan yang diusulkan
 
-Bangun alur masukan abstrak, pengelolaan korpus, ekstraksi aspek, pencarian dan perbandingan, lalu tampilan bukti. Kandidat pembanding bergerak dari **TF-IDF**, ke **Sentence-BERT abstrak utuh**, lalu **Sentence-BERT per aspek dengan rata-rata atau bobot**. Rinciannya ada pada [M1–M4](04-landasan-konseptual-dan-posisi-penelitian.md#kandidat-pembanding).
+Bangun alur persiapan korpus dan indeks embedding, input judul + abstrak, retrieval awal sekitar 10–20 kandidat, pelabelan kalimat input dan kandidat, perbandingan masalah–objek, penetapan tingkat, serta tampilan bukti. [Diagram alur](04-landasan-konseptual-dan-posisi-penelitian.md#alur-sistem-yang-diselaraskan) menjadi acuan. Kandidat pembanding adalah **TF-IDF**, **Sentence-BERT abstrak utuh**, lalu **Sentence-BERT masalah–objek dengan rata-rata atau bobot**; metode tidak masuk agregasi akhir M3/M4.
 
-Perbandingan abstrak utuh dan per aspek perlu memakai encoder, korpus, serta kondisi evaluasi yang sepadan. Jika sekaligus mengganti model atau kandidat dokumen, pengaruh pemisahan aspek menjadi sulit dipisahkan. Bobot tidak dipilih berdasarkan hasil data uji; metode berbobot tidak diasumsikan unggul. Checkpoint, kebutuhan fine-tuning, ekstraktor, dan aturan untuk aspek yang hilang belum diputuskan.
+Perbandingan abstrak utuh dan per aspek perlu memakai encoder, korpus, serta kondisi evaluasi yang sepadan. Evaluasi retrieval awal dipisahkan dari pengurutan akhir agar kandidat yang terlewat tidak tersamarkan. Bobot tidak dipilih berdasarkan data uji; metode berbobot tidak diasumsikan unggul. Checkpoint, kebutuhan fine-tuning, ekstraktor, dan agregasi masalah–objek belum diputuskan. Jika bukti masalah atau objek tidak memadai, hasilnya **bukti tidak cukup**, bukan warna kemiripan.
 
 ## Pengujian yang dibedakan
 
@@ -38,18 +38,22 @@ Berikut rancangan pengujian yang diusulkan, bukan metrik atau protokol final.
 
 | Bagian | Yang diperiksa | Bukti yang diperlukan |
 |---|---|---|
-| Fungsi aplikasi | Masukan terbaca, kegagalan ekstraksi terlihat, dokumen pembanding benar, kutipan kembali ke sumber yang tepat | Skenario penggunaan normal dan gagal; pemeriksaan hasil terhadap teks asli |
-| Ekstraksi aspek — RQ1 | Bagian tujuan, metode, dan objek diambil dengan benar; informasi yang tidak tersedia tidak dikarang | Anotasi acuan; precision, recall, dan F1 dapat dipertimbangkan setelah unit serta aturan kecocokan ditetapkan |
-| Pencarian dan perbandingan — RQ2 | Penelitian yang substansinya relevan ditemukan dan diberi urutan yang tepat | Penilaian relevansi pada kueri dan korpus yang sama; metrik seperti Precision@K, Recall@K, atau nDCG@K dipilih sesuai kelengkapan dan bentuk label |
+| Fungsi aplikasi | Input teks terbaca, dokumen pembanding dan label sumber benar, highlight kembali ke teks asli, bukti tidak cukup dibedakan dari kemiripan rendah | Skenario penggunaan dan pemeriksaan hasil terhadap teks asli |
+| Pelabelan aspek — RQ1 | Kalimat masalah, objek, dan metode dilabeli dengan benar; informasi yang tidak tersedia tidak dikarang | Anotasi acuan; precision, recall, dan F1 setelah unit serta aturan kecocokan ditetapkan |
+| Retrieval awal — RQ2 | Kandidat relevan masuk hasil pencarian sebelum perbandingan per aspek | Recall@K untuk beberapa K, termasuk rentang awal 10–20; laporkan kelengkapan label relevansi |
+| Pengurutan akhir — RQ2 | Penelitian diurutkan sesuai kemiripan masalah dan objek, bukan metode | Penilaian relevansi pada kandidat sepadan; Precision@K atau nDCG@K sesuai bentuk label |
+| Tingkat kemiripan | Merah/oranye/hijau sesuai kemiripan substansi tinggi/sedang/rendah | Rubrik manusia, kalibrasi ambang, dan evaluasi pada data terpisah; bukan label kebaruan otomatis |
 | Ketepatan penjelasan — RQ3 | Kutipan benar-benar ada dan mendukung persamaan atau perbedaan yang dinyatakan | Pemeriksaan sumber dan rubrik penilai; tidak cukup hanya menilai penjelasan terdengar masuk akal |
 | Manfaat bagi dosen — RQ3 | Laporan membantu memahami perbandingan dalam tugas pemeriksaan usulan | Tugas pengguna dan umpan balik dosen; kepuasan tidak disamakan dengan ketepatan keputusan akademik |
 
 Pemisahan evaluasi skor dan penjelasan mempunyai landasan pada [RINoBench, S6, §§4–5](https://arxiv.org/html/2603.10303). Bentuk tugas dan labelnya tidak langsung dipindahkan ke konteks JTI.
 
-Laporkan cakupan korpus dan kegagalan, termasuk abstrak yang tidak menyebut metode atau objek. **Skor kemiripan bukan probabilitas kebaruan.** Jika kelak keluaran memakai kategori risiko, definisi, penilai acuan, dan validasinya harus ditetapkan terlebih dahulu; jangan membuat label risiko hanya dari ambang cosine yang dipinjam dari studi lain.
+Penilaian manusia dipakai untuk **retrieval, pelabelan, kalibrasi tingkat kemiripan, dan ketepatan penjelasan**. Pisahkan data pengembangan/kalibrasi dari evaluasi akhir; jangan memilih ambang atau bobot berdasarkan data uji. Cegah karya duplikat atau versinya melintasi pembagian data.
+
+Laporkan cakupan korpus dan kegagalan, termasuk status bukti tidak cukup. **Skor kemiripan bukan probabilitas kebaruan.** Warna menunjukkan kemiripan substansi, bukan vonis risiko atau kelayakan usulan. Jangan meminjam ambang cosine studi lain tanpa validasi.
 
 ## Prasyarat yang belum ditetapkan
 
-Jumlah dan asal abstrak kueri; izin data; skema aspek; akses penilai; pedoman anotasi; model dan checkpoint; pembagian data; nilai K; bobot; penanganan aspek hilang; serta aturan interpretasi risiko. Belum ada scraping, aplikasi, ataupun hasil eksperimen untuk dilaporkan.
+Sumber skripsi dan izin akses; jumlah dan asal kueri; definisi operasional masalah–objek–metode; aturan multi-label; akses penilai; pedoman gold set; model dan checkpoint; pembagian data; K final; agregasi dan bobot masalah–objek; ambang warna; serta posisi tampilan hasil dengan bukti tidak cukup. Belum ada scraping, aplikasi, ataupun hasil eksperimen untuk dilaporkan.
 
 Lanjut: [sistem pembanding dan pembeda yang dituju](06-sistem-pembanding-dan-pembeda.md) · [jejak penelusuran](07-jejak-penelusuran.md).

@@ -25,7 +25,7 @@ Metode, jenis publikasi, dan batas transfer lebih lengkap ada pada [matriks lite
 
 ## Pembeda yang dituju
 
-Skripsi diarahkan pada **sistem bantuan pemeriksaan abstrak Indonesia yang dikembangkan dan diuji**: dosen memasukkan abstrak, melihat penelitian terkait, lalu memeriksa kesamaan tujuan, metode, dan objek beserta kutipan pendukungnya. Informasi yang tidak tertulis ditandai tidak tersedia, bukan dianggap berbeda atau diciptakan oleh model.
+Skripsi diarahkan pada **sistem bantuan pemeriksaan abstrak Indonesia yang dikembangkan dan diuji**: dosen menempelkan judul dan abstrak, melihat kandidat dari korpus skripsi dan jurnal, lalu memeriksa kemiripan masalah dan objek beserta kutipan pendukungnya. Metode dilabeli sebagai informasi saja. Warna menunjukkan kemiripan substansi; bukti yang tidak memadai ditandai **bukti tidak cukup**, bukan dianggap berbeda atau diciptakan oleh model.
 
 Calon kontribusi ilmiahnya adalah bukti apakah pemisahan aspek membantu menemukan tumpang tindih substansi dibandingkan perbandingan abstrak utuh, serta apakah penjelasannya tepat dan membantu pengguna. Ini **sasaran yang belum terbukti**, bukan klaim fitur pertama atau algoritme baru. JIP sebagai calon korpus dan JTI sebagai konteks pengguna memperjelas lingkup evaluasi; keduanya saja tidak membuktikan kebaruan ilmiah.
 

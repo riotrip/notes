@@ -7,13 +7,13 @@ date: 2026-11-06
 
 > **Status:** Catatan fondasi penelitian; bukan metodologi final atau laporan hasil eksperimen. Arah ini menggantikan penelitian deteksi teks AI.
 
-**Tujuan skripsi ini adalah mengembangkan dan menguji sistem yang membantu dosen JTI Polinema membandingkan abstrak usulan dengan penelitian terdahulu berdasarkan tujuan, metode, dan data/objeknya.** Sistem menunjukkan bagian yang serupa, bagian yang berbeda, dan kutipan pendukung agar dosen dapat mempertimbangkan risiko kebaruan. Sistem belum dibangun; kemiripan bukan vonis bahwa penelitian tidak baru.
+**Tujuan skripsi ini adalah mengembangkan dan menguji sistem yang membantu dosen JTI Polinema membandingkan abstrak usulan dengan penelitian terdahulu berdasarkan masalah dan objeknya.** Metode dilabeli sebagai informasi, bukan penentu skor akhir. Sistem menunjukkan bagian yang serupa, bagian yang berbeda, dan kutipan pendukung agar dosen dapat mempertimbangkan risiko kebaruan. Sistem belum dibangun; kemiripan bukan vonis bahwa penelitian tidak baru.
 
 Urutan baca: **1. Inti penelitian** · [2. Mengapa perlu dikembangkan](02-latar-belakang-dan-urgensi.md) · [3. Penelitian terdahulu dan metodenya](03-matriks-literatur-landasan.md) · [4. Cara kerja sistem](04-landasan-konseptual-dan-posisi-penelitian.md) · [5. Data dan pengujian](05-rancangan-metode-data-dan-evaluasi.md) · [6. Sistem pembanding](06-sistem-pembanding-dan-pembeda.md). [Jejak penelusuran](07-jejak-penelusuran.md) memuat rincian sumber.
 
 ## Apa yang dikembangkan?
 
-Kemiripan semantik berbasis aspek penelitian dan bantuan untuk menafsirkan overlap substansi. Aspek usulan meliputi masalah/tujuan, metode, data/objek, serta kontribusi bila tersedia. Definisi aspek dan cara pengolahannya belum menjadi protokol final.
+Kemiripan semantik berbasis aspek penelitian dan bantuan untuk menafsirkan overlap substansi. Skema aktif adalah masalah, objek, dan metode; metode hanya informasi. Kontribusi bukan label inti. Definisi operasional aspek belum menjadi protokol final.
 
 Aplikasi menghubungkan pengambilan abstrak, pencarian penelitian terkait, perbandingan per aspek, dan tampilan bukti. Pekerjaan model mendukung alur itu; bukan membuat model bahasa dari nol. Pertanyaan utamanya: **apakah membandingkan per aspek lebih tepat dalam menemukan tumpang tindih substansi daripada membandingkan abstrak secara utuh?**
 
@@ -31,17 +31,17 @@ Kemiripan konseptual juga berbeda dari kebaruan, dan penjelasan yang tampak masu
 
 ## Masukan, keluaran, dan penggunaan
 
-**Masukan yang dituju:** PDF atau teks tempel abstrak usulan penelitian.
+**Masukan utama:** judul dan abstrak usulan penelitian yang ditempel sebagai teks. PDF bukan lingkup input utama.
 
-**Keluaran konseptual:** penelitian terkait dari korpus pembanding, kemiripan per aspek, persamaan dan perbedaan, kutipan teks pendukung, serta indikasi risiko kebaruan beserta batas bukti. Aspek yang tidak tertulis dinyatakan tidak tersedia; bukan dianggap berbeda, diberi skor nol, atau dikarang.
+**Keluaran yang dituju:** daftar penelitian diurutkan berdasarkan kemiripan masalah dan objek, dengan label sumber skripsi/jurnal, highlight, penjelasan, dan kesimpulan berbukti. Merah/oranye/hijau menyatakan kemiripan substansi tinggi/sedang/rendah; ambang harus dikalibrasi dari penilaian manusia. Metode tidak memengaruhi skor akhir, warna, atau urutan akhir.
 
-Dosen memasukkan abstrak, memeriksa penelitian terkait yang ditemukan, lalu membaca persamaan dan perbedaan tiap aspek beserta teks asalnya. **Contoh hipotetis:** dua penelitian memakai metode yang sama, tetapi tujuan dan objeknya berbeda. Sistem perlu memperlihatkan letak kesamaannya, bukan langsung menyebut keduanya duplikat.
+Jika masalah atau objek tidak cukup jelas untuk dinilai, tampilkan **bukti tidak cukup**, bukan hijau atau skor nol. Dosen memeriksa bukti dan mengambil keputusan; metode yang sama saja tidak menjadikan dua penelitian duplikat.
 
-Nilai kemiripan bukan persentase kebaruan. Bentuk laporan, layout, stack, API, model, dan aturan penetapan risiko belum dipilih.
+Nilai kemiripan bukan persentase kebaruan. Layout, stack, API, model, agregasi skor, dan ambang belum dipilih. [Alur dan diagram sistem](04-landasan-konseptual-dan-posisi-penelitian.md#alur-sistem-yang-diselaraskan) menjelaskan persiapan korpus dan tahapan penggunaan.
 
 ## Batas sumber pembanding
 
-**Jurnal Informatika Polinema (JIP) adalah calon sumber dataset, bukan pembatas literatur landasan.** Dataset tersebut direncanakan berupa abstrak artikel jurnal; tidak otomatis mewakili seluruh skripsi historis JTI. Label “korpus abstrak skripsi” pada gambar riset manual diperlakukan sebagai gagasan awal dan disesuaikan dengan klarifikasi sumber data ini.
+**Korpus pembanding direncanakan mencakup abstrak skripsi dan jurnal, dengan label sumber terpisah.** Jurnal Informatika Polinema (JIP) tetap calon sumber jurnal, bukan pembatas literatur landasan. Sumber skripsi, izin akses, dan jumlah data belum dipastikan; korpus tidak otomatis mewakili seluruh skripsi historis JTI.
 
 Kesimpulan sistem bersifat **corpus-relative**: hanya terhadap penelitian yang tersedia dan berhasil dibandingkan. Cakupan korpus serta informasi yang tidak tercantum dalam abstrak membatasi interpretasi risiko.
 
