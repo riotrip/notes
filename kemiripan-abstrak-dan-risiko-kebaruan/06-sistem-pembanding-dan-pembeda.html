@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#edf1f3">
+  <title>Sistem dan Pendekatan yang Sudah Ada serta Pembeda yang Dituju | Notes</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/style.css?v=57c0004e345f">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="sidebar-toggle" type="button" aria-label="Close sidebar" title="Close sidebar" aria-controls="notes-sidebar" aria-expanded="true" data-sidebar-toggle hidden>
+        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <a class="topbar__brand" href="../index.html">Notes</a>
+      <nav class="topbar__nav" aria-label="Navigasi utama">
+        <a class="topbar__nav-link" href="../laporan-skripsi.html">Laporan Skripsi</a>
+      </nav>
+    </header>
+    <div class="site-layout">
+      <aside id="notes-sidebar" class="sidebar">
+    <nav class="sidebar__nav" aria-label="Notes">
+      <div class="sidebar__groups">
+      <details class="sidebar__group" open>
+        <summary><a href="../category/landasan.html">Landasan<span class="sidebar__count">3</span></a><span class="sidebar__group-control" aria-hidden="true"></span></summary>
+        <ul>
+          <li><a href="01-inti-penelitian-5w1h.html">Inti Penelitian Kemiripan Abstrak Berbasis Aspek dan Risiko Kebaruan</a></li>
+          <li><a href="02-latar-belakang-dan-urgensi.html">Mengapa Sistem Kemiripan Abstrak Perlu Dikembangkan?</a></li>
+          <li><a href="04-landasan-konseptual-dan-posisi-penelitian.html">Cara Kerja Sistem Kemiripan Abstrak dan Peran Model</a></li>
+        </ul>
+      </details>
+      <details class="sidebar__group" open>
+        <summary><a href="../category/literatur.html">Literatur<span class="sidebar__count">3</span></a><span class="sidebar__group-control" aria-hidden="true"></span></summary>
+        <ul>
+          <li><a href="03-matriks-literatur-landasan.html">Penelitian Terdahulu, Metode, dan Posisi Pengembangan</a></li>
+          <li><a href="06-sistem-pembanding-dan-pembeda.html" aria-current="page">Sistem dan Pendekatan yang Sudah Ada serta Pembeda yang Dituju</a></li>
+          <li><a href="07-jejak-penelusuran.html">Keputusan, Status Penelitian, dan Jejak Literatur</a></li>
+        </ul>
+      </details>
+      <details class="sidebar__group" open>
+        <summary><a href="../category/metode.html">Metode<span class="sidebar__count">1</span></a><span class="sidebar__group-control" aria-hidden="true"></span></summary>
+        <ul>
+          <li><a href="05-rancangan-metode-data-dan-evaluasi.html">Data, Pengembangan, dan Pengujian Kemiripan Abstrak</a></li>
+        </ul>
+      </details></div>
+    </nav>
+  </aside>
+      <div class="workspace">
+        <main class="main"><article class="note">
+    <h1 data-block-id="21fc9aa0232a">Sistem dan Pendekatan yang Sudah Ada serta Pembeda yang Dituju</h1>
+    <div class="note-meta"><a href="../category/literatur.html">Literatur</a><span aria-hidden="true">·</span><time datetime="2026-11-06">2026-11-06</time></div>
+    <details class="toc">
+    <summary>Contents</summary>
+    <ul><li class="toc__level-2"><a href="#apa-yang-sudah-dikerjakan">Apa yang sudah dikerjakan?</a></li><li class="toc__level-2"><a href="#pembeda-yang-dituju">Pembeda yang dituju</a></li><li class="toc__level-2"><a href="#apa-yang-tidak-boleh-diklaim">Apa yang tidak boleh diklaim?</a></li>
+    </ul>
+  </details>
+    <div class="prose"><blockquote data-block-id="e95edda71830">
+<p data-block-id="d1ea7d124c2e"><strong>Status:</strong> Ringkasan sumber dalam kajian 2026-11-05, bukan pengujian langsung produk atau bukti keunggulan sistem skripsi.</p>
+</blockquote>
+<p data-block-id="880eede7b10d"><strong>Membandingkan penelitian dan menganalisis kebaruan bukan gagasan yang belum pernah dikerjakan.</strong> Pembeda yang perlu diuji adalah kegunaan perbandingan per aspek beserta bukti teks pada abstrak Indonesia, bukan sekadar keberadaan fitur unggah atau angka kemiripan.</p>
+<h2 data-block-id="29b2cda3e957" id="apa-yang-sudah-dikerjakan">Apa yang sudah dikerjakan?</h2>
+<p data-block-id="5c4836083f38">Pembanding di bawah adalah sistem atau pendekatan penelitian yang terdokumentasi dalam literatur yang tersedia. Daftar ini bukan survei lengkap produk komersial; benchmark juga tidak disebut sebagai aplikasi siap pakai.</p>
+<table>
+<thead>
+<tr>
+<th>Pembanding</th>
+<th>Yang terdokumentasi</th>
+<th>Hubungan dan batas perbandingan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sitorus &amp; Madyatmadja — deteksi risiko kebaruan proposal Indonesia (S1)</strong></td>
+<td>TF-IDF, LSA, dan IndoBERT membandingkan <strong>judul</strong> proposal dengan cosine dan menampilkan contextual warning. <a href="https://thescipub.com/jcs/jcssp.2026.2444.2455.pdf">Sumber, pp. 4–6 dan 10–11</a>.</td>
+<td>Sama-sama mendukung penilaian manusia dalam konteks Indonesia. Data sumber adalah judul, bukan abstrak per aspek; tidak ada ground truth novelty manual. Angka 99,98% bukan akurasi deteksi kebaruan.</td>
+</tr>
+<tr>
+<td><strong>Ostendorff dkk. — aspect-based document similarity (S4)</strong></td>
+<td>Klasifikasi pasangan paper berdasarkan label aspek dari bagian sitasi, menggunakan judul dan abstrak utuh. <a href="https://aclanthology.org/2020.coling-main.545.pdf">Sumber, §§3–5</a>.</td>
+<td>Menunjukkan kemiripan dapat dibedakan menurut aspek. Bukan ekstraksi potongan tujuan–metode–objek lalu cosine.</td>
+</tr>
+<tr>
+<td><strong>Ostendorff dkk. — specialized document embeddings (S5)</strong></td>
+<td>Melatih ruang embedding khusus <strong>task, method, dataset</strong> untuk pencarian paper dari judul dan abstrak utuh. <a href="https://arxiv.org/pdf/2203.14541">Sumber, §§3–5 dan §7</a>.</td>
+<td>Pembanding ilmiah terdekat. Rancangan skripsi mengusulkan pengambilan bagian aspek sebelum perbandingan; perbedaan mekanisme bukan bukti bahwa rancangan baru lebih baik.</td>
+</tr>
+<tr>
+<td><strong>Liu dkk. — scientific novelty detection (S2)</strong></td>
+<td>Mengolah ide, memakai retriever hasil distillation, membandingkan melalui LLM, lalu mengklasifikasikan dengan decision tree. <a href="https://arxiv.org/html/2505.24615">Sumber, §§3–5 dan §7</a>; <a href="https://github.com/SenticNet/novelty-detection">kode</a>.</td>
+<td>Relevan untuk analisis overlap ide, bukan hanya redaksi. Variasi sintetis dan asumsi label membatasi klaim; bukan validasi pada abstrak Indonesia. Semua komponennya tidak otomatis menjadi kebutuhan skripsi.</td>
+</tr>
+<tr>
+<td><strong>RINoBench (S6)</strong></td>
+<td>Benchmark penilaian novelty yang mengevaluasi skor dan penjelasan secara terpisah. <a href="https://arxiv.org/html/2603.10303">Sumber, §§4–5</a>.</td>
+<td>Acuan untuk membedakan kualitas penilaian dari kualitas penjelasan, bukan produk pembanding unggah abstrak. Datanya berasal dari review ICLR dengan pemrosesan LLM, bukan penilaian dosen JTI.</td>
+</tr>
+</tbody>
+</table>
+<p data-block-id="dcae1edf8382">Metode, jenis publikasi, dan batas transfer lebih lengkap ada pada <a href="03-matriks-literatur-landasan.html">matriks literatur</a>; metadata dan cakupan baca ada pada <a href="07-jejak-penelusuran.html">jejak penelusuran</a>.</p>
+<h2 data-block-id="08fa6a28ed32" id="pembeda-yang-dituju">Pembeda yang dituju</h2>
+<p data-block-id="132fcb4238fc">Skripsi diarahkan pada <strong>bantuan pemeriksaan abstrak berbahasa Indonesia</strong>. Dosen menempelkan satu abstrak, melihat kandidat dari korpus skripsi/TA JTI Polinema, lalu memeriksa kategori kemiripan masalah dan objek serta highlight pasangan kata atau frasa. Metode hanya informasi pendamping. Aspek yang tidak ditemukan ditandai <strong>tidak teridentifikasi</strong>, bukan dianggap berbeda.</p>
+<p data-block-id="cd58e9df4e20">Kontribusi utama yang diuji adalah kualitas <strong>reranking masalah–objek</strong>. Tiga kondisi terkontrol adalah <strong>A: abstrak utuh, B: gabungan masalah–objek, dan C: aspek terpisah</strong>. Kandidat dan encoder dibuat sama agar pengaruh pemilihan serta pemisahan aspek dapat diperiksa. TF-IDF dapat menjadi pembanding tambahan.</p>
+<p data-block-id="bda6a728019b">Pelabelan, kategori, dan highlight dinilai terpisah. Ini sasaran penelitian, bukan klaim fitur pertama, algoritme baru, atau hasil yang sudah unggul. Konteks JTI saja tidak membuktikan kebaruan ilmiah.</p>
+<h2 data-block-id="7920adf6db3c" id="apa-yang-tidak-boleh-diklaim">Apa yang tidak boleh diklaim?</h2>
+<ul>
+<li data-block-id="5dfd363a07e2">Belum ada sistem serupa di dunia: penelusuran yang tersedia tidak mendukung klaim global itu.</li>
+<li data-block-id="7d6cda8864e5">Representasi per aspek pasti lebih unggul: <a href="04-landasan-konseptual-dan-posisi-penelitian.html#kandidat-pembanding">kondisi A/B/C</a> masih perlu dibandingkan melalui eksperimen.</li>
+<li data-block-id="66ed44a4c3f7">Cosine tinggi berarti penelitian tidak baru: overlap metode atau objek tidak otomatis meniadakan kontribusi.</li>
+<li data-block-id="74862f1f47c9">Tidak menemukan padanan berarti pasti baru: hasil terbatas pada korpus dan informasi dalam abstrak.</li>
+<li data-block-id="6d5d28f04c1b">Sistem sudah terbukti menghemat waktu atau memperbaiki keputusan dosen: <a href="05-rancangan-metode-data-dan-evaluasi.html">pengujian pengguna</a> belum dijalankan.</li>
+</ul>
+<p data-block-id="21388f13244f"><strong>Posisi singkat untuk dosen:</strong> penelitian ini tidak menggantikan penilaian kebaruan oleh dosen. Yang dikembangkan adalah bantuan untuk memperlihatkan letak kesamaan dan perbedaan penelitian secara lebih terperinci, lalu menguji apakah bantuan tersebut memang tepat dan berguna.</p>
+</div>
+  </article></main>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/sidebar.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#edf1f3">
+  <title>Keputusan, Status Penelitian, dan Jejak Literatur | Notes</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/style.css?v=57c0004e345f">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="sidebar-toggle" type="button" aria-label="Close sidebar" title="Close sidebar" aria-controls="notes-sidebar" aria-expanded="true" data-sidebar-toggle hidden>
+        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <a class="topbar__brand" href="../index.html">Notes</a>
+      <nav class="topbar__nav" aria-label="Navigasi utama">
+        <a class="topbar__nav-link" href="../laporan-skripsi.html">Laporan Skripsi</a>
+      </nav>
+    </header>
+    <div class="site-layout">
+      <aside id="notes-sidebar" class="sidebar">
+    <nav class="sidebar__nav" aria-label="Notes">
+      <div class="sidebar__groups">
+      <details class="sidebar__group" open>
+        <summary><a href="../category/landasan.html">Landasan<span class="sidebar__count">3</span></a><span class="sidebar__group-control" aria-hidden="true"></span></summary>
+        <ul>
+          <li><a href="01-inti-penelitian-5w1h.html">Inti Penelitian Kemiripan Abstrak Berbasis Aspek dan Risiko Kebaruan</a></li>
+          <li><a href="02-latar-belakang-dan-urgensi.html">Mengapa Sistem Kemiripan Abstrak Perlu Dikembangkan?</a></li>
+          <li><a href="04-landasan-konseptual-dan-posisi-penelitian.html">Cara Kerja Sistem Kemiripan Abstrak dan Peran Model</a></li>
+        </ul>
+      </details>
+      <details class="sidebar__group" open>
+        <summary><a href="../category/literatur.html">Literatur<span class="sidebar__count">3</span></a><span class="sidebar__group-control" aria-hidden="true"></span></summary>
+        <ul>
+          <li><a href="03-matriks-literatur-landasan.html">Penelitian Terdahulu, Metode, dan Posisi Pengembangan</a></li>
+          <li><a href="06-sistem-pembanding-dan-pembeda.html">Sistem dan Pendekatan yang Sudah Ada serta Pembeda yang Dituju</a></li>
+          <li><a href="07-jejak-penelusuran.html" aria-current="page">Keputusan, Status Penelitian, dan Jejak Literatur</a></li>
+        </ul>
+      </details>
+      <details class="sidebar__group" open>
+        <summary><a href="../category/metode.html">Metode<span class="sidebar__count">1</span></a><span class="sidebar__group-control" aria-hidden="true"></span></summary>
+        <ul>
+          <li><a href="05-rancangan-metode-data-dan-evaluasi.html">Data, Pengembangan, dan Pengujian Kemiripan Abstrak</a></li>
+        </ul>
+      </details></div>
+    </nav>
+  </aside>
+      <div class="workspace">
+        <main class="main"><article class="note">
+    <h1 data-block-id="3d8676953f71">Keputusan, Status Penelitian, dan Jejak Literatur</h1>
+    <div class="note-meta"><a href="../category/literatur.html">Literatur</a><span aria-hidden="true">·</span><time datetime="2026-11-06">2026-11-06</time></div>
+    <details class="toc">
+    <summary>Contents</summary>
+    <ul><li class="toc__level-2"><a href="#keputusan-yang-dipakai">Keputusan yang dipakai</a></li><li class="toc__level-2"><a href="#status-pengerjaan">Status pengerjaan</a></li><li class="toc__level-2"><a href="#hal-yang-masih-terbuka">Hal yang masih terbuka</a></li><li class="toc__level-2"><a href="#cara-membaca-catatan-literatur">Cara membaca catatan literatur</a></li><li class="toc__level-2"><a href="#cakupan-dan-tanggal">Cakupan dan tanggal</a></li><li class="toc__level-2"><a href="#query-dan-akses-s2">Query dan akses S2</a></li><li class="toc__level-2"><a href="#rekaman-sumber">Rekaman sumber</a></li><li class="toc__level-3"><a href="#s1-studi-indonesia-tentang-risiko-kebaruan">S1 — Studi Indonesia tentang risiko kebaruan</a></li><li class="toc__level-3"><a href="#s2-idea-level-novelty-dan-distillation-rag">S2 — Idea-level novelty dan distillation/RAG</a></li><li class="toc__level-3"><a href="#s3-sentence-embeddings">S3 — Sentence embeddings</a></li><li class="toc__level-3"><a href="#s4-aspect-based-similarity-generasi-awal">S4 — Aspect-based similarity generasi awal</a></li><li class="toc__level-3"><a href="#s5-pembanding-ilmiah-paling-dekat">S5 — Pembanding ilmiah paling dekat</a></li><li class="toc__level-3"><a href="#s6-benchmark-penilaian-novelty">S6 — Benchmark penilaian novelty</a></li><li class="toc__level-3"><a href="#s7-ekstraksi-aspek-untuk-summarization">S7 — Ekstraksi aspek untuk summarization</a></li><li class="toc__level-3"><a href="#s8-pendukung-graph-informed-representation">S8 — Pendukung graph-informed representation</a></li><li class="toc__level-3"><a href="#s9-pendukung-interpretasi-skor">S9 — Pendukung interpretasi skor</a></li><li class="toc__level-2"><a href="#koreksi-metadata">Koreksi metadata</a></li><li class="toc__level-2"><a href="#batas-bukti">Batas bukti</a></li>
+    </ul>
+  </details>
+    <div class="prose"><blockquote data-block-id="5f5b750be4d5">
+<p data-block-id="aa0d2172f9e2"><strong>Status:</strong> Keputusan dan status diselaraskan pada 18 November 2026. Rekaman literatur di bawah tetap mencatat penelusuran 5 November 2026, bukan penelusuran baru.</p>
+</blockquote>
+<p data-block-id="91b30bd74b5b">Navigasi: <a href="01-inti-penelitian-5w1h.html">inti penelitian</a> · <a href="06-sistem-pembanding-dan-pembeda.html">sistem pembanding</a> · <a href="03-matriks-literatur-landasan.html">matriks literatur</a>.</p>
+<h2 data-block-id="f044ddf719d4" id="keputusan-yang-dipakai">Keputusan yang dipakai</h2>
+<table>
+<thead>
+<tr>
+<th>Bagian</th>
+<th>Keputusan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Masukan</td>
+<td>Satu abstrak usulan berbahasa Indonesia</td>
+</tr>
+<tr>
+<td>Korpus</td>
+<td>Abstrak skripsi/TA JTI Polinema; judul dan sumber menjadi metadata</td>
+</tr>
+<tr>
+<td>Aspek</td>
+<td>Masalah, objek, metode; multi-label per kalimat, semua nol berarti lain</td>
+</tr>
+<tr>
+<td>Pencarian awal</td>
+<td>Embedding abstrak utuh untuk mengambil top-N kandidat</td>
+</tr>
+<tr>
+<td>Pengurutan</td>
+<td>A: abstrak utuh; B: gabungan masalah–objek; C: aspek terpisah</td>
+</tr>
+<tr>
+<td>Metode</td>
+<td>Informasi pendamping, bukan skor aspek dalam reranking masalah–objek</td>
+</tr>
+<tr>
+<td>Keluaran</td>
+<td>Top-K hasil, kategori kandidat dan aspek, metadata, serta highlight pasangan kata atau frasa</td>
+</tr>
+<tr>
+<td>Kategori</td>
+<td>Tinggi/sedang/rendah dari ambang data pengembangan; bukan dari ranking</td>
+</tr>
+<tr>
+<td>Aspek hilang</td>
+<td>Tidak teridentifikasi; gunakan aspek yang tersedia, atau urutan abstrak utuh jika kedua aspek input hilang</td>
+</tr>
+<tr>
+<td>Batas</td>
+<td>Tidak memutuskan kebaruan, plagiarisme, redundansi, atau kelayakan usulan</td>
+</tr>
+</tbody>
+</table>
+<p data-block-id="80591d120e46">Rancangan awal memakai judul+abstrak, korpus skripsi+jurnal, penjelasan template, dan nama pembanding M1–M4. Notes sekarang mengikuti lingkup PRD: satu abstrak, korpus JTI, highlight pasangan kata/frasa, dan kondisi utama A/B/C. TF-IDF tetap pembanding tambahan. LLM few-shot bukan bagian alur tetap.</p>
+<h2 data-block-id="2883d710f9e4" id="status-pengerjaan">Status pengerjaan</h2>
+<ul>
+<li data-block-id="740c012746b5"><strong>Tersedia:</strong> berkas data lokal, alat review, persiapan korpus, deduplikasi, pembagian kelompok dokumen, template/validasi anotasi, prapemrosesan P0–P3, CLI, dan notebook.</li>
+<li data-block-id="17feca8ff45d"><strong>Masih perlu ditinjau:</strong> kelengkapan abstrak, kesesuaian lingkup, izin penggunaan, dan korpus hasil kurasi yang akan dipakai dalam eksperimen.</li>
+<li data-block-id="11503054eee8"><strong>Belum tersedia:</strong> classifier, embedding/index, retrieval dan reranking A/B/C, kalibrasi kategori, alignment, serta evaluasi ahli.</li>
+</ul>
+<p data-block-id="608b71bd1d52">Dasar pembaruan status adalah README <code>abstract-modelling/</code> dan keberadaan berkas data lokal pada 18 November 2026. Ini bukan audit kualitas korpus atau pengujian model. Keterangan “korpus belum terkumpul” pada PRD lama tidak dipakai sebagai status terkini.</p>
+<h2 data-block-id="b750ff5ab782" id="hal-yang-masih-terbuka">Hal yang masih terbuka</h2>
+<p data-block-id="71da37693c70">Model dan checkpoint, pedoman serta penilai, asal dan jumlah kueri, pembagian data final, N kandidat, K hasil, bobot C, ambang kategori, dan cara alignment. Target awal 60 kueri perlu ditinjau melalui pilot, bukan dianggap jumlah final yang sudah siap.</p>
+<p data-block-id="6880620f6e97">Urutan kerja: <strong>data dan anotasi → model/pipeline → evaluasi → halaman web sistem kemiripan</strong>. Penghematan waktu dan manfaat bagi dosen belum dibuktikan.</p>
+<h2 data-block-id="e0369ef93913" id="cara-membaca-catatan-literatur">Cara membaca catatan literatur</h2>
+<p data-block-id="cb96558e4537">Bagian berikut mempertahankan rekaman sumber dan batas pembacaan sebelumnya. Istilah serta rencana lama di dalam catatan historis bukan keputusan alur saat ini.</p>
+<h2 data-block-id="f35e2196a594" id="cakupan-dan-tanggal">Cakupan dan tanggal</h2>
+<p data-block-id="018c649c02dc">Penelusuran terarah untuk memperkuat landasan kemiripan abstrak berbasis aspek, tumpang tindih substansi, dan risiko kebaruan. Ini bukan tinjauan sistematis atau bukti bahwa kombinasi tertentu belum pernah diteliti. Literatur tidak dibatasi pada Polinema. JIP pernah menjadi calon sumber data pada rancangan awal; korpus aktif kini dibatasi pada skripsi/TA JTI.</p>
+<p data-block-id="616dacca442b">Pengambilan melalui Semantic Scholar (S2) berlangsung pada <strong>2026-11-05</strong>; integrasi notes dilanjutkan <strong>2026-11-06</strong>. Tanggal tersebut membedakan pengambilan sumber dari penyusunan catatan, bukan tanggal publikasi paper. S2 adalah satu-satunya penyedia API bibliografi yang dipilih. Metadata dicocokkan dengan sumber primer; kecocokan metadata tidak membuktikan klaim ilmiah.</p>
+<p data-block-id="e2af8a028df2">Dua referensi dasar dan empat gambar riset manual pengguna menjadi titik awal. Tambahan yang memperkuat fokus adalah S5 (representasi khusus aspek), S3 (sentence embeddings), serta S8 sebagai pendukung opsional citation-informed representation. S9 mendukung kehati-hatian interpretasi skor. Tidak digunakan peringkat sitasi sebagai bukti bahwa metode pasti sesuai.</p>
+<h2 data-block-id="05ff511d9b0a" id="query-dan-akses-s2">Query dan akses S2</h2>
+<p data-block-id="1db48fcef67d">Credential tersedia dan akses terautentikasi berhasil; nilainya tidak dicatat. Sejumlah permintaan tetap memperoleh HTTP 429. Halaman <a href="https://www.semanticscholar.org/product/api">API resmi S2</a> menyatakan introductory authenticated limit 1 request per second; angka 10 RPS pada protokol lokal lama tidak dipakai sebagai entitlement akun.</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Query</th>
+<th>Parameter</th>
+<th>Hasil pengambilan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/graph/v1/paper/search</code></td>
+<td><code>Indonesian semantic textual similarity sentence embeddings</code></td>
+<td><code>year=2019-2026</code>, <code>limit=8</code></td>
+<td>Berhasil</td>
+</tr>
+<tr>
+<td><code>/graph/v1/paper/search</code></td>
+<td><code>scientific document embeddings citation graph SPECTER</code></td>
+<td><code>year=2017-2026</code>, <code>limit=5</code></td>
+<td>429</td>
+</tr>
+<tr>
+<td><code>/graph/v1/paper/search</code></td>
+<td><code>sentence embeddings siamese BERT semantic similarity</code></td>
+<td><code>year=2017-2026</code>, <code>limit=5</code></td>
+<td>Berhasil</td>
+</tr>
+<tr>
+<td><code>/graph/v1/paper/search</code></td>
+<td><code>calibration neural networks confidence temperature scaling</code></td>
+<td><code>year=2017-2026</code>, <code>limit=5</code></td>
+<td>Berhasil</td>
+</tr>
+<tr>
+<td><code>/graph/v1/paper/search</code></td>
+<td><code>IndoNLU benchmark Indonesian language understanding</code></td>
+<td><code>year=2017-2026</code>, <code>limit=5</code></td>
+<td>Berhasil; tidak dimasukkan sebagai sumber utama dalam sintesis ini</td>
+</tr>
+<tr>
+<td><code>/graph/v1/paper/search</code></td>
+<td>Percobaan judul SPECTER melalui relevance search</td>
+<td>String dan parameter lengkap percobaan ini tidak dipertahankan dalam catatan ringkas</td>
+<td>429; tidak direkonstruksi sebagai log mentah</td>
+</tr>
+<tr>
+<td><code>/graph/v1/paper/search/bulk</code></td>
+<td><code>SPECTER</code></td>
+<td><code>year=2020-2020</code></td>
+<td>Berhasil; total 505 menurut API, bukan 505 sumber yang ditelaah</td>
+</tr>
+<tr>
+<td><code>/graph/v1/paper/search</code></td>
+<td><code>Aspect based Document Similarity for Research Papers</code></td>
+<td>Tanpa filter tahun, <code>limit=5</code></td>
+<td>Berhasil</td>
+</tr>
+<tr>
+<td><code>/graph/v1/paper/search</code></td>
+<td><code>Is This Idea Novel An Automated Benchmark for Judgment of Research Ideas</code></td>
+<td>Tanpa filter tahun, <code>limit=5</code></td>
+<td>Berhasil</td>
+</tr>
+<tr>
+<td><code>/graph/v1/paper/search</code></td>
+<td><code>Leveraging Peer Review Aspects for Extractive and Abstractive Summarization of Scientific Articles</code></td>
+<td>Tanpa filter tahun, <code>limit=5</code></td>
+<td>429 setelah retry</td>
+</tr>
+<tr>
+<td><code>/graph/v1/paper/search/bulk</code></td>
+<td><code>&quot;Leveraging Peer-Review Aspects&quot;</code></td>
+<td><code>year=2024-2026</code></td>
+<td>Berhasil; satu rekaman</td>
+</tr>
+</tbody>
+</table>
+<p data-block-id="9962137ea45d">Fields awal: <code>paperId,title,authors,year,venue,externalIds,url,abstract,citationCount,openAccessPdf</code>. Query judul dari gambar memakai <code>publicationDate</code> dan tidak meminta <code>citationCount</code>; bulk terakhir memakai fields awal. Ini log ringkas query yang dijalankan, bukan ekspor seluruh respons dan bukan hitungan screening PRISMA.</p>
+<p data-block-id="d6244699766a">Pemeriksaan known-citation menggunakan <code>scripts/semantic_scholar_client.py</code>, <code>SemanticScholarClient.lookup(entry)</code>, dengan pacing eksplisit 1,2 detik dan tanpa cache/penulisan disk. Status discovery dan lookup tambahan dipisahkan pada rekaman di bawah; 429 bukan hasil mismatch. Tidak dilakukan pengulangan API untuk sekadar menulis notes.</p>
+<h2 data-block-id="2d45b1cdcde3" id="rekaman-sumber">Rekaman sumber</h2>
+<p data-block-id="d43bf3bdfbb6">Semua rekaman di bawah berasal dari kajian pada 2026-11-05. <strong>Artefak PDF lokal untuk S1–S9: tidak disimpan.</strong> Cakupan baca dijelaskan per sumber; full text berarti teks lengkap versi yang disebut dibaca, bukan replikasi eksperimen atau audit semua versi. Tautan <a href="03-matriks-literatur-landasan.html">matriks lokal</a> memetakan penggunaan seluruh sumber ini.</p>
+<h3 data-block-id="e7aa94e377de" id="s1-studi-indonesia-tentang-risiko-kebaruan">S1 — Studi Indonesia tentang risiko kebaruan</h3>
+<ul>
+<li data-block-id="9598a9b7fcd1"><strong>Judul:</strong> <em>Detecting Novelty in Indonesian Research Grant Proposals Using Machine Learning and Natural Language Processing</em>.</li>
+<li data-block-id="fca7fe9bd34e"><strong>Penulis:</strong> Walanstar Alimcan Sitorus; Evaristus Didik Madyatmadja.</li>
+<li data-block-id="5bc5e6f7473e"><strong>Tahun/jenis/venue:</strong> 2026; artikel jurnal; <em>Journal of Computer Science</em>, 22(8), 2444–2455.</li>
+<li data-block-id="83332427ed38"><strong>Identitas:</strong> DOI <code>10.3844/jcssp.2026.2444.2455</code>. S2 paperId tidak diperoleh; tidak ditebak.</li>
+<li data-block-id="9441358deeab"><strong>Asal/status:</strong> diberikan pengguna; metadata primer dari publisher. Lookup tambahan S2 mendapat 429; bukan mismatch atau bukti tidak terindeks.</li>
+<li data-block-id="2e714e3f368d"><strong>URL primer/cakupan:</strong> <a href="https://thescipub.com/jcs/jcssp.2026.2444.2455">halaman publisher</a>, <a href="https://thescipub.com/jcs/jcssp.2026.2444.2455.pdf">full PDF</a> dibaca.</li>
+<li data-block-id="c30ecbfe86f6"><strong>Locator dan bukti:</strong> PDF pp. 4–6 / halaman 2447–2449: 52.084 <strong>judul</strong> proposal 2020–2024, menjadi 44.429 setelah deduplikasi; TF-IDF, LSA, IndoBERT, cosine, Top-K 10. Ambang 0,60 adalah contextual warning, bukan ambang universal. Table 2: 99,98% Top-1 IndoBERT ≥ 0,60, <strong>bukan akurasi</strong>.</li>
+<li data-block-id="953f5fb693b2"><strong>Batas:</strong> PDF pp. 10–11 mengakui tidak ada ground truth novelty manual dan keterbatasan judul. Checkpoint/pooling serta batas numerik High/Medium tidak lengkap pada metode yang dibaca. Tidak memvalidasi abstrak Indonesia, ambang JTI, atau keputusan kebaruan otomatis.</li>
+</ul>
+<h3 data-block-id="a52e01321d5d" id="s2-idea-level-novelty-dan-distillation-rag">S2 — Idea-level novelty dan distillation/RAG</h3>
+<ul>
+<li data-block-id="06e9ce5624f0"><strong>Judul:</strong> <em>Harnessing Large Language Models for Scientific Novelty Detection</em>.</li>
+<li data-block-id="c42af26b6ac6"><strong>Penulis:</strong> Yan Liu; Zonglin Yang; Soujanya Poria; Thanh-Son Nguyen; Erik Cambria.</li>
+<li data-block-id="7f24aa2d513e"><strong>Tahun/jenis/venue:</strong> 2025; versi diperiksa berupa preprint arXiv 2505.24615. Venue final belum diverifikasi.</li>
+<li data-block-id="76e8872df5ae"><strong>Identitas:</strong> DOI <code>10.48550/arXiv.2505.24615</code>; S2 <code>c863800ec76e62fed66bbf5ec84ceae8642fd910</code>.</li>
+<li data-block-id="4a9fa2d3945f"><strong>Provider/status:</strong> S2; known-citation DOI/title matched.</li>
+<li data-block-id="1a0f712e19ed"><strong>URL primer/cakupan:</strong> <a href="https://arxiv.org/html/2505.24615">full HTML arXiv</a> dibaca; <a href="https://github.com/SenticNet/novelty-detection">repositori penulis</a> diperiksa sebagai pendukung, bukan bukti reproduksi.</li>
+<li data-block-id="b6f57975191e"><strong>Locator dan bukti:</strong> §§4.1–4.3 dan Appendix A: ide dari title+abstract, korpus diperluas melalui referensi, variasi rephrased/partial/incremental, retriever kontrastif, LLM comparison, lalu decision-tree classifier. Ini menjembatani perbandingan teks dengan overlap konseptual, bukan sekadar satu cosine.</li>
+<li data-block-id="c89a359ec378"><strong>Batas:</strong> §3 mengasumsikan ide paper novel dan variasi sintetis non-novel. §5 membatasi tanggal kandidat, tetapi tidak membuktikan split train/test kronologis. §7 membahas kesalahan generasi dan penyederhanaan label biner. Implementasi English BGE tidak membuktikan transfer Indonesia. Skor rubrik LLM bukan probabilitas novelty terkalibrasi.</li>
+</ul>
+<h3 data-block-id="f5f4ab68e968" id="s3-sentence-embeddings">S3 — Sentence embeddings</h3>
+<ul>
+<li data-block-id="3a6d7695c90f"><strong>Judul:</strong> <em>Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks</em>.</li>
+<li data-block-id="04e7021f05a4"><strong>Penulis:</strong> Nils Reimers; Iryna Gurevych.</li>
+<li data-block-id="06456fa2e787"><strong>Tahun/jenis/venue:</strong> 2019; prosiding EMNLP-IJCNLP, 3982–3992.</li>
+<li data-block-id="8f5287db7a5a"><strong>Identitas:</strong> DOI <code>10.18653/v1/D19-1410</code>; S2 <code>93d63ec754f29fa22572615320afe0521f7ec66d</code>.</li>
+<li data-block-id="72f44080d6f5"><strong>Provider/status:</strong> S2; discovery berhasil, lookup DOI tambahan mendapat 429.</li>
+<li data-block-id="a01c1be6d550"><strong>URL primer/cakupan:</strong> <a href="https://aclanthology.org/D19-1410.pdf">full PDF ACL</a> dibaca.</li>
+<li data-block-id="f192094311be"><strong>Locator dan bukti:</strong> §§3–4: siamese/triplet learning, pooling dan representasi yang mendukung pencarian cosine. Pooled BERT tanpa penyesuaian tidak otomatis menghasilkan kualitas semantic similarity yang baik pada eksperimen mereka.</li>
+<li data-block-id="a65fc4686c62"><strong>Batas:</strong> dasar pendekatan representasi, bukan validasi checkpoint Inggris untuk abstrak Indonesia. IndoBERT adalah backbone bahasa, sedangkan SBERT adalah pendekatan representasi/pelatihan; keduanya tidak selalu saling meniadakan.</li>
+</ul>
+<h3 data-block-id="9ad2d2600271" id="s4-aspect-based-similarity-generasi-awal">S4 — Aspect-based similarity generasi awal</h3>
+<ul>
+<li data-block-id="df47eca18039"><strong>Judul:</strong> <em>Aspect-based Document Similarity for Research Papers</em>.</li>
+<li data-block-id="1d42b4771c08"><strong>Penulis:</strong> Malte Ostendorff; Terry Ruas; Till Blume; Bela Gipp; Georg Rehm.</li>
+<li data-block-id="6d8815f12c3c"><strong>Tahun/jenis/venue:</strong> 2020; prosiding COLING, 6194–6206.</li>
+<li data-block-id="1114d8e60eff"><strong>Identitas:</strong> proceedings DOI <code>10.18653/v1/2020.coling-main.545</code>; S2 <code>5a0c9bbf0432dac8bd357a4aabf82b83a6c95524</code>. DOI preprint pada discovery S2: <code>10.48550/arXiv.2010.06395</code>, bukan DOI prosiding.</li>
+<li data-block-id="38e46ae5ad49"><strong>Provider/status:</strong> S2; discovery dan lookup DOI/title berhasil.</li>
+<li data-block-id="7ccdfdfba772"><strong>URL primer/cakupan:</strong> <a href="https://aclanthology.org/2020.coling-main.545.pdf">full PDF ACL</a> dibaca.</li>
+<li data-block-id="bf6f45c20450"><strong>Locator dan bukti:</strong> §§3.1–3.4, pp. 6196–6198: heading bagian tempat sitasi menjadi label aspek pasangan paper; pasangan judul+abstrak utuh menjadi input Transformer multilabel classification.</li>
+<li data-block-id="fd681e747e63"><strong>Batas:</strong> bukan ekstraksi tujuan/metode/data atau embedding potongan+cosine. §5, pp. 6201–6202: ambiguity, imbalance, informasi abstrak tidak lengkap; validasi pengguna lebih luas masih future work.</li>
+</ul>
+<h3 data-block-id="827e30dd5657" id="s5-pembanding-ilmiah-paling-dekat">S5 — Pembanding ilmiah paling dekat</h3>
+<ul>
+<li data-block-id="e317a699f6a8"><strong>Judul:</strong> <em>Specialized Document Embeddings for Aspect-based Similarity of Research Papers</em>.</li>
+<li data-block-id="b17f5c049124"><strong>Penulis:</strong> Malte Ostendorff; Till Blume; Terry Ruas; Bela Gipp; Georg Rehm.</li>
+<li data-block-id="7736cd37840d"><strong>Tahun/jenis/venue:</strong> 2022; prosiding ACM/IEEE Joint Conference on Digital Libraries (JCDL).</li>
+<li data-block-id="8f868037ef71"><strong>Identitas:</strong> DOI <code>10.1145/3529372.3530912</code>; S2 <code>bcc4e46f856e54948425dcfc41ece0cbd9bf932b</code>.</li>
+<li data-block-id="f539aff3e6fa"><strong>Provider/status:</strong> S2; discovery berhasil, lookup tambahan mendapat 429.</li>
+<li data-block-id="2313d0007294"><strong>URL primer/cakupan:</strong> <a href="https://dfki-nlp.github.io/publication/jcdl2022-ostendorff/">metadata institusi DFKI</a>, <a href="https://arxiv.org/pdf/2203.14541">full preprint v1</a> dibaca. Publisher ACM mendapat 403; bukan audit final publisher PDF.</li>
+<li data-block-id="84c0b4f5c3c6"><strong>Locator dan bukti:</strong> §§3–4, PDF pp. 3–5: judul+abstrak <strong>utuh</strong>, labels Papers with Code <strong>task, method, dataset</strong>, dan ruang embedding khusus per aspek. Varian terbaik Siamese-SciBERT memakai Multiple Negative Ranking Loss (footnote 5), bukan SBERT biasa tanpa pelatihan aspek. Per-aspect cosine retrieval membandingkan representasi specialized dengan generic.</li>
+<li data-block-id="5755af760313"><strong>Batas:</strong> Table 3 / §5: manfaat bergantung metode; tidak semua specialization memperbaiki retrieval. §7 tidak mengevaluasi agregasi mean/bobot, faithful supporting excerpts, atau manfaat bagi dosen. Tidak menyegmentasi abstrak seperti gagasan pengguna; perbedaan itu perlu diuji, bukan bukti keunggulan rancangan baru.</li>
+</ul>
+<h3 data-block-id="806541f92c5a" id="s6-benchmark-penilaian-novelty">S6 — Benchmark penilaian novelty</h3>
+<ul>
+<li data-block-id="23ccc67c78ce"><strong>Judul:</strong> <em>Is This Idea Novel? An Automated Benchmark for Judgment of Research Ideas</em>.</li>
+<li data-block-id="53a7b651ee97"><strong>Penulis:</strong> Tim Schopf; Michael Färber.</li>
+<li data-block-id="149538e3c463"><strong>Tahun/jenis/venue:</strong> 2026; prosiding LREC, 4716–4727.</li>
+<li data-block-id="b7b21de3f071"><strong>Identitas:</strong> proceedings DOI <code>10.63317/4c3gy3f7epnj</code>; S2 <code>081f042862d9de3fcea02605c144104cf79f45a8</code>. DOI preprint <code>10.48550/arXiv.2603.10303</code> dicatat terpisah.</li>
+<li data-block-id="6d927f1c6568"><strong>Provider/status:</strong> S2; discovery dan lookup proceedings DOI/title matched.</li>
+<li data-block-id="96dd9c9d35b7"><strong>URL primer/cakupan:</strong> <a href="https://aclanthology.org/2026.lrec-1.370/">metadata prosiding ACL</a>; full text dibaca pada <a href="https://arxiv.org/html/2603.10303">arXiv HTML v1</a>, bukan klaim perbandingan seluruh isi dengan versi prosiding.</li>
+<li data-block-id="bc4d40a05edd"><strong>Locator dan bukti:</strong> §4.1: RINoBench memuat 1.381 contoh dari peer-review ICLR 2022/2023; nilai reviewer disaring menurut kesepakatan, tetapi ide terstruktur dan rangkuman justifikasi diproses LLM. §4.2 memisahkan score metrics dan explanation metrics; beberapa penilaian penjelasan memakai LLM. §5 / Table 3: explanation alignment tidak menjamin score agreement.</li>
+<li data-block-id="893d2cb5fd18"><strong>Batas:</strong> bukan anotasi langsung dosen Indonesia; justifikasi bukan gold sepenuhnya untouched-human. Macro-F1 bukan accuracy. §7: English/ICLR, kultur penilaian reviewer, dan preprocessing LLM membatasi generalisasi. Tanggal Maret pada S2 terkait preprint; prosiding terbit Mei 2026.</li>
+</ul>
+<h3 data-block-id="1c1626c2a6df" id="s7-ekstraksi-aspek-untuk-summarization">S7 — Ekstraksi aspek untuk summarization</h3>
+<ul>
+<li data-block-id="4fcc82123b0c"><strong>Judul:</strong> <em>Leveraging peer-review aspects for extractive and abstractive summarization of scientific articles</em>.</li>
+<li data-block-id="878decd31284"><strong>Penulis:</strong> Muhammad Majadly; Mark Last.</li>
+<li data-block-id="b38d77966b95"><strong>Tahun/jenis/venue:</strong> volume 2025; artikel jurnal; <em>International Journal of Data Science and Analytics</em>, 19, 537–550. Terbit online 18 Oktober 2024.</li>
+<li data-block-id="d631b741d12c"><strong>Identitas:</strong> DOI <code>10.1007/s41060-024-00665-z</code>; S2 <code>f3836addd503736cd6805dc96f49b0647a511fde</code>.</li>
+<li data-block-id="2acf8c5c8456"><strong>Provider/status:</strong> S2; discovery bulk dan known-citation matched. Nama venue S2 “Analysis” dikoreksi menjadi “Analytics” berdasarkan publisher.</li>
+<li data-block-id="0b5d6ff4d267"><strong>URL primer/cakupan:</strong> <a href="https://link.springer.com/article/10.1007/s41060-024-00665-z">full publisher HTML Springer</a> dibaca.</li>
+<li data-block-id="c8cd247faf41"><strong>Locator dan bukti:</strong> §§3.1–3.2: contribution, motivation, experimental claims dari Abstract+Introduction; claims support dari Results. Auxiliary objective QA ada di §4, tetapi bukan kategori objective extraction yang diuji tersendiri. §5.1.2 menggunakan dua annotator; perbedaan diselesaikan mengikuti label penulis pertama.</li>
+<li data-block-id="7d9bb0ccea1b"><strong>Batas:</strong> §6.2.2: ratings kualitas ringkasan berasal dari ChatGPT, bukan user study dosen. Ukuran dataset berbeda antarabstract/introduction/methods; tidak dipilih satu jumlah seolah sudah direkonsiliasi. Precedent ekstraksi kalimat aspek dan summarization, bukan bukti langsung skema tujuan–metode–objek pada abstrak Indonesia.</li>
+</ul>
+<h3 data-block-id="4be5d26ed806" id="s8-pendukung-graph-informed-representation">S8 — Pendukung graph-informed representation</h3>
+<ul>
+<li data-block-id="28c922ac0bc0"><strong>Judul:</strong> <em>SPECTER: Document-level Representation Learning using Citation-informed Transformers</em>.</li>
+<li data-block-id="93a432134690"><strong>Penulis:</strong> Arman Cohan; Sergey Feldman; Iz Beltagy; Doug Downey; Daniel S. Weld.</li>
+<li data-block-id="d3897ca61ce7"><strong>Tahun/jenis/venue:</strong> 2020; prosiding ACL, 2270–2282.</li>
+<li data-block-id="bd98b1b60c1e"><strong>Identitas:</strong> proceedings DOI <code>10.18653/v1/2020.acl-main.207</code>; S2 <code>a3e4ceb42cbcd2c807d53aff90a8cb1f5ee3f031</code>; DOI preprint discovery <code>10.48550/arXiv.2004.07180</code> dicatat terpisah.</li>
+<li data-block-id="58b7a5ec26df"><strong>Provider/status:</strong> S2; discovery bulk dan known-citation matched.</li>
+<li data-block-id="1cd8495f2603"><strong>URL primer/cakupan:</strong> <a href="https://aclanthology.org/2020.acl-main.207.pdf">full PDF ACL</a> dibaca.</li>
+<li data-block-id="c37d2710f89a"><strong>Locator dan bukti:</strong> §§2.2–2.5: citation-informed training; inference hanya memerlukan title+abstract.</li>
+<li data-block-id="bfb239494ee3"><strong>Batas:</strong> scholarly relatedness bukan novelty. Ini pendukung representasi, bukan alasan mewajibkan graph/API S2 di aplikasi atau komponen inti yang sudah disepakati.</li>
+</ul>
+<h3 data-block-id="28d3f2ba263e" id="s9-pendukung-interpretasi-skor">S9 — Pendukung interpretasi skor</h3>
+<ul>
+<li data-block-id="2473f4abc3f6"><strong>Judul:</strong> <em>On Calibration of Modern Neural Networks</em>.</li>
+<li data-block-id="d30fbad3fd8b"><strong>Penulis:</strong> Chuan Guo; Geoff Pleiss; Yu Sun; Kilian Q. Weinberger.</li>
+<li data-block-id="c990ee31af3c"><strong>Tahun/jenis/venue:</strong> 2017; prosiding ICML, PMLR 70, 1321–1330.</li>
+<li data-block-id="3e81e4db3926"><strong>Identitas:</strong> S2 <code>d65ce2b8300541414bfe51d03906fca72e93523c</code>; DOI preprint <code>10.48550/arXiv.1706.04599</code>. DOI prosiding tidak dinyatakan karena belum diverifikasi.</li>
+<li data-block-id="d56be6569f82"><strong>Provider/status:</strong> S2; discovery dan known-citation matched.</li>
+<li data-block-id="4f1bee2ce56d"><strong>URL primer/cakupan:</strong> <a href="https://proceedings.mlr.press/v70/guo17a.html">halaman PMLR</a>, <a href="https://proceedings.mlr.press/v70/guo17a/guo17a.pdf">full PDF</a> dibaca.</li>
+<li data-block-id="f1d5977e9ae1"><strong>Locator dan bukti:</strong> §§2, 4–5: held-out calibration dan temperature scaling pada logits classifier.</li>
+<li data-block-id="a1921f0ca367"><strong>Batas:</strong> bukan cara langsung mengubah cosine atau rubrik LLM menjadi probabilitas kebaruan. Kalibrasi tidak diwajibkan menjadi kontribusi utama.</li>
+</ul>
+<h2 data-block-id="8280c779c374" id="koreksi-metadata">Koreksi metadata</h2>
+<ul>
+<li data-block-id="eea197b19b8d"><strong>S4 dan S8:</strong> DOI preprint dalam discovery berbeda dari DOI prosiding; keduanya tidak dipertukarkan.</li>
+<li data-block-id="3a093d59a083"><strong>S5:</strong> identitas JCDL diverifikasi melalui metadata institusi, metode melalui preprint; akses final publisher terhalang 403.</li>
+<li data-block-id="d36e2e1e9a8b"><strong>S6:</strong> pisahkan preprint Maret 2026 dan prosiding Mei 2026 beserta DOI masing-masing. Metode dibaca dari arXiv v1.</li>
+<li data-block-id="01ad40a92f94"><strong>S7:</strong> tahun online 2024 dan volume 2025 sama-sama dicatat. Nama jurnal yang mengikuti publisher adalah <em>Analytics</em>, bukan <em>Analysis</em> pada S2.</li>
+<li data-block-id="f3044a81eeb8"><strong>S1/S3/S5:</strong> 429 pada lookup tambahan tidak menghapus bukti publisher/discovery yang sudah tersedia dan tidak berarti citation mismatch.</li>
+</ul>
+<h2 data-block-id="14954edfeafb" id="batas-bukti">Batas bukti</h2>
+<ol>
+<li data-block-id="2695692fc341">Penelusuran memakai satu penyedia bibliografi dan query terarah. Tidak ada klaim exhaustive coverage, ranking dampak berdasarkan sitasi, atau kebaruan global karena tidak menemukan padanan.</li>
+<li data-block-id="17163a277a8d">Cross-index verification dan retraction checks tidak dilakukan dalam kebijakan S2-only; statusnya <strong>tidak dilakukan</strong>, bukan passed. Tidak ada panggilan API Crossref/OpenAlex. DOI publisher dibaca sebagai sumber primer, bukan melalui API bibliografi lain.</li>
+<li data-block-id="af2c65e4d751">Pembacaan awal reader atas <code>/abs/2505.24615</code> secara tidak terduga memakai arXiv API. Insiden dilaporkan dan tidak diulangi; pembacaan berikutnya melalui HTML/PDF asli. Karena itu tidak diklaim bahwa semua transport sepanjang sesi hanya S2.</li>
+<li data-block-id="900b58d3420d">Raw respons sesi tersedia saat perencanaan sebagai <code>artifact://1</code>, <code>artifact://6</code>, <code>artifact://16</code>, <code>artifact://22</code>, <code>artifact://27</code>; detail kajian pada <code>agent://BaseEvidence</code>, <code>agent://AspectPapers</code>, <code>agent://AspectExtraction</code>. Ini artefak sesi, bukan arsip data mentah/PDF workspace; ketersediaannya dapat berakhir. Rekaman di atas sengaja mandiri dan tidak merekonstruksi respons seolah raw asli.</li>
+<li data-block-id="38af30b93d14">Pada penelusuran 5 November 2026, tidak dilakukan scraping JIP, eksperimen model, pengumpulan anotasi dosen, atau validasi kebutuhan lokal. Catatan ini bukan status pengumpulan data terkini. Hasil studi bahasa Inggris, judul proposal, dan benchmark sintetis tidak langsung berlaku untuk abstrak Indonesia.</li>
+<li data-block-id="af47bd1494fc">Sintesis lintas paper adalah argumentasi penelitian, bukan hasil eksperimen baru. Dugaan kontribusi ditandai <code>[INFERENCE]</code> pada notes konseptual; ketidaktersediaan aspek dalam abstrak tidak membuktikan ketiadaan aspek dalam penelitian aslinya.</li>
+</ol>
+</div>
+  </article></main>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/sidebar.js" defer></script>
+</body>
+</html>

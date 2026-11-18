@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 945" role="img" aria-labelledby="title desc">
+<title id="title">Alur sistem kemiripan abstrak</title><desc id="desc">Abstrak skripsi atau tugas akhir JTI disiapkan, dilabeli, dan disimpan sebagai embedding. Satu abstrak input memakai pengolahan yang sama. Retrieval abstrak utuh mengambil kandidat, lalu reranking masalah dan objek, kategori, dan highlight pasangan. Dosen tetap mengambil keputusan.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10" fill="currentColor"/></marker></defs>
+<g fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)">
+<path d="M215 120 V150"/>
+<path d="M215 220 V250"/>
+<path d="M410 285 H450"/>
+<path d="M645 120 V250"/>
+<path d="M645 320 V350"/>
+<path d="M645 420 V450"/>
+<path d="M645 520 V550"/>
+<path d="M645 630 V660"/>
+<path d="M645 730 V760"/>
+<path d="M645 830 V860"/>
+</g><g fill="none" stroke="currentColor" stroke-width="1.2">
+<rect x="20" y="50" width="390" height="70" rx="9"/>
+<rect x="20" y="150" width="390" height="70" rx="9"/>
+<rect x="20" y="250" width="390" height="70" rx="9"/>
+<rect x="450" y="50" width="390" height="70" rx="9"/>
+<rect x="450" y="250" width="390" height="70" rx="9"/>
+<rect x="450" y="350" width="390" height="70" rx="9"/>
+<rect x="450" y="450" width="390" height="70" rx="9"/>
+<rect x="450" y="550" width="390" height="80" rx="9"/>
+<rect x="450" y="660" width="390" height="70" rx="9"/>
+<rect x="450" y="760" width="390" height="70" rx="9"/>
+<rect x="450" y="860" width="390" height="60" rx="9"/>
+<rect x="20" y="400" width="390" height="150" rx="9"/>
+<rect x="20" y="610" width="390" height="90" rx="9"/>
+</g><g fill="currentColor" font-family="sans-serif" font-size="16" text-anchor="middle">
+<text x="215.0" y="79.0">Abstrak skripsi/TA JTI Polinema</text>
+<text x="215.0" y="101.0">Identitas, judul, dan sumber</text>
+<text x="215.0" y="179.0">Bersihkan teks dan deduplikasi</text>
+<text x="215.0" y="201.0">Pertahankan teks asli</text>
+<text x="215.0" y="279.0">Label aspek + embedding korpus</text>
+<text x="215.0" y="301.0">Simpan indeks dan versi pengolahan</text>
+<text x="645.0" y="79.0">Dosen menempelkan satu abstrak</text>
+<text x="645.0" y="101.0">Validasi, label aspek, dan embedding</text>
+<text x="645.0" y="279.0">Retrieval dari abstrak utuh</text>
+<text x="645.0" y="301.0">Ambil top-N; keluarkan dokumen sendiri</text>
+<text x="645.0" y="379.0">Gunakan representasi aspek</text>
+<text x="645.0" y="401.0">Masalah dan objek input serta kandidat</text>
+<text x="645.0" y="479.0">Reranking masalah dan objek</text>
+<text x="645.0" y="501.0">Metode hanya informasi pendamping</text>
+<text x="645.0" y="573.0">Kategori kandidat dan aspek</text>
+<text x="645.0" y="595.0">Tinggi / sedang / rendah</text>
+<text x="645.0" y="617.0">Aspek hilang: tidak teridentifikasi</text>
+<text x="645.0" y="689.0">Highlight pasangan kata atau frasa</text>
+<text x="645.0" y="711.0">Makna sepadan, posisi pada teks asli</text>
+<text x="645.0" y="789.0">Tampilkan top-K dan kedua abstrak</text>
+<text x="645.0" y="811.0">Kategori, sumber, metode, highlight</text>
+<text x="645.0" y="895.0">Dosen memeriksa dan memutuskan</text>
+<text x="215.0" y="436.0">Penilaian manusia</text>
+<text x="215.0" y="458.0">• Ketepatan label dan retrieval</text>
+<text x="215.0" y="480.0">• Perbandingan urutan A/B/C</text>
+<text x="215.0" y="502.0">• Kalibrasi dan ketepatan kategori</text>
+<text x="215.0" y="524.0">• Ketepatan pasangan highlight</text>
+<text x="215.0" y="638.0">Kalibrasi ≠ evaluasi akhir</text>
+<text x="215.0" y="660.0">Warna bukan vonis kebaruan</text>
+<text x="215.0" y="682.0">Hasil relatif terhadap korpus</text>
+</g></svg>

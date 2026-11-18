@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#edf1f3">
+  <title>Data, Pengembangan, dan Pengujian Kemiripan Abstrak | Notes</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../assets/style.css?v=57c0004e345f">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="sidebar-toggle" type="button" aria-label="Close sidebar" title="Close sidebar" aria-controls="notes-sidebar" aria-expanded="true" data-sidebar-toggle hidden>
+        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <a class="topbar__brand" href="../index.html">Notes</a>
+      <nav class="topbar__nav" aria-label="Navigasi utama">
+        <a class="topbar__nav-link" href="../laporan-skripsi.html">Laporan Skripsi</a>
+      </nav>
+    </header>
+    <div class="site-layout">
+      <aside id="notes-sidebar" class="sidebar">
+    <nav class="sidebar__nav" aria-label="Notes">
+      <div class="sidebar__groups">
+      <details class="sidebar__group" open>
+        <summary><a href="../category/landasan.html">Landasan<span class="sidebar__count">3</span></a><span class="sidebar__group-control" aria-hidden="true"></span></summary>
+        <ul>
+          <li><a href="01-inti-penelitian-5w1h.html">Inti Penelitian Kemiripan Abstrak Berbasis Aspek dan Risiko Kebaruan</a></li>
+          <li><a href="02-latar-belakang-dan-urgensi.html">Mengapa Sistem Kemiripan Abstrak Perlu Dikembangkan?</a></li>
+          <li><a href="04-landasan-konseptual-dan-posisi-penelitian.html">Cara Kerja Sistem Kemiripan Abstrak dan Peran Model</a></li>
+        </ul>
+      </details>
+      <details class="sidebar__group" open>
+        <summary><a href="../category/literatur.html">Literatur<span class="sidebar__count">3</span></a><span class="sidebar__group-control" aria-hidden="true"></span></summary>
+        <ul>
+          <li><a href="03-matriks-literatur-landasan.html">Penelitian Terdahulu, Metode, dan Posisi Pengembangan</a></li>
+          <li><a href="06-sistem-pembanding-dan-pembeda.html">Sistem dan Pendekatan yang Sudah Ada serta Pembeda yang Dituju</a></li>
+          <li><a href="07-jejak-penelusuran.html">Keputusan, Status Penelitian, dan Jejak Literatur</a></li>
+        </ul>
+      </details>
+      <details class="sidebar__group" open>
+        <summary><a href="../category/metode.html">Metode<span class="sidebar__count">1</span></a><span class="sidebar__group-control" aria-hidden="true"></span></summary>
+        <ul>
+          <li><a href="05-rancangan-metode-data-dan-evaluasi.html" aria-current="page">Data, Pengembangan, dan Pengujian Kemiripan Abstrak</a></li>
+        </ul>
+      </details></div>
+    </nav>
+  </aside>
+      <div class="workspace">
+        <main class="main"><article class="note">
+    <h1 data-block-id="2398fcef8392">Data, Pengembangan, dan Pengujian Kemiripan Abstrak</h1>
+    <div class="note-meta"><a href="../category/metode.html">Metode</a><span aria-hidden="true">·</span><time datetime="2026-11-06">2026-11-06</time></div>
+    <details class="toc">
+    <summary>Contents</summary>
+    <ul><li class="toc__level-2"><a href="#data-yang-diperlukan">Data yang diperlukan</a></li><li class="toc__level-2"><a href="#persiapan-data-dan-prapemrosesan">Persiapan data dan prapemrosesan</a></li><li class="toc__level-2"><a href="#pedoman-anotasi">Pedoman anotasi</a></li><li class="toc__level-2"><a href="#pilot-dan-pembagian-data">Pilot dan pembagian data</a></li><li class="toc__level-2"><a href="#retrieval-dan-tiga-kondisi-pengurutan">Retrieval dan tiga kondisi pengurutan</a></li><li class="toc__level-3"><a href="#pool-penilaian">Pool penilaian</a></li><li class="toc__level-2"><a href="#kategori-dan-highlight">Kategori dan highlight</a></li><li class="toc__level-2"><a href="#pengujian-yang-dibedakan">Pengujian yang dibedakan</a></li><li class="toc__level-2"><a href="#status-dan-keputusan-yang-masih-terbuka">Status dan keputusan yang masih terbuka</a></li>
+    </ul>
+  </details>
+    <div class="prose"><blockquote data-block-id="334998d28703">
+<p data-block-id="8c6678f2747a"><strong>Status:</strong> Rancangan data dan pengujian; belum ada hasil evaluasi model.</p>
+</blockquote>
+<p data-block-id="9ceb38715120"><strong>Yang diuji bukan hanya apakah sistem menghasilkan urutan, tetapi apakah urutan, kategori, dan highlight sesuai penilaian ahli.</strong> Tiga kondisi A, B, dan C pada <a href="04-landasan-konseptual-dan-posisi-penelitian.html#kandidat-pembanding">cara kerja sistem</a> menjadi pembanding utama.</p>
+<h2 data-block-id="9c7717044f0b" id="data-yang-diperlukan">Data yang diperlukan</h2>
+<ul>
+<li data-block-id="5ccf0b25884d"><strong>Korpus pembanding:</strong> abstrak skripsi/TA JTI Polinema berbahasa Indonesia, beserta identitas dokumen, judul, dan sumbernya. Jurnal dipakai sebagai literatur landasan, bukan bagian korpus dalam lingkup ini.</li>
+<li data-block-id="aa8c15fcba52"><strong>Kueri:</strong> abstrak yang dipakai untuk mencari penelitian terkait. Asal kueri, izin penggunaan, dan jumlah akhirnya perlu ditetapkan melalui pilot.</li>
+<li data-block-id="f32d367c40b5"><strong>Anotasi aspek:</strong> label masalah, objek, dan metode pada setiap kalimat. Satu kalimat boleh memiliki beberapa label; semua label nol berarti lain.</li>
+<li data-block-id="e3c3c48b4797"><strong>Penilaian pasangan:</strong> relevansi kandidat, kategori kemiripan, serta ketepatan pasangan kata atau frasa. Ini bukan label bahwa penelitian pasti baru atau tidak baru.</li>
+</ul>
+<p data-block-id="55c750115b65">Folder data dan alat review lokal sudah tersedia. Data tersebut masih perlu ditinjau sebelum menjadi korpus eksperimen. Keberadaan berkas tidak membuktikan bahwa semua abstrak lengkap, sesuai lingkup, atau sudah disetujui penilai.</p>
+<h2 data-block-id="56ea4d365924" id="persiapan-data-dan-prapemrosesan">Persiapan data dan prapemrosesan</h2>
+<ol>
+<li data-block-id="27cf0c96a219">Periksa sumber, izin penggunaan, kelengkapan abstrak, dan kesesuaian lingkup.</li>
+<li data-block-id="b130004b0d1d">Simpan teks asli. Rapikan salinan untuk pengolahan, dengan posisi teks yang tetap dapat ditelusuri ke sumber.</li>
+<li data-block-id="da0e68839c06">Periksa duplikat dan versi karya yang sama sebelum membagi data.</li>
+<li data-block-id="4fc8967a906f">Pisahkan data berdasarkan dokumen atau kelompok karya, bukan acak per kalimat.</li>
+<li data-block-id="e145587c7005">Siapkan kalimat untuk anotasi dan periksa hasil pemisahannya.</li>
+</ol>
+<p data-block-id="c139fe026fb8">Pembersihan ringan menjadi acuan. Setup awal menyediakan varian <strong>P0 pembersihan minimal, P1 lowercase, P2 penyaringan tanda baca, dan P3 penghapusan stopword</strong>. P2 dan P3 masing-masing berangkat dari P1; P3 bukan kelanjutan P2.</p>
+<p data-block-id="68d7f70bc21d">Varian prapemrosesan dibandingkan pada data pengembangan dengan encoder dan kandidat tetap. Penghapusan stopword bukan aturan wajib untuk Transformer karena dapat menghilangkan informasi penting, termasuk negasi. Stemming belum dimasukkan. Aturan terpilih harus sama untuk kueri dan korpus.</p>
+<p data-block-id="6eb232dec119">Judul disimpan sebagai metadata; masukan pencarian adalah abstrak. Teks yang melewati batas token model tidak boleh dipotong diam-diam. Simpan versi data, model, aturan pengolahan, dan cara penggabungan representasi agar eksperimen dapat diulang.</p>
+<h2 data-block-id="ef182006cbcf" id="pedoman-anotasi">Pedoman anotasi</h2>
+<p data-block-id="6c95cd3d70c6">Classifier menggunakan tiga keluaran biner: <strong>masalah, objek, dan metode</strong>. Label hanya diberikan berdasarkan informasi yang tertulis. Semua keluaran nol berarti lain, bukan data yang belum dinilai.</p>
+<p data-block-id="f7067f3a2130">Pedoman perlu memuat definisi setiap aspek, contoh kalimat satu label dan multi-label, serta cara menangani kalimat yang tidak jelas. Label kosong berarti belum dianotasi; jangan menyamakannya dengan nol.</p>
+<p data-block-id="4d59aff65229">Anotasi manusia diperlukan untuk pelatihan dan evaluasi. Keluaran LLM tidak otomatis menjadi label ahli. LLM few-shot pernah dibahas sebagai alternatif, tetapi bukan bagian alur tetap saat ini.</p>
+<h2 data-block-id="aab59eb6608c" id="pilot-dan-pembagian-data">Pilot dan pembagian data</h2>
+<p data-block-id="f7bcf4510946">Pilot dipakai untuk memeriksa pedoman, waktu penilaian, keseimbangan label, kesepakatan penilai, dan beban kerja. Target <strong>60 kueri uji</strong> pada catatan awal tetap merupakan usulan kerja, bukan jumlah data yang sudah siap atau jaminan kecukupan.</p>
+<table>
+<thead>
+<tr>
+<th>Bagian data</th>
+<th>Penggunaan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Latih</td>
+<td>Melatih classifier</td>
+</tr>
+<tr>
+<td>Pengembangan/validasi</td>
+<td>Memilih model, prapemrosesan, bobot penggabungan, dan ambang kategori</td>
+</tr>
+<tr>
+<td>Uji</td>
+<td>Mengukur hasil akhir setelah pengaturan dikunci</td>
+</tr>
+</tbody>
+</table>
+<p data-block-id="3a1496b659e5">Dokumen dan versi karya yang sama tidak boleh melintasi pembagian data. Data pengembangan untuk kalibrasi harus terpisah dari data uji ahli. Kueri, duplikat, dan versi karya yang sama juga dikeluarkan dari kandidat pembanding.</p>
+<p data-block-id="c90d996bab27">Data pilot yang sudah dipakai memperbaiki pedoman atau pengaturan tidak digunakan kembali sebagai data uji akhir. Jika memakai abstrak penelitian selesai sebagai kueri, laporkan bahwa kondisinya berbeda dari usulan nyata. Batas waktu korpus juga perlu dicatat agar karya yang terbit sesudah kueri tidak dianggap penelitian terdahulu.</p>
+<p data-block-id="0c814f38bd3b">Anotasi kalimat dan penilaian pasangan dihitung terpisah. Contoh beban: 60 kueri dengan 20 kandidat unik menghasilkan 1.200 pasangan, belum termasuk penilai kedua. Rencana awal penilaian kedua pada sebagian pasangan perlu ditetapkan melalui pilot; pilih secara terencana, bukan hanya kasus mudah. Laporkan kesepakatan dan cara menyelesaikan perbedaan penilaian.</p>
+<h2 data-block-id="cb24d25eea1e" id="retrieval-dan-tiga-kondisi-pengurutan">Retrieval dan tiga kondisi pengurutan</h2>
+<p data-block-id="4fdd43f675bf">Retrieval awal mengambil <strong>top-N kandidat dari embedding abstrak utuh</strong>. Kandidat dan encoder yang sama dipakai untuk:</p>
+<ul>
+<li data-block-id="751423f335c2"><strong>A:</strong> urutan abstrak utuh.</li>
+<li data-block-id="7e0b9ba3b2fa"><strong>B:</strong> pengurutan berdasarkan satu embedding gabungan kalimat masalah–objek.</li>
+<li data-block-id="55ce70fdfac3"><strong>C:</strong> pengurutan berdasarkan skor masalah dan objek yang dihitung terpisah, lalu digabung.</li>
+</ul>
+<p data-block-id="ae2fb33243c3">A dibanding B untuk melihat pengaruh pemilihan teks aspek. B dibanding C untuk melihat pengaruh pemisahan representasi. Bobot C ditentukan dari data pengembangan. TF-IDF dapat menjadi pembanding tambahan.</p>
+<p data-block-id="e6f8ae57451c">Bedakan <strong>N kandidat retrieval</strong> dari <strong>K hasil yang ditampilkan atau dinilai pada peringkat teratas</strong>. Nilai akhirnya belum dipilih; rentang 10–20 pada rancangan awal bukan ketentuan tetap.</p>
+<h3 data-block-id="7417ee1199ab" id="pool-penilaian">Pool penilaian</h3>
+<p data-block-id="640b1e7f1730">Pool penilaian adalah kumpulan pasangan yang dinilai manusia. Pool ini dapat diperluas melalui pencarian lebih dalam dan retriever berbeda seperti TF-IDF, lalu dideduplikasi. Pool yang lebih luas tidak mengubah kandidat tetap untuk perbandingan A, B, dan C.</p>
+<p data-block-id="5e5887262b8c">Recall terhadap dokumen relevan yang diketahui dalam pool bukan recall seluruh korpus. Dokumen yang belum dinilai juga bukan otomatis tidak relevan. Laporkan cakupan penilaian, aturan dokumen belum dinilai, dan penanganan kueri tanpa kandidat relevan.</p>
+<h2 data-block-id="eb9b345aab85" id="kategori-dan-highlight">Kategori dan highlight</h2>
+<p data-block-id="3ce6cf75aded">Ambang <strong>tinggi, sedang, dan rendah</strong> ditentukan dari penilaian data pengembangan. Peringkat pertama tidak otomatis berkategori tinggi. Kategori diberikan untuk kandidat dan aspek yang dapat dibandingkan; skor angka tidak ditampilkan kepada pengguna.</p>
+<p data-block-id="74729af3a9ec">Aspek yang tidak ditemukan ditandai <strong>tidak teridentifikasi</strong>, bukan rendah. Jika satu aspek tersedia, gunakan aspek itu dengan keterangan keterbatasan. Jika kedua aspek pada input tidak teridentifikasi, gunakan urutan abstrak utuh dan tampilkan pemberitahuan.</p>
+<p data-block-id="756b8def2479">Highlight menandai <strong>pasangan kata atau frasa yang sepadan maknanya pada kedua abstrak</strong>. Posisi awal dan akhir harus merujuk teks asli. Label kalimat tidak otomatis menjadi pasangan highlight. Jika tidak ada pasangan, teks tetap ditampilkan tanpa highlight.</p>
+<h2 data-block-id="1cf05dd3713c" id="pengujian-yang-dibedakan">Pengujian yang dibedakan</h2>
+<table>
+<thead>
+<tr>
+<th>Bagian</th>
+<th>Yang diperiksa</th>
+<th>Ukuran yang direncanakan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pelabelan aspek</td>
+<td>Ketepatan masalah, objek, dan metode</td>
+<td>Precision, recall, F1 per label, serta micro-F1 dan macro-F1</td>
+</tr>
+<tr>
+<td>Retrieval awal</td>
+<td>Kandidat relevan ditemukan sebelum reranking</td>
+<td>Recall terhadap pool yang dinilai, dengan batas cakupannya</td>
+</tr>
+<tr>
+<td>Pengurutan — utama</td>
+<td>Perbandingan urutan A, B, dan C</td>
+<td>nDCG@K, Precision@K, dan MRR; rubrik serta K ditetapkan sebelum uji akhir</td>
+</tr>
+<tr>
+<td>Kategori</td>
+<td>Kesesuaian tinggi, sedang, rendah dengan ahli</td>
+<td>Accuracy, macro-F1, dan kesepakatan berbobot</td>
+</tr>
+<tr>
+<td>Highlight</td>
+<td>Pasangan yang ditandai benar-benar sepadan</td>
+<td>Precision pasangan menurut ahli; recall jika pasangan acuan dianotasi</td>
+</tr>
+<tr>
+<td>Operasional</td>
+<td>Waktu pengolahan pada perangkat lokal</td>
+<td>Waktu pencarian dan pembangunan indeks</td>
+</tr>
+</tbody>
+</table>
+<p data-block-id="f11e2365eec4">Ketepatan highlight tidak sama dengan kualitas ranking atau manfaat bagi pengguna. Pemisahan penilaian dan penjelasan juga dibahas dalam <a href="https://arxiv.org/html/2603.10303">RINoBench, S6, §§4–5</a>, tetapi tugas dan labelnya tidak langsung dipindahkan ke konteks JTI.</p>
+<p data-block-id="bacf2768d38d">Uji fungsi juga mencakup input kosong, aspek hilang, duplikat, teks panjang, tidak adanya kategori tinggi, dan highlight yang tidak ditemukan. Jika semua hasil rendah, kandidat terdekat tetap ditampilkan. Klaim penghematan waktu atau perbaikan keputusan dosen memerlukan uji pengguna tersendiri.</p>
+<h2 data-block-id="21940d8dcd87" id="status-dan-keputusan-yang-masih-terbuka">Status dan keputusan yang masih terbuka</h2>
+<p data-block-id="fff6f04a2c43"><strong>Tersedia:</strong> alat persiapan data, deduplikasi dan pembagian kelompok dokumen, template/validasi anotasi, prapemrosesan P0–P3, CLI, notebook, serta alat review lokal.</p>
+<p data-block-id="9bcf62bd861c"><strong>Belum tersedia:</strong> classifier, embedding/index, pengurutan A/B/C, kalibrasi kategori, alignment pasangan, dan evaluasi ahli.</p>
+<p data-block-id="5f4ed638b2cd">Yang masih perlu ditetapkan: korpus hasil kurasi dan izin penggunaannya, asal serta jumlah kueri, pedoman dan penilai, model, pembagian data final, N dan K, bobot C, ambang kategori, serta cara alignment. Urutan pengerjaan adalah <strong>data dan anotasi → model/pipeline → evaluasi → halaman web sistem kemiripan</strong>. Situs notes bukan aplikasi pengujian kemiripan.</p>
+<p data-block-id="47471dfbb8cf">Lanjut: <a href="06-sistem-pembanding-dan-pembeda.html">sistem pembanding dan pembeda yang dituju</a> · <a href="07-jejak-penelusuran.html">jejak penelusuran</a>.</p>
+</div>
+  </article></main>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/sidebar.js" defer></script>
+</body>
+</html>
