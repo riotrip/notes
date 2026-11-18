@@ -1,0 +1,19 @@
+name: Rebuild thesis
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify thesis
+        env:
+          GH_TOKEN: ${{ secrets.THESIS_TOKEN }}
+        run: |
+          gh api --method POST repos/riotrip/thesis/dispatches \
+            -f event_type=content-updated
