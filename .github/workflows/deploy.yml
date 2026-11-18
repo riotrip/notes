@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Build and notify thesis
 
 on:
   push:
@@ -7,11 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   build:
@@ -34,23 +30,16 @@ jobs:
         run: pnpm test
       - name: Build site
         run: pnpm build
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Publish dist branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
+          publish_branch: dist
+      - name: Notify thesis
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.THESIS_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/riotrip/thesis/dispatches \
+            -d '{"event_type":"content-updated"}'
