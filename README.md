@@ -39,7 +39,7 @@ The index, category, and tag listings have an in-browser search for the current 
 
 On desktop, use the top-left hamburger to hide or reopen the sidebar. On mobile, the sidebar starts closed and opens as a full-screen panel below the topbar; the same hamburger closes it. Collapse each category's note list independently. The index lists category filters with note counts, and note tags link to their tag pages. Page and asset links are relative to keep working under `/notes/`.
 
-All page and section backgrounds use white through the shared `--paper` and `--surface` tokens; text, borders, and action buttons retain their contrast colors.
+The visual style follows the restrained monochrome palette of `riotrip.github.io` (now `prayogo.is-a.dev`): white backgrounds, neutral gray borders, lightweight sans-serif headings, and quiet navigation. The shared tokens live in `assets/style.css`; no external fonts or decorative effects are required.
 
 Avoid `index.md`, `laporan-skripsi.md`, and `category/<slug>.md` or `tag/<slug>.md` when those pages are generated; those paths are reserved and the build stops rather than overwriting a note.
 

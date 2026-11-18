@@ -72,7 +72,7 @@ function renderShell({ title, outputPath, notes, content, stylesheetVersion }) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#edf1f3">
+  <meta name="theme-color" content="#ffffff">
   <title>${escapeHtml(outputPath === 'index.html' ? 'Notes' : outputPath === 'laporan-skripsi.html' ? title : `${title} | Notes`)}</title>
   <link rel="icon" type="image/svg+xml" href="${escapeHtml(favicon)}">
   <link rel="stylesheet" href="${escapeHtml(stylesheet)}">
