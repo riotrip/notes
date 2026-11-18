@@ -5,104 +5,104 @@ date: 2026-11-06
 
 # Data, Pengembangan, dan Pengujian Kemiripan Abstrak
 
-> **Status:** Usulan rancangan berdasarkan fondasi penelitian yang tersedia; bukan protokol final atau laporan hasil eksperimen.
+> **Status:** Rancangan data dan pengujian; belum ada hasil evaluasi model.
 
-**Yang diuji bukan hanya apakah aplikasi menghasilkan skor, tetapi apakah pengurutan ulang kandidatnya tepat dan penjelasannya didukung teks.** Revisi keputusan: **9 November 2026**. [RQ1–RQ3 dan pembanding M1–M4](04-landasan-konseptual-dan-posisi-penelitian.md) menjadi acuan; akses data, anotator, persetujuan pembimbing, dan jadwal tetap terbuka.
+**Yang diuji bukan hanya apakah sistem menghasilkan urutan, tetapi apakah urutan, kategori, dan highlight sesuai penilaian ahli.** Tiga kondisi A, B, dan C pada [cara kerja sistem](04-landasan-konseptual-dan-posisi-penelitian.md#kandidat-pembanding) menjadi pembanding utama.
 
 ## Data yang diperlukan
 
-- **Korpus pembanding:** abstrak skripsi dan jurnal beserta judul, identitas karya, tautan asal, dan label sumber. JIP adalah calon sumber jurnal; sumber skripsi dan izin akses belum dipastikan. Data belum dinyatakan sudah terkumpul.
-- **Kueri:** target **60 kueri evaluasi akhir setelah pilot**, berupa judul dan abstrak; bukan 60 kueri yang sudah tersedia. Asal dan izin penggunaan belum diputuskan. Kueri, duplikat, dan versi karya yang sama harus dikeluarkan dari korpus pembanding.
-- **Anotasi aspek:** penandaan kalimat masalah, objek, dan metode untuk classifier **multi-label**. Satu kalimat boleh memiliki beberapa label sekaligus; metode hanya informasi, bukan komponen skor akhir. Pedoman untuk kalimat tanpa label inti masih perlu ditetapkan.
-- **Penilaian relevansi:** penilaian apakah pasangan abstrak memang memiliki tumpang tindih substansi, termasuk pada aspek mana. Ini berbeda dari label bahwa usulan pasti tidak baru.
+- **Korpus pembanding:** abstrak skripsi/TA JTI Polinema berbahasa Indonesia, beserta identitas dokumen, judul, dan sumbernya. Jurnal dipakai sebagai literatur landasan, bukan bagian korpus dalam lingkup ini.
+- **Kueri:** abstrak yang dipakai untuk mencari penelitian terkait. Asal kueri, izin penggunaan, dan jumlah akhirnya perlu ditetapkan melalui pilot.
+- **Anotasi aspek:** label masalah, objek, dan metode pada setiap kalimat. Satu kalimat boleh memiliki beberapa label; semua label nol berarti lain.
+- **Penilaian pasangan:** relevansi kandidat, kategori kemiripan, serta ketepatan pasangan kata atau frasa. Ini bukan label bahwa penelitian pasti baru atau tidak baru.
 
-Keluaran LLM tidak otomatis menjadi label ahli. Akses dosen atau anotator, pedoman penilaian, dan penanganan perbedaan pendapat belum dipastikan. Penelitian berbahasa Inggris dan benchmark sintetis pada [literatur landasan](03-matriks-literatur-landasan.md) tidak menggantikan validasi lokal.
+Folder data dan alat review lokal sudah tersedia. Data tersebut masih perlu ditinjau sebelum menjadi korpus eksperimen. Keberadaan berkas tidak membuktikan bahwa semua abstrak lengkap, sesuai lingkup, atau sudah disetujui penilai.
 
-## Pelabelan: keputusan dan cadangan
+## Persiapan data dan prapemrosesan
 
-Pilihan utama adalah **classifier berbasis encoder dengan keluaran multi-label**. Kategori terbatas dan eksperimen terkontrol menjadi alasan pemilihan; ini keputusan rancangan, bukan klaim bahwa classifier pasti paling akurat. **RQ1 tetap diukur**, tetapi pengembangan classifier bukan kontribusi utama. Kesalahan label dapat memengaruhi kedua pembanding berbasis aspek.
+1. Periksa sumber, izin penggunaan, kelengkapan abstrak, dan kesesuaian lingkup.
+2. Simpan teks asli. Rapikan salinan untuk pengolahan, dengan posisi teks yang tetap dapat ditelusuri ke sumber.
+3. Periksa duplikat dan versi karya yang sama sebelum membagi data.
+4. Pisahkan data berdasarkan dokumen atau kelompok karya, bukan acak per kalimat.
+5. Siapkan kalimat untuk anotasi dan periksa hasil pemisahannya.
 
-| Pilihan | Kelebihan | Kekurangan dan posisi |
-|---|---|---|
-| Rule-based | Transparan, murah, tidak membutuhkan data latih | Rentan variasi bahasa dan kalimat multi-aspek; bukan metode utama |
-| Classifier multi-label | Sesuai kategori tetap; dapat dilatih dan dievaluasi secara terkontrol | Membutuhkan anotasi manusia untuk pelatihan dan evaluasi; pilihan utama bersyarat akses anotator |
-| LLM few-shot | Tidak memerlukan pelatihan classifier; dapat diarahkan dengan contoh | Sensitif terhadap prompt/model, biaya dan privasi perlu diperiksa; tetap membutuhkan gold set manusia |
+Pembersihan ringan menjadi acuan. Setup awal menyediakan varian **P0 pembersihan minimal, P1 lowercase, P2 penyaringan tanda baca, dan P3 penghapusan stopword**. P2 dan P3 masing-masing berangkat dari P1; P3 bukan kelanjutan P2.
 
-**Rencana cadangan:** jika anotasi pelatihan classifier tidak tersedia atau tidak mencukupi, gunakan **LLM few-shot untuk pelabelan**, dievaluasi pada gold set manusia yang lebih kecil. Ini bukan pengganti penjelasan template. Contoh few-shot harus terpisah dari data evaluasi; model, prompt, dan contoh dicatat agar eksperimen dapat ditelusuri. Ukuran gold set kecil ditentukan lewat pilot dan membatasi kekuatan kesimpulan.
+Varian prapemrosesan dibandingkan pada data pengembangan dengan encoder dan kandidat tetap. Penghapusan stopword bukan aturan wajib untuk Transformer karena dapat menghilangkan informasi penting, termasuk negasi. Stemming belum dimasukkan. Aturan terpilih harus sama untuk kueri dan korpus.
 
-**Jika tidak ada penilai manusia sama sekali, cadangan ini belum dapat dievaluasi.** Jangan mengganti gold set dengan keluaran LLM atau menyatakan rencana tetap layak tanpa penilai.
+Judul disimpan sebagai metadata; masukan pencarian adalah abstrak. Teks yang melewati batas token model tidak boleh dipotong diam-diam. Simpan versi data, model, aturan pengolahan, dan cara penggabungan representasi agar eksperimen dapat diulang.
 
-## Pilot, target kueri, dan beban anotasi
+## Pedoman anotasi
 
-Pilot dilakukan sebelum evaluasi akhir untuk menguji pedoman, waktu per penilaian, keseimbangan label aspek, kesepakatan penilai, dan ukuran pool yang realistis. Data pilot tidak digunakan kembali sebagai data uji akhir setelah dipakai mengubah pedoman, prompt, model, atau ambang.
+Classifier menggunakan tiga keluaran biner: **masalah, objek, dan metode**. Label hanya diberikan berdasarkan informasi yang tertulis. Semua keluaran nol berarti lain, bukan data yang belum dinilai.
 
-Target kerja adalah **60 kueri uji setelah pilot**. Tabel berikut adalah skenario perencanaan dengan asumsi **20 dokumen unik dinilai per kueri**, bukan jaminan kecukupan statistik atau batas pool.
+Pedoman perlu memuat definisi setiap aspek, contoh kalimat satu label dan multi-label, serta cara menangani kalimat yang tidak jelas. Label kosong berarti belum dianotasi; jangan menyamakannya dengan nol.
 
-| Skenario | Kueri | Pasangan unik | Kelebihan | Kekurangan |
-|---|---:|---:|---|---|
-| Kecil | 30 | 600 | Beban lebih ringan untuk eksperimen awal | Lebih sensitif terhadap pemilihan kueri; bukan target akhir yang dipilih |
-| Menengah — target | 60 | 1.200 | Kompromi keragaman kueri dan beban | Tetap membutuhkan pilot dan pengelolaan anotasi |
-| Besar | 100 | 2.000 | Berpotensi memberi estimasi lebih stabil jika kueri representatif | Beban lebih tinggi; mutu anotasi tetap menentukan |
+Anotasi manusia diperlukan untuk pelatihan dan evaluasi. Keluaran LLM tidak otomatis menjadi label ahli. LLM few-shot pernah dibahas sebagai alternatif, tetapi bukan bagian alur tetap saat ini.
 
-Rencana beban: semua pasangan dinilai satu orang; **subset sekitar 20–30% dinilai secara independen oleh penilai kedua** untuk mengukur kesepakatan. Proporsi dan cara memilih subset ditetapkan melalui pilot, bukan hanya memilih kasus mudah. Pada skenario 1.200 pasangan, ini berarti 240–360 penilaian tambahan, sehingga total 1.440–1.560 penilaian sebelum adjudikasi. Jika seluruh pasangan dinilai dua orang, totalnya 2.400. Ketentuan ini rancangan kerja, bukan klaim bahwa satu proporsi selalu cukup.
+## Pilot dan pembagian data
 
-**Anotasi kalimat classifier dihitung terpisah.** Ilustrasi: bila satu abstrak berisi 6–8 kalimat, 100 abstrak menghasilkan sekitar 600–800 kalimat untuk dianotasi, bukan bukti jumlah itu sudah cukup melatih classifier. Satu kalimat dapat memperoleh beberapa label. Pisahkan data latih, validasi, dan uji berdasarkan karya, bukan acak per kalimat, agar kalimat dari abstrak yang sama tidak melintasi split.
+Pilot dipakai untuk memeriksa pedoman, waktu penilaian, keseimbangan label, kesepakatan penilai, dan beban kerja. Target **60 kueri uji** pada catatan awal tetap merupakan usulan kerja, bukan jumlah data yang sudah siap atau jaminan kecukupan.
 
-### Asal kueri yang masih terbuka
+| Bagian data | Penggunaan |
+|---|---|
+| Latih | Melatih classifier |
+| Pengembangan/validasi | Memilih model, prapemrosesan, bobot penggabungan, dan ambang kategori |
+| Uji | Mengukur hasil akhir setelah pengaturan dikunci |
 
-- **Abstrak asli skripsi/jurnal yang ditahan dari korpus:** tidak membutuhkan penulisan ulang dan sumbernya dapat ditelusuri, tetapi abstrak penelitian selesai tidak identik dengan usulan nyata.
-- **Usulan nyata:** lebih dekat dengan penggunaan dosen, tetapi membutuhkan akses, izin, dan perlindungan data. Jika ditulis ulang, simpan versi asli dan alasan perubahan; hasilnya tidak boleh dianggap mewakili usulan alami tanpa batasan.
+Dokumen dan versi karya yang sama tidak boleh melintasi pembagian data. Data pengembangan untuk kalibrasi harus terpisah dari data uji ahli. Kueri, duplikat, dan versi karya yang sama juga dikeluarkan dari kandidat pembanding.
 
-**Rekomendasi, belum keputusan pengguna:** mulai dengan abstrak asli yang ditahan dari korpus, tanpa penulisan ulang. Pilihan asal 60 kueri belum dikunci dan harus menjadi keputusan pilot. Apa pun pilihannya, kueri, duplikat, dan versi karya yang sama tidak boleh menjadi kandidat pembanding. Kueri uji juga tidak digunakan untuk melatih atau menyetel pelabelan.
+Data pilot yang sudah dipakai memperbaiki pedoman atau pengaturan tidak digunakan kembali sebagai data uji akhir. Jika memakai abstrak penelitian selesai sebagai kueri, laporkan bahwa kondisinya berbeda dari usulan nyata. Batas waktu korpus juga perlu dicatat agar karya yang terbit sesudah kueri tidak dianggap penelitian terdahulu.
 
-### Pool penilaian dan batas Recall@K
+Anotasi kalimat dan penilaian pasangan dihitung terpisah. Contoh beban: 60 kueri dengan 20 kandidat unik menghasilkan 1.200 pasangan, belum termasuk penilai kedua. Rencana awal penilaian kedua pada sebagian pasangan perlu ditetapkan melalui pilot; pilih secara terencana, bukan hanya kasus mudah. Laporkan kesepakatan dan cara menyelesaikan perbedaan penilaian.
 
-Pool penilaian tidak boleh hanya berisi kandidat top-10–20 dari retriever yang sama. Gabungkan kandidat dari pencarian lebih dalam, **misalnya top-50**, dan retriever berbeda seperti **TF-IDF**, lalu deduplikasi per kueri. Kedalaman dan komposisi final ditetapkan melalui pilot; pool yang lebih besar menaikkan jumlah pasangan di atas ilustrasi 1.200.
+## Retrieval dan tiga kondisi pengurutan
 
-Bedakan **pool penilaian** dengan **kandidat reranking**. M2–M4 mengurutkan kandidat yang sama; pool yang lebih luas membantu memeriksa relevansi yang terlewat oleh retrieval awal tanpa mengubah kandidat tiap pembanding.
+Retrieval awal mengambil **top-N kandidat dari embedding abstrak utuh**. Kandidat dan encoder yang sama dipakai untuk:
 
-Pooling tetap tidak menjamin semua dokumen relevan dalam korpus telah ditemukan. Recall@K dengan penyebut dokumen relevan yang diketahui dalam pool harus disebut **recall terhadap pool yang dinilai**, bukan recall lengkap seluruh korpus. Dokumen yang belum dinilai bukan otomatis tidak relevan. Jika penilaian hanya mencakup kandidat reranking, klaim terbatas pada kualitas urutan di dalam kandidat.
+- **A:** urutan abstrak utuh.
+- **B:** pengurutan berdasarkan satu embedding gabungan kalimat masalah–objek.
+- **C:** pengurutan berdasarkan skor masalah dan objek yang dihitung terpisah, lalu digabung.
 
-Untuk nDCG@K, tetapkan rubrik relevansi bertingkat sejak pilot, nilai kandidat pembanding secara sepadan, dan laporkan cakupan penilaian serta aturan dokumen belum dinilai. Nilai K, perlakuan kueri tanpa dokumen relevan, dan prosedur pengukuran kesepakatan belum final.
+A dibanding B untuk melihat pengaruh pemilihan teks aspek. B dibanding C untuk melihat pengaruh pemisahan representasi. Bobot C ditentukan dari data pengembangan. TF-IDF dapat menjadi pembanding tambahan.
 
-## Pengambilan data dan prapemrosesan
+Bedakan **N kandidat retrieval** dari **K hasil yang ditampilkan atau dinilai pada peringkat teratas**. Nilai akhirnya belum dipilih; rentang 10–20 pada rancangan awal bukan ketentuan tetap.
 
-Usulannya: ambil abstrak dan metadata dari sumber yang diizinkan, simpan tautan asal, rapikan artefak teks, lalu periksa duplikasi. Pertahankan teks asli agar kutipan hasil analisis dapat diperiksa. Jangan menghapus bagian yang membawa makna tujuan atau metode hanya untuk membuat teks lebih seragam.
+### Pool penilaian
 
-Input utama adalah copas judul dan abstrak, bukan PDF. Prapemrosesan korpus harus mempertahankan keterlacakan kalimat ke teks asli; tidak menyatakan teks yang gagal diperoleh sebagai abstrak yang telah dianalisis.
+Pool penilaian adalah kumpulan pasangan yang dinilai manusia. Pool ini dapat diperluas melalui pencarian lebih dalam dan retriever berbeda seperti TF-IDF, lalu dideduplikasi. Pool yang lebih luas tidak mengubah kandidat tetap untuk perbandingan A, B, dan C.
 
-Duplikat atau versi karya yang sama perlu ditangani sebelum membentuk pembagian evaluasi. Penelitian juga perlu menetapkan batas waktu korpus agar karya yang terbit setelah usulan tidak diperlakukan sebagai penelitian terdahulu. Ini usulan pengendalian kebocoran, bukan pembagian data yang sudah dijalankan.
+Recall terhadap dokumen relevan yang diketahui dalam pool bukan recall seluruh korpus. Dokumen yang belum dinilai juga bukan otomatis tidak relevan. Laporkan cakupan penilaian, aturan dokumen belum dinilai, dan penanganan kueri tanpa kandidat relevan.
 
-## Pengembangan yang diusulkan
+## Kategori dan highlight
 
-Bangun alur indeks embedding abstrak utuh, input judul + abstrak, retrieval awal sekitar 10–20 kandidat, pelabelan multi-label, **reranking masalah–objek**, penetapan tingkat, serta penjelasan dan kesimpulan berbasis **template dengan kutipan sumber**. [Diagram alur](04-landasan-konseptual-dan-posisi-penelitian.md#alur-sistem-yang-diselaraskan) menjadi acuan. Tidak diperlukan LLM generatif untuk penjelasan.
+Ambang **tinggi, sedang, dan rendah** ditentukan dari penilaian data pengembangan. Peringkat pertama tidak otomatis berkategori tinggi. Kategori diberikan untuk kandidat dan aspek yang dapat dibandingkan; skor angka tidak ditampilkan kepada pengguna.
 
-Pembanding: **M1 TF-IDF** sebagai baseline murah; tiga pembanding terkontrol adalah **M2 embedding abstrak utuh**, **M3 embedding gabungan teks masalah+objek**, dan **M4 embedding masalah dan objek terpisah lalu agregasi skor**. M2–M4 memakai kandidat dan encoder yang sama; M3/M4 memakai hasil pelabelan yang sama. M2 vs M3 menguji pemilihan aspek; M3 vs M4 menguji pemisahan representasi. Metode bukan komponen tersendiri dalam skor akhir M3/M4, tetapi kalimat multi-label masih dapat mengandung informasi metode.
+Aspek yang tidak ditemukan ditandai **tidak teridentifikasi**, bukan rendah. Jika satu aspek tersedia, gunakan aspek itu dengan keterangan keterbatasan. Jika kedua aspek pada input tidak teridentifikasi, gunakan urutan abstrak utuh dan tampilkan pemberitahuan.
 
-Evaluasi retrieval awal dipisahkan dari reranking. Checkpoint, konfigurasi pelatihan classifier, dan agregasi skor M4 belum dipilih. Bobot dan ambang tidak ditentukan dari data uji. Jika bukti masalah atau objek tidak memadai, tampilkan **bukti tidak cukup**; template tidak boleh mengarang informasi atau menyimpulkan kebaruan.
+Highlight menandai **pasangan kata atau frasa yang sepadan maknanya pada kedua abstrak**. Posisi awal dan akhir harus merujuk teks asli. Label kalimat tidak otomatis menjadi pasangan highlight. Jika tidak ada pasangan, teks tetap ditampilkan tanpa highlight.
 
 ## Pengujian yang dibedakan
 
-Berikut rancangan pengujian yang diusulkan, bukan metrik atau protokol final.
-
-| Bagian | Yang diperiksa | Bukti yang diperlukan |
+| Bagian | Yang diperiksa | Ukuran yang direncanakan |
 |---|---|---|
-| Fungsi aplikasi | Input teks terbaca, dokumen pembanding dan label sumber benar, highlight kembali ke teks asli, bukti tidak cukup dibedakan dari kemiripan rendah | Skenario penggunaan dan pemeriksaan hasil terhadap teks asli |
-| Pelabelan aspek — RQ1 | Kalimat masalah, objek, dan metode dilabeli dengan benar; informasi yang tidak tersedia tidak dikarang | Anotasi acuan; precision, recall, dan F1 setelah unit serta aturan kecocokan ditetapkan |
-| Retrieval awal — diagnostik pipeline | Kandidat relevan masuk sebelum reranking | Recall@K relatif terhadap pool yang diperluas; bukan klaim recall seluruh korpus bila penilaian tidak menyeluruh |
-| Pengurutan akhir — RQ2 utama | Urutan kandidat sesuai relevansi masalah dan objek | nDCG@K dengan rubrik bertingkat dan kandidat sepadan; K final setelah pilot |
-| Tingkat kemiripan | Merah/oranye/hijau sesuai kemiripan substansi tinggi/sedang/rendah | Rubrik manusia, kalibrasi ambang, dan evaluasi pada data terpisah; bukan label kebaruan otomatis |
-| Ketepatan penjelasan — RQ3 | Kutipan benar-benar ada dan mendukung persamaan atau perbedaan yang dinyatakan | Pemeriksaan sumber dan rubrik penilai; tidak cukup hanya menilai penjelasan terdengar masuk akal |
-| Manfaat bagi dosen — RQ3 | Laporan membantu memahami perbandingan dalam tugas pemeriksaan usulan | Tugas pengguna dan umpan balik dosen; kepuasan tidak disamakan dengan ketepatan keputusan akademik |
+| Pelabelan aspek | Ketepatan masalah, objek, dan metode | Precision, recall, F1 per label, serta micro-F1 dan macro-F1 |
+| Retrieval awal | Kandidat relevan ditemukan sebelum reranking | Recall terhadap pool yang dinilai, dengan batas cakupannya |
+| Pengurutan — utama | Perbandingan urutan A, B, dan C | nDCG@K, Precision@K, dan MRR; rubrik serta K ditetapkan sebelum uji akhir |
+| Kategori | Kesesuaian tinggi, sedang, rendah dengan ahli | Accuracy, macro-F1, dan kesepakatan berbobot |
+| Highlight | Pasangan yang ditandai benar-benar sepadan | Precision pasangan menurut ahli; recall jika pasangan acuan dianotasi |
+| Operasional | Waktu pengolahan pada perangkat lokal | Waktu pencarian dan pembangunan indeks |
 
-Pemisahan evaluasi skor dan penjelasan mempunyai landasan pada [RINoBench, S6, §§4–5](https://arxiv.org/html/2603.10303). Bentuk tugas dan labelnya tidak langsung dipindahkan ke konteks JTI.
+Ketepatan highlight tidak sama dengan kualitas ranking atau manfaat bagi pengguna. Pemisahan penilaian dan penjelasan juga dibahas dalam [RINoBench, S6, §§4–5](https://arxiv.org/html/2603.10303), tetapi tugas dan labelnya tidak langsung dipindahkan ke konteks JTI.
 
-Penilaian manusia dipakai untuk **retrieval, pelabelan, kalibrasi tingkat kemiripan, dan ketepatan penjelasan**. Pisahkan data pengembangan/kalibrasi dari evaluasi akhir; jangan memilih ambang atau bobot berdasarkan data uji. Cegah karya duplikat atau versinya melintasi pembagian data.
+Uji fungsi juga mencakup input kosong, aspek hilang, duplikat, teks panjang, tidak adanya kategori tinggi, dan highlight yang tidak ditemukan. Jika semua hasil rendah, kandidat terdekat tetap ditampilkan. Klaim penghematan waktu atau perbaikan keputusan dosen memerlukan uji pengguna tersendiri.
 
-Laporkan cakupan korpus dan kegagalan, termasuk status bukti tidak cukup. **Skor kemiripan bukan probabilitas kebaruan.** Warna menunjukkan kemiripan substansi, bukan vonis risiko atau kelayakan usulan. Jangan meminjam ambang cosine studi lain tanpa validasi.
+## Status dan keputusan yang masih terbuka
 
-## Prasyarat yang belum ditetapkan
+**Tersedia:** alat persiapan data, deduplikasi dan pembagian kelompok dokumen, template/validasi anotasi, prapemrosesan P0–P3, CLI, notebook, serta alat review lokal.
 
-Sumber skripsi dan izin akses; asal 60 kueri; definisi operasional masalah–objek–metode dan aturan kalimat tanpa label; akses penilai; pedoman gold set; ukuran anotasi classifier; model dan checkpoint; pembagian data; kedalaman pool; K final; agregasi M4; ambang warna; posisi hasil bukti tidak cukup; jadwal; dan persetujuan pembimbing. Judul kerja baru belum menggantikan judul proposal yang mungkin sudah terdaftar. Target kueri dan classifier adalah keputusan rancangan bersyarat kelayakan, bukan klaim data atau eksperimen sudah tersedia.
+**Belum tersedia:** classifier, embedding/index, pengurutan A/B/C, kalibrasi kategori, alignment pasangan, dan evaluasi ahli.
+
+Yang masih perlu ditetapkan: korpus hasil kurasi dan izin penggunaannya, asal serta jumlah kueri, pedoman dan penilai, model, pembagian data final, N dan K, bobot C, ambang kategori, serta cara alignment. Urutan pengerjaan adalah **data dan anotasi → model/pipeline → evaluasi → halaman web sistem kemiripan**. Situs notes bukan aplikasi pengujian kemiripan.
 
 Lanjut: [sistem pembanding dan pembeda yang dituju](06-sistem-pembanding-dan-pembeda.md) · [jejak penelusuran](07-jejak-penelusuran.md).

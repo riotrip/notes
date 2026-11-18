@@ -11,6 +11,8 @@ Navigasi: [inti penelitian](01-inti-penelitian-5w1h.md) · [cara kerja sistem](0
 
 Literatur berikut mendasari tiga pekerjaan: **mencari penelitian terkait, membandingkan aspek penelitian, dan menjelaskan bukti kesamaan**. Metode tiap sumber tidak disalin menjadi satu paket wajib. S5 paling dekat dengan perbandingan berbasis aspek; S1 memberi konteks Indonesia; S2 dan S6 membantu membedakan kemiripan dari penilaian kebaruan.
 
+Untuk alur saat ini, literatur memberi dasar pemilihan metode, bukan keputusan pengaturan akhirnya. **Masukan satu abstrak, korpus JTI, label masalah–objek–metode, kondisi A/B/C, dan metode sebagai informasi pendamping** adalah keputusan rancangan penelitian. Model, bobot, dan ambang tetap perlu dipilih melalui data pengembangan.
+
 ## Landasan utama
 
 Literatur berikut mencakup artikel jurnal, prosiding, dan preprint; tidak seluruhnya merupakan jurnal. Urutan menunjukkan kedekatan terhadap pertanyaan penelitian berbasis aspek, bukan peringkat kualitas atau jumlah sitasi. ID S1–S9 mengikuti ledger.
@@ -36,11 +38,11 @@ Dua sumber ini memperluas landasan, bukan komponen sistem atau kontribusi yang s
 
 ## Apa yang belum dibuktikan
 
-Tidak satu pun sumber yang ditelaah secara langsung membuktikan keseluruhan rangkaian **ekstraksi tujuan–metode–objek pada abstrak Indonesia → SBERT biasa perpotongan → rata-rata/bobot → penjelasan berbukti → manfaat untuk dosen JTI**. Ini celah bukti pada himpunan sumber tersebut, **bukan bukti global bahwa kombinasi itu belum pernah diteliti**.
+Tidak satu pun sumber yang ditelaah secara langsung membuktikan seluruh alur **pelabelan masalah–objek–metode pada abstrak Indonesia → retrieval abstrak utuh → reranking masalah–objek → kategori dan highlight pasangan → penggunaan oleh dosen JTI**. Ini batas bukti pada sumber yang ditelaah, bukan klaim bahwa belum ada penelitian serupa di dunia.
 
-S5 adalah pembanding terdekat yang perlu dihadapi, bukan sekadar kutipan untuk mengklaim keunggulan. S5 melatih ruang aspek dari input utuh; rancangan manual pengguna mengekstrak bagian aspek terlebih dahulu. Perbedaan mekanisme tersebut perlu dipertahankan saat membangun argumentasi dan kelak saat menentukan pembandingan.
+S5 menjadi pembanding terdekat. S5 melatih ruang aspek dari input utuh, sedangkan rancangan skripsi memilih kalimat aspek sebelum membandingkannya. Perbedaan ini perlu diuji, bukan dianggap sebagai keunggulan.
 
-[INFERENCE] Calon kontribusi yang layak diuji adalah kualitas perbandingan dan keterlacakan penjelasan pada konteks abstrak Indonesia. Penggabungan model, antarmuka, dan dataset lokal saja tidak membuktikan kebaruan ilmiah. Tidak diasumsikan M4 lebih baik daripada M3 atau semua pendekatan aspect-aware lebih baik daripada holistic.
+Kontribusi yang dituju adalah bukti perbandingan **A: abstrak utuh, B: gabungan masalah–objek, dan C: aspek terpisah**, dengan kandidat dan encoder yang sama. Pelabelan, kategori, dan highlight diuji sebagai komponen pendukung. Dataset lokal dan gabungan fitur saja tidak membuktikan kebaruan ilmiah.
 
 ## Referensi dan cakupan baca
 

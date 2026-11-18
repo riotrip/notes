@@ -9,7 +9,7 @@ date: 2026-11-06
 
 Navigasi: [inti penelitian](01-inti-penelitian-5w1h.md) · [penelitian terdahulu](03-matriks-literatur-landasan.md) · [jejak penelusuran](07-jejak-penelusuran.md).
 
-**Masalah yang dituju bukan sekadar mencari abstrak dengan kata-kata serupa, tetapi membantu dosen memahami apakah usulan mengulang substansi penelitian sebelumnya.** Perbandingan masalah dan objek beserta bukti teks diusulkan untuk memperjelas letak kesamaan; metode ditampilkan sebagai informasi, bukan penentu skor akhir. Manfaatnya masih perlu diuji; tidak diasumsikan bahwa skor per aspek selalu lebih baik.
+**Masalah yang dituju bukan sekadar mencari abstrak dengan kata-kata serupa, tetapi membantu dosen menemukan penelitian terkait dan memeriksa letak kesamaan substansinya.** Masalah dan objek dibandingkan; metode ditampilkan sebagai informasi pendamping. Manfaatnya masih perlu diuji, bukan diasumsikan selalu lebih baik daripada perbandingan abstrak utuh.
 
 ## Masalah ilmiah
 
@@ -31,9 +31,9 @@ Liu dkk. (ID sumber S2) berupaya bergerak dari textual similarity menuju overlap
 
 Penjelasan dapat terdengar meyakinkan tanpa menghasilkan penilaian kebaruan yang sesuai. RINoBench memisahkan evaluasi skor dan penjelasan; hasilnya menunjukkan bahwa keselarasan penjelasan tidak menjamin keselarasan skor novelty dengan penilaian sumber ([S6, §4.2 dan §5 / Table 3](https://arxiv.org/html/2603.10303)). Benchmark tersebut berasal dari review ICLR dan melibatkan pemrosesan LLM, bukan anotasi dosen Indonesia yang tidak tersentuh model.
 
-[INFERENCE] Penjelasan sistem perlu dapat diperiksa melalui teks sumber: kutipan harus benar-benar ada, merujuk penelitian yang tepat, dan mendukung persamaan atau perbedaan yang dinyatakan. Keberadaan kutipan saja belum membuktikan penjelasannya setia pada sumber. Ketepatan ini berbeda dari persepsi bahwa laporan mudah dipahami atau membantu.
+[INFERENCE] Bukti sistem perlu dapat diperiksa melalui teks sumber. Dalam rancangan ini, pasangan kata atau frasa yang ditandai harus benar-benar ada pada kedua abstrak dan sepadan maknanya. Keberadaan highlight saja belum membuktikan bahwa pasangannya tepat.
 
-Dengan demikian, penjelasan bukan sekadar pelengkap antarmuka. Kualitas isinya merupakan bagian dari objek penelitian; kegunaan untuk dosen merupakan pertanyaan lain yang juga memerlukan bukti.
+Ketepatan highlight berbeda dari kualitas urutan kandidat dan kemudahan penggunaan. Ketiganya tidak boleh dianggap sebagai hasil pengujian yang sama.
 
 ## Urgensi untuk konteks yang dituju
 
@@ -43,12 +43,12 @@ Sitorus & Madyatmadja memberi konteks penggunaan TF-IDF, LSA, dan IndoBERT untuk
 
 Dosen JTI Polinema adalah pengguna yang dituju. Belum ada bukti lokal mengenai jumlah proposal yang harus diperiksa, lama pemeriksaan, prevalensi duplikasi, atau frekuensi keputusan yang keliru. Klaim kebutuhan operasional tersebut tidak digunakan sebagai fakta latar belakang sebelum tersedia sumber yang sah.
 
-Korpus direncanakan mencakup abstrak skripsi dan jurnal dengan label sumber terpisah. JIP tetap calon sumber jurnal; sumber skripsi serta izin akses belum dipastikan. Korpus tidak otomatis mewakili seluruh skripsi JTI atau seluruh penelitian terdahulu. Literatur landasan tetap berasal dari berbagai penerbit melalui penelusuran S2; S2 bukan otomatis sumber retrieval runtime.
+Korpus pembanding dibatasi pada abstrak skripsi/TA JTI Polinema berbahasa Indonesia. Cakupan dan kelengkapannya perlu diperiksa; korpus tidak otomatis mewakili seluruh penelitian terdahulu. Jurnal tetap digunakan sebagai literatur landasan. Semantic Scholar membantu penelusuran literatur, bukan komponen wajib pencarian saat aplikasi berjalan.
 
 ## Manfaat yang dituju dan belum terbukti
 
 Manfaat yang dituju meliputi pemeriksaan overlap yang lebih mudah ditelusuri, pertimbangan risiko kebaruan yang lebih terinformasi, penghematan waktu, dan keterpakaian bagi dosen. **Belum ada hasil yang membuktikan penghematan waktu, ketepatan keputusan, atau penerimaan pengguna.** Akses ahli untuk anotasi dan penilaian juga belum dipastikan.
 
-Cakupan korpus yang terbatas, abstrak yang tidak lengkap, dan kesalahan ekstraksi dapat membatasi hasil. Aspek yang tidak ditemukan tidak boleh diperlakukan sebagai bukti bahwa usulan berbeda atau novel. Risiko kebaruan tetap indikasi relatif terhadap korpus, bukan vonis kelayakan akademik.
+Cakupan korpus yang terbatas, abstrak yang tidak lengkap, dan kesalahan pelabelan dapat membatasi hasil. Aspek yang tidak ditemukan tidak boleh dianggap rendah kemiripannya. Kemiripan tinggi tidak otomatis berarti tidak baru; kemiripan rendah tidak membuktikan kebaruan.
 
 [Posisi penelitian](04-landasan-konseptual-dan-posisi-penelitian.md) menguraikan calon kontribusi dan pertanyaan sementara untuk menguji manfaat tersebut tanpa menganggapnya sudah tercapai.

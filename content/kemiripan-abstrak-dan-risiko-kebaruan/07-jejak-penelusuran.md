@@ -3,15 +3,50 @@ category: Literatur
 date: 2026-11-06
 ---
 
-# Jejak Penelusuran dan Bukti Literatur
+# Keputusan, Status Penelitian, dan Jejak Literatur
 
-> **Status:** Catatan fondasi penelitian; bukan metodologi final atau laporan hasil eksperimen. Arah ini menggantikan penelitian deteksi teks AI.
+> **Status:** Keputusan dan status diselaraskan pada 18 November 2026. Rekaman literatur di bawah tetap mencatat penelusuran 5 November 2026, bukan penelusuran baru.
 
 Navigasi: [inti penelitian](01-inti-penelitian-5w1h.md) · [sistem pembanding](06-sistem-pembanding-dan-pembeda.md) · [matriks literatur](03-matriks-literatur-landasan.md).
 
+## Keputusan yang dipakai
+
+| Bagian | Keputusan |
+|---|---|
+| Masukan | Satu abstrak usulan berbahasa Indonesia |
+| Korpus | Abstrak skripsi/TA JTI Polinema; judul dan sumber menjadi metadata |
+| Aspek | Masalah, objek, metode; multi-label per kalimat, semua nol berarti lain |
+| Pencarian awal | Embedding abstrak utuh untuk mengambil top-N kandidat |
+| Pengurutan | A: abstrak utuh; B: gabungan masalah–objek; C: aspek terpisah |
+| Metode | Informasi pendamping, bukan skor aspek dalam reranking masalah–objek |
+| Keluaran | Top-K hasil, kategori kandidat dan aspek, metadata, serta highlight pasangan kata atau frasa |
+| Kategori | Tinggi/sedang/rendah dari ambang data pengembangan; bukan dari ranking |
+| Aspek hilang | Tidak teridentifikasi; gunakan aspek yang tersedia, atau urutan abstrak utuh jika kedua aspek input hilang |
+| Batas | Tidak memutuskan kebaruan, plagiarisme, redundansi, atau kelayakan usulan |
+
+Rancangan awal memakai judul+abstrak, korpus skripsi+jurnal, penjelasan template, dan nama pembanding M1–M4. Notes sekarang mengikuti lingkup PRD: satu abstrak, korpus JTI, highlight pasangan kata/frasa, dan kondisi utama A/B/C. TF-IDF tetap pembanding tambahan. LLM few-shot bukan bagian alur tetap.
+
+## Status pengerjaan
+
+- **Tersedia:** berkas data lokal, alat review, persiapan korpus, deduplikasi, pembagian kelompok dokumen, template/validasi anotasi, prapemrosesan P0–P3, CLI, dan notebook.
+- **Masih perlu ditinjau:** kelengkapan abstrak, kesesuaian lingkup, izin penggunaan, dan korpus hasil kurasi yang akan dipakai dalam eksperimen.
+- **Belum tersedia:** classifier, embedding/index, retrieval dan reranking A/B/C, kalibrasi kategori, alignment, serta evaluasi ahli.
+
+Dasar pembaruan status adalah README `abstract-modelling/` dan keberadaan berkas data lokal pada 18 November 2026. Ini bukan audit kualitas korpus atau pengujian model. Keterangan “korpus belum terkumpul” pada PRD lama tidak dipakai sebagai status terkini.
+
+## Hal yang masih terbuka
+
+Model dan checkpoint, pedoman serta penilai, asal dan jumlah kueri, pembagian data final, N kandidat, K hasil, bobot C, ambang kategori, dan cara alignment. Target awal 60 kueri perlu ditinjau melalui pilot, bukan dianggap jumlah final yang sudah siap.
+
+Urutan kerja: **data dan anotasi → model/pipeline → evaluasi → halaman web sistem kemiripan**. Penghematan waktu dan manfaat bagi dosen belum dibuktikan.
+
+## Cara membaca catatan literatur
+
+Bagian berikut mempertahankan rekaman sumber dan batas pembacaan sebelumnya. Istilah serta rencana lama di dalam catatan historis bukan keputusan alur saat ini.
+
 ## Cakupan dan tanggal
 
-Penelusuran terarah untuk memperkuat landasan kemiripan abstrak berbasis aspek, interpretasi tumpang tindih substansi, dan risiko kebaruan. Ini bukan tinjauan sistematis atau bukti bahwa kombinasi tertentu belum pernah diteliti. Literatur tidak dibatasi pada Polinema; Jurnal Informatika Polinema (JIP) hanya calon sumber dataset pada tahap berikutnya.
+Penelusuran terarah untuk memperkuat landasan kemiripan abstrak berbasis aspek, tumpang tindih substansi, dan risiko kebaruan. Ini bukan tinjauan sistematis atau bukti bahwa kombinasi tertentu belum pernah diteliti. Literatur tidak dibatasi pada Polinema. JIP pernah menjadi calon sumber data pada rancangan awal; korpus aktif kini dibatasi pada skripsi/TA JTI.
 
 Pengambilan melalui Semantic Scholar (S2) berlangsung pada **2026-11-05**; integrasi notes dilanjutkan **2026-11-06**. Tanggal tersebut membedakan pengambilan sumber dari penyusunan catatan, bukan tanggal publikasi paper. S2 adalah satu-satunya penyedia API bibliografi yang dipilih. Metadata dicocokkan dengan sumber primer; kecocokan metadata tidak membuktikan klaim ilmiah.
 
@@ -156,5 +191,5 @@ Semua rekaman di bawah berasal dari kajian pada 2026-11-05. **Artefak PDF lokal 
 2. Cross-index verification dan retraction checks tidak dilakukan dalam kebijakan S2-only; statusnya **tidak dilakukan**, bukan passed. Tidak ada panggilan API Crossref/OpenAlex. DOI publisher dibaca sebagai sumber primer, bukan melalui API bibliografi lain.
 3. Pembacaan awal reader atas `/abs/2505.24615` secara tidak terduga memakai arXiv API. Insiden dilaporkan dan tidak diulangi; pembacaan berikutnya melalui HTML/PDF asli. Karena itu tidak diklaim bahwa semua transport sepanjang sesi hanya S2.
 4. Raw respons sesi tersedia saat perencanaan sebagai `artifact://1`, `artifact://6`, `artifact://16`, `artifact://22`, `artifact://27`; detail kajian pada `agent://BaseEvidence`, `agent://AspectPapers`, `agent://AspectExtraction`. Ini artefak sesi, bukan arsip data mentah/PDF workspace; ketersediaannya dapat berakhir. Rekaman di atas sengaja mandiri dan tidak merekonstruksi respons seolah raw asli.
-5. Tidak dilakukan scraping JIP, eksperimen model, pengumpulan anotasi dosen, atau validasi kebutuhan lokal. Hasil studi bahasa Inggris, judul proposal, dan benchmark sintetis tidak langsung berlaku untuk abstrak Indonesia.
+5. Pada penelusuran 5 November 2026, tidak dilakukan scraping JIP, eksperimen model, pengumpulan anotasi dosen, atau validasi kebutuhan lokal. Catatan ini bukan status pengumpulan data terkini. Hasil studi bahasa Inggris, judul proposal, dan benchmark sintetis tidak langsung berlaku untuk abstrak Indonesia.
 6. Sintesis lintas paper adalah argumentasi penelitian, bukan hasil eksperimen baru. Dugaan kontribusi ditandai `[INFERENCE]` pada notes konseptual; ketidaktersediaan aspek dalam abstrak tidak membuktikan ketiadaan aspek dalam penelitian aslinya.

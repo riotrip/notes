@@ -5,11 +5,11 @@ date: 2026-11-06
 
 # Inti Penelitian Kemiripan Abstrak Berbasis Aspek dan Risiko Kebaruan
 
-> **Status:** Catatan fondasi penelitian; bukan metodologi final atau laporan hasil eksperimen. Arah ini menggantikan penelitian deteksi teks AI.
+> **Status:** Ringkasan arah penelitian; bukan laporan hasil eksperimen.
 
-**Revisi keputusan: 9 November 2026.** Fokus disepakati pada reranking masalah–objek. Judul tanpa “risiko kebaruan” masih usulan untuk dibahas dengan pembimbing; heading dan judul proposal belum diganti sebelum status persetujuannya jelas.
+**Penyelarasan: 18 November 2026.** Fokus penelitian adalah reranking masalah–objek. Judul proposal belum diganti sebelum persetujuan pembimbing jelas.
 
-**Tujuan skripsi ini adalah mengembangkan dan menguji sistem yang membantu dosen JTI Polinema membandingkan abstrak usulan dengan penelitian terdahulu berdasarkan masalah dan objeknya.** Metode dilabeli sebagai informasi, bukan penentu skor akhir. Sistem menunjukkan bagian yang serupa, bagian yang berbeda, dan kutipan pendukung agar dosen dapat mempertimbangkan risiko kebaruan. Sistem belum dibangun; kemiripan bukan vonis bahwa penelitian tidak baru.
+**Tujuan skripsi ini adalah mengembangkan dan menguji sistem yang membantu dosen JTI Polinema membandingkan abstrak usulan dengan penelitian terdahulu berdasarkan masalah dan objeknya.** Metode ditampilkan sebagai informasi pendamping. Sistem diarahkan untuk menunjukkan kategori kemiripan dan pasangan kata atau frasa yang dapat diperiksa dosen. Alat persiapan data sudah tersedia, tetapi pipeline kemiripan belum lengkap.
 
 Urutan baca: **1. Inti penelitian** · [2. Mengapa perlu dikembangkan](02-latar-belakang-dan-urgensi.md) · [3. Penelitian terdahulu dan metodenya](03-matriks-literatur-landasan.md) · [4. Cara kerja sistem](04-landasan-konseptual-dan-posisi-penelitian.md) · [5. Data dan pengujian](05-rancangan-metode-data-dan-evaluasi.md) · [6. Sistem pembanding](06-sistem-pembanding-dan-pembeda.md). [Jejak penelusuran](07-jejak-penelusuran.md) memuat rincian sumber.
 
@@ -33,17 +33,17 @@ Kemiripan konseptual juga berbeda dari kebaruan, dan penjelasan yang tampak masu
 
 ## Masukan, keluaran, dan penggunaan
 
-**Masukan utama:** judul dan abstrak usulan penelitian yang ditempel sebagai teks. PDF bukan lingkup input utama.
+**Masukan utama:** satu abstrak usulan berbahasa Indonesia yang ditempel sebagai teks. Judul menjadi metadata dokumen pembanding; PDF bukan masukan pencarian.
 
-**Keluaran yang dituju:** daftar penelitian diurutkan berdasarkan kemiripan masalah dan objek, dengan label sumber skripsi/jurnal, highlight, penjelasan, dan kesimpulan berbukti. Merah/oranye/hijau menyatakan kemiripan substansi tinggi/sedang/rendah; ambang harus dikalibrasi dari penilaian manusia. Metode tidak memengaruhi skor akhir, warna, atau urutan akhir.
+**Keluaran yang dituju:** daftar penelitian terkait beserta judul, sumber, kategori kemiripan kandidat dan aspek, metode sebagai informasi pendamping, serta kedua abstrak dengan highlight pasangan kata atau frasa. Merah/oranye/hijau menyatakan tinggi/sedang/rendah. Ambang ditentukan dari penilaian manusia, bukan urutan hasil. Skor angka tidak ditampilkan kepada pengguna.
 
-Jika masalah atau objek tidak cukup jelas untuk dinilai, tampilkan **bukti tidak cukup**, bukan hijau atau skor nol. Dosen memeriksa bukti dan mengambil keputusan; metode yang sama saja tidak menjadikan dua penelitian duplikat.
+Aspek yang tidak ditemukan diberi keterangan **tidak teridentifikasi**, bukan rendah. Jika satu aspek tersedia, sistem memakai aspek itu dengan keterangan keterbatasan. Jika masalah dan objek pada input sama-sama tidak teridentifikasi, sistem memakai urutan abstrak utuh dan memberi pemberitahuan.
 
-Nilai kemiripan bukan persentase kebaruan. Layout, stack, API, model, agregasi skor, dan ambang belum dipilih. [Alur dan diagram sistem](04-landasan-konseptual-dan-posisi-penelitian.md#alur-sistem-yang-diselaraskan) menjelaskan persiapan korpus dan tahapan penggunaan.
+Jika tidak ada hasil berkategori tinggi, kandidat terdekat tetap ditampilkan. Nilai kemiripan bukan persentase kebaruan. [Alur sistem](04-landasan-konseptual-dan-posisi-penelitian.md#alur-sistem-yang-diselaraskan) menjelaskan tahap pencarian dan perbandingannya.
 
 ## Batas sumber pembanding
 
-**Korpus pembanding direncanakan mencakup abstrak skripsi dan jurnal, dengan label sumber terpisah.** Jurnal Informatika Polinema (JIP) tetap calon sumber jurnal, bukan pembatas literatur landasan. Sumber skripsi, izin akses, dan jumlah data belum dipastikan; korpus tidak otomatis mewakili seluruh skripsi historis JTI.
+**Korpus dibatasi pada abstrak skripsi/TA JTI Polinema berbahasa Indonesia.** Jurnal tetap menjadi literatur landasan, bukan bagian korpus dalam lingkup ini. Data lokal tersedia untuk ditinjau; kelengkapan, izin penggunaan, dan cakupan korpus final masih perlu dipastikan.
 
 Kesimpulan sistem bersifat **corpus-relative**: hanya terhadap penelitian yang tersedia dan berhasil dibandingkan. Cakupan korpus serta informasi yang tidak tercantum dalam abstrak membatasi interpretasi risiko.
 
@@ -51,8 +51,8 @@ Semantic Scholar dipakai untuk pencarian dan pemeriksaan metadata literatur. Pen
 
 ## Posisi saat ini
 
-Tahap saat ini adalah penetapan fondasi, latar belakang, urgensi, dan calon kontribusi. Belum ada scraping dataset, implementasi aplikasi, eksperimen model, atau metodologi final.
+Alat persiapan data, prapemrosesan, template anotasi, dan review lokal sudah tersedia. Data masih perlu dikurasi sebelum menjadi korpus eksperimen. Classifier, embedding/index, reranking, kalibrasi, alignment, dan evaluasi ahli belum tersedia.
 
-[RQ1–RQ3 dan pembanding M1–M4](04-landasan-konseptual-dan-posisi-penelitian.md) diselaraskan: **RQ2 reranking menjadi fokus utama**, RQ1 mengukur classifier **multi-label**, dan RQ3 tentang manfaat pengguna tetap bersyarat akses dosen. Penjelasan dan kesimpulan memakai **template serta kutipan**, bukan LLM generatif.
+Tiga kondisi utama adalah **A: abstrak utuh, B: gabungan masalah–objek, dan C: aspek terpisah**. Ketiganya memakai kandidat dan encoder yang sama. Tujuannya menguji pengaruh pemilihan teks aspek dan pemisahan representasi, bukan membuktikan C pasti lebih baik.
 
-Target evaluasi adalah **60 kueri uji setelah pilot**, terpisah dari korpus dan anotasi pelatihan classifier. Tiga pembanding semantik memakai abstrak utuh, gabungan masalah+objek, serta representasi masalah dan objek terpisah; TF-IDF tetap baseline tambahan. Classifier memerlukan anotasi pelatihan dan evaluasi. Cadangannya LLM few-shot jika anotasi pelatihan tidak mencukupi, tetapi gold set manusia tetap wajib. [Rencana data dan pilot](05-rancangan-metode-data-dan-evaluasi.md) memuat beban penilaian, pooling, dan asal kueri yang belum diputuskan.
+Model dan pipeline dikerjakan lebih dahulu, kemudian evaluasi dan halaman web sistem kemiripan. [Rencana data dan pengujian](05-rancangan-metode-data-dan-evaluasi.md) memuat kebutuhan anotasi serta pilot; [keputusan dan status penelitian](07-jejak-penelusuran.md) memisahkan alur tetap dari hal yang masih terbuka.
