@@ -11,7 +11,7 @@ date: 2026-11-06
 
 **Tujuan skripsi ini adalah mengembangkan dan menguji sistem yang membantu dosen JTI Polinema membandingkan abstrak usulan dengan penelitian terdahulu berdasarkan masalah dan objeknya.** Metode ditampilkan sebagai informasi pendamping. Sistem diarahkan untuk menunjukkan kategori kemiripan dan pasangan kata atau frasa yang dapat diperiksa dosen. Alat persiapan data sudah tersedia, tetapi pipeline kemiripan belum lengkap.
 
-Urutan baca: **1. Inti penelitian** · [2. Mengapa perlu dikembangkan](02-latar-belakang-dan-urgensi.md) · [3. Penelitian terdahulu dan metodenya](03-matriks-literatur-landasan.md) · [4. Cara kerja sistem](04-landasan-konseptual-dan-posisi-penelitian.md) · [5. Data dan pengujian](05-rancangan-metode-data-dan-evaluasi.md) · [6. Sistem pembanding](06-sistem-pembanding-dan-pembeda.md). [Jejak penelusuran](07-jejak-penelusuran.md) memuat rincian sumber.
+Urutan baca: **1. Inti penelitian** · [2. Mengapa perlu dikembangkan](02-latar-belakang-dan-urgensi.md) · [3. Penelitian terdahulu dan metodenya](03-matriks-literatur-landasan.md) · [4. Cara kerja sistem](04-landasan-konseptual-dan-posisi-penelitian.md) · [5. Data dan pengujian](05-rancangan-metode-data-dan-evaluasi.md) · [6. Sistem pembanding](06-sistem-pembanding-dan-pembeda.md).
 
 ## Apa yang dikembangkan?
 
@@ -55,4 +55,4 @@ Alat persiapan data, prapemrosesan, template anotasi, dan review lokal sudah ter
 
 Tiga kondisi utama adalah **A: abstrak utuh, B: gabungan masalah–objek, dan C: aspek terpisah**. Ketiganya memakai kandidat dan encoder yang sama. Tujuannya menguji pengaruh pemilihan teks aspek dan pemisahan representasi, bukan membuktikan C pasti lebih baik.
 
-Model dan pipeline dikerjakan lebih dahulu, kemudian evaluasi dan halaman web sistem kemiripan. [Rencana data dan pengujian](05-rancangan-metode-data-dan-evaluasi.md) memuat kebutuhan anotasi serta pilot; [keputusan dan status penelitian](07-jejak-penelusuran.md) memisahkan alur tetap dari hal yang masih terbuka.
+Model dan pipeline dikerjakan lebih dahulu, kemudian evaluasi dan halaman web sistem kemiripan. [Rencana data dan pengujian](05-rancangan-metode-data-dan-evaluasi.md) memuat kebutuhan anotasi serta pilot.

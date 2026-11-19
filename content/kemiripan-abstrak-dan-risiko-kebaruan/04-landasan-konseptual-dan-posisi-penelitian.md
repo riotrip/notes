@@ -5,9 +5,9 @@ date: 2026-11-06
 
 # Cara Kerja Sistem Kemiripan Abstrak dan Peran Model
 
-> **Status:** Rancangan alur sistem; bukan laporan hasil eksperimen. Status pengerjaan dicatat pada [keputusan dan status penelitian](07-jejak-penelusuran.md).
+> **Status:** Rancangan alur sistem; bukan laporan hasil eksperimen.
 
-Navigasi: [inti penelitian](01-inti-penelitian-5w1h.md) · [data dan pengujian](05-rancangan-metode-data-dan-evaluasi.md) · [matriks literatur](03-matriks-literatur-landasan.md) · [jejak penelusuran](07-jejak-penelusuran.md).
+Navigasi: [inti penelitian](01-inti-penelitian-5w1h.md) · [data dan pengujian](05-rancangan-metode-data-dan-evaluasi.md) · [matriks literatur](03-matriks-literatur-landasan.md).
 
 ## Alur sistem yang diselaraskan
 

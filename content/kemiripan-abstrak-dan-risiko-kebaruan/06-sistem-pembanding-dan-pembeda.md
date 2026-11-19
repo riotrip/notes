@@ -21,7 +21,7 @@ Pembanding di bawah adalah sistem atau pendekatan penelitian yang terdokumentasi
 | **Liu dkk. — scientific novelty detection (S2)** | Mengolah ide, memakai retriever hasil distillation, membandingkan melalui LLM, lalu mengklasifikasikan dengan decision tree. [Sumber, §§3–5 dan §7](https://arxiv.org/html/2505.24615); [kode](https://github.com/SenticNet/novelty-detection). | Relevan untuk analisis overlap ide, bukan hanya redaksi. Variasi sintetis dan asumsi label membatasi klaim; bukan validasi pada abstrak Indonesia. Semua komponennya tidak otomatis menjadi kebutuhan skripsi. |
 | **RINoBench (S6)** | Benchmark penilaian novelty yang mengevaluasi skor dan penjelasan secara terpisah. [Sumber, §§4–5](https://arxiv.org/html/2603.10303). | Acuan untuk membedakan kualitas penilaian dari kualitas penjelasan, bukan produk pembanding unggah abstrak. Datanya berasal dari review ICLR dengan pemrosesan LLM, bukan penilaian dosen JTI. |
 
-Metode, jenis publikasi, dan batas transfer lebih lengkap ada pada [matriks literatur](03-matriks-literatur-landasan.md); metadata dan cakupan baca ada pada [jejak penelusuran](07-jejak-penelusuran.md).
+Metode, jenis publikasi, dan batas transfer lebih lengkap ada pada [matriks literatur](03-matriks-literatur-landasan.md).
 
 ## Pembeda yang dituju
 

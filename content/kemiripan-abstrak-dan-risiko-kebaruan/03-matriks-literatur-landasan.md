@@ -7,7 +7,7 @@ date: 2026-11-06
 
 > **Status:** Catatan fondasi penelitian; bukan metodologi final atau laporan hasil eksperimen. Arah ini menggantikan penelitian deteksi teks AI.
 
-Navigasi: [inti penelitian](01-inti-penelitian-5w1h.md) · [cara kerja sistem](04-landasan-konseptual-dan-posisi-penelitian.md) · [jejak penelusuran dan metadata lengkap](07-jejak-penelusuran.md).
+Navigasi: [inti penelitian](01-inti-penelitian-5w1h.md) · [cara kerja sistem](04-landasan-konseptual-dan-posisi-penelitian.md).
 
 Literatur berikut mendasari tiga pekerjaan: **mencari penelitian terkait, membandingkan aspek penelitian, dan menjelaskan bukti kesamaan**. Metode tiap sumber tidak disalin menjadi satu paket wajib. S5 paling dekat dengan perbandingan berbasis aspek; S1 memberi konteks Indonesia; S2 dan S6 membantu membedakan kemiripan dari penilaian kebaruan.
 
@@ -46,6 +46,30 @@ Kontribusi yang dituju adalah bukti perbandingan **A: abstrak utuh, B: gabungan 
 
 ## Referensi dan cakupan baca
 
-[Jejak penelusuran](07-jejak-penelusuran.md) menyimpan seluruh penulis, DOI/ID, tanggal pengambilan, versi teks, status discovery versus lookup S2, serta koreksi metadata. S1–S9 dibaca melalui teks lengkap versi yang disebut, tetapi tidak direplikasi. Full text S5 dan S6 berasal dari preprint; metadata prosiding diperiksa terpisah. PDF lokal tidak disimpan.
+S1–S9 dibaca melalui teks lengkap versi yang disebut, tetapi tidak direplikasi. Full text S5 dan S6 berasal dari preprint; metadata prosiding diperiksa terpisah. PDF lokal tidak disimpan. Metadata lengkap dan riwayat penelusuran dipertahankan dalam arsip internal.
 
 Literatur dipakai untuk menyusun [konsep dan posisi penelitian](04-landasan-konseptual-dan-posisi-penelitian.md) serta [urgensi](02-latar-belakang-dan-urgensi.md), bukan untuk mengklaim eksperimen lokal telah selesai.
+
+## Penelitian dalam dataset yang relevan — 19 November 2026
+
+**Topik penelitian: IDENTIFIKASI POTENSI REDUNDANSI SUBSTANSI PENELITIAN BERBASIS KEMIRIPAN SEMANTIK ABSTRAK BERBAHASA INDONESIA**
+
+Matriks berikut disusun dari judul dan isi abstrak penelitian yang tersedia dalam dataset. Ringkasan bukan hasil telaah seluruh naskah atau bukti bahwa penelitian tersebut redundan dengan usulan ini. L1–L7 menandai penelitian lokal, terpisah dari referensi S1–S9 di atas.
+
+### Matriks penelitian lokal yang relevan
+
+| Penelitian / tautan | Objek atau data | Metode | Isi / tujuan penelitian | Relevansi dengan penelitian ini | Perbedaan dan batas penggunaan |
+|---|---|---|---|---|---|
+| **L1 — [Identifikasi Kemiripan Judul Tugas Akhir PS.TI dan MI Menggunakan Algoritma Rabin KARP (2021)](https://repository.polinema.ac.id/collection/detail?id=doc202109003128&year=2021)** | Judul usulan dan judul tugas akhir terdahulu di Polinema. | Rabin Karp; pencocokan string. | Mengukur kemiripan judul dan menampilkan 10 judul paling mirip. | Pendahulu lokal untuk pemeriksaan kemungkinan pengulangan topik dan pencarian penelitian terkait. | Hanya judul, bukan abstrak; kesamaan string belum menunjukkan kesamaan substansi secara semantik. |
+| **L2 — [Sistem Informasi Pendeteksi Kemiripan Judul, Ringkasan, Isi PKM Dosen (Studi Kasus P2M Politeknik Negeri Malang) (2018)](https://repository.polinema.ac.id/collection/detail?id=doc202109003072&year=2018)** | Judul, ringkasan, serta BAB 1–2 proposal pengabdian masyarakat. | *Exactmatch*, *flag*, dan *similarity* berbasis perbandingan kata. | Membantu penyaringan proposal pada proses seleksi P2M melalui pemeriksaan kemiripan antarusulan. | Dekat dengan kebutuhan memeriksa tumpang tindih substansi antarusulan sebagai bantuan penilaian. | Objeknya proposal pengabdian masyarakat; metode berbasis kesamaan kata, bukan embedding abstrak penelitian. |
+| **L3 — [Sistem Rekomendasi Dosen Pembimbing Pendamping dan Dosen Penguji Skripsi Berdasarkan Kemiripan Teks Judul dan Abstrak Menggunakan Metode Winnowing (2024)](https://repository.polinema.ac.id/collection/detail?id=dspace000004279&year=2024)** | Judul dan abstrak skripsi mahasiswa serta artikel penelitian dosen JTI Polinema. | Winnowing. | Mencocokkan penelitian mahasiswa dengan penelitian dosen untuk merekomendasikan pembimbing pendamping dan penguji. | Sama-sama membandingkan abstrak dalam konteks akademik JTI Polinema. | Keluaran berupa rekomendasi dosen, bukan indikasi redundansi substansi; kesamaan fingerprint teks tidak disamakan dengan kemiripan semantik. |
+| **L4 — [Sistem Pendeteksi Kemiripan Jurnal Penelitian untuk Mencegah Plagiarisme Menggunakan Metode Levenshtein Distance (2018)](https://repository.polinema.ac.id/collection/detail?id=gdrive000002754&year=2018)** | Kata atau kalimat pada dokumen jurnal penelitian. | Levenshtein Distance; perbandingan penggunaan *stemming* dan *filtering*. | Memeriksa bagian jurnal yang mirip dengan jurnal lain berdasarkan jarak perbedaan teks. | Pembanding pendekatan kemiripan leksikal pada dokumen penelitian. | Berorientasi pada pemeriksaan plagiarisme; kemiripan redaksi dan plagiarisme berbeda dari redundansi substansi. |
+| **L5 — [Analisis Skema-Skema Kemiripan Vektor pada Dataset Microsoft Video Description Corpus Bahasa Indonesia (2018)](https://repository.polinema.ac.id/collection/detail?id=gdrive000002794&year=2018)** | Deskripsi video berbahasa Indonesia dengan variasi kalimat untuk objek video yang sama. | Jaccard, cosine, Euclidean, dan Manhattan. | Mengumpulkan deskripsi video dan membandingkan hasil beberapa ukuran kemiripan vektor. | Pendukung pembahasan variasi ungkapan bermakna serupa dan pemilihan ukuran kemiripan. | Bukan abstrak penelitian atau evaluasi redundansi. Rekaman penelitian dalam dataset tidak berarti seluruh data deskripsi videonya tersedia. |
+| **L6 — [Peningkatan Kalimat untuk Peringkasan Ekstraktif Tugas Mahasiswa Berbasis IndoBERT dan K-Means Clustering (2024)](https://repository.polinema.ac.id/collection/detail?id=dspace000004433&year=2024)** | 62 dokumen tugas mahasiswa berbahasa Indonesia. | Vektor kalimat IndoBERT, K-Means, dan fitur pemeringkatan kalimat. | Mengelompokkan representasi kalimat lalu memilih kalimat untuk menghasilkan ringkasan ekstraktif. | Contoh pemakaian representasi vektor teks Indonesia dan pemilihan kalimat penting. | Tugasnya peringkasan, bukan perbandingan abstrak. Hasilnya tidak membuktikan efektivitas IndoBERT untuk identifikasi redundansi. |
+| **L7 — [Penerapan Teknologi Semantik Web pada Pencarian Makalah Skripsi Program Studi Teknik Informatika Politeknik Negeri Malang (2018)](https://repository.polinema.ac.id/collection/detail?id=doc202109004856&year=2018)** | Makalah skripsi Teknik Informatika Polinema. | Ontologi dan query SPARQL. | Mencari makalah skripsi berdasarkan struktur pengetahuan yang dimodelkan dalam ontologi. | Pendukung kebutuhan menemukan penelitian terdahulu dalam konteks lokal. | *Semantic web* berbasis ontologi berbeda dari kemiripan semantik berbasis embedding; pencarian tidak otomatis menilai redundansi substansi. |
+
+### Prioritas dan batas penggunaan
+
+**Prioritas baca: L1–L4**, karena paling dekat dari sisi masalah atau objek pembandingan. L5–L7 mendukung pembahasan representasi teks, ukuran kemiripan, dan pencarian penelitian terdahulu.
+
+Daftar ini merupakan hasil penelusuran terarah dalam dataset, bukan tinjauan sistematis atau daftar lengkap seluruh penelitian terkait. Tautan mengarah ke rekaman repository; ketersediaan halaman dan naskah daring belum diverifikasi dalam penelusuran ini. Kemiripan semantik diposisikan sebagai indikasi untuk pemeriksaan potensi redundansi, bukan bukti otomatis redundansi, plagiarisme, atau tidak adanya kebaruan.

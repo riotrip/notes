@@ -7,7 +7,7 @@ date: 2026-11-06
 
 > **Status:** Catatan fondasi penelitian; bukan metodologi final atau laporan hasil eksperimen. Arah ini menggantikan penelitian deteksi teks AI.
 
-Navigasi: [inti penelitian](01-inti-penelitian-5w1h.md) · [penelitian terdahulu](03-matriks-literatur-landasan.md) · [jejak penelusuran](07-jejak-penelusuran.md).
+Navigasi: [inti penelitian](01-inti-penelitian-5w1h.md) · [penelitian terdahulu](03-matriks-literatur-landasan.md).
 
 **Masalah yang dituju bukan sekadar mencari abstrak dengan kata-kata serupa, tetapi membantu dosen menemukan penelitian terkait dan memeriksa letak kesamaan substansinya.** Masalah dan objek dibandingkan; metode ditampilkan sebagai informasi pendamping. Manfaatnya masih perlu diuji, bukan diasumsikan selalu lebih baik daripada perbandingan abstrak utuh.
 

@@ -105,4 +105,4 @@ Uji fungsi juga mencakup input kosong, aspek hilang, duplikat, teks panjang, tid
 
 Yang masih perlu ditetapkan: korpus hasil kurasi dan izin penggunaannya, asal serta jumlah kueri, pedoman dan penilai, model, pembagian data final, N dan K, bobot C, ambang kategori, serta cara alignment. Urutan pengerjaan adalah **data dan anotasi → model/pipeline → evaluasi → halaman web sistem kemiripan**. Situs notes bukan aplikasi pengujian kemiripan.
 
-Lanjut: [sistem pembanding dan pembeda yang dituju](06-sistem-pembanding-dan-pembeda.md) · [jejak penelusuran](07-jejak-penelusuran.md).
+Lanjut: [sistem pembanding dan pembeda yang dituju](06-sistem-pembanding-dan-pembeda.md).
